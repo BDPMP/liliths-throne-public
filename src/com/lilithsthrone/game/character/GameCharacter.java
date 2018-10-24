@@ -230,7 +230,7 @@ public abstract class GameCharacter implements XMLSaving {
 	public static final String RESTING_LUST_CALCULATION = "Corruption/2";
 
 	public static final int LEVEL_CAP = 50;
-	public static final int MAX_TRAITS = 6;
+	public static final int MAX_TRAITS = 7;
 	
 	
 	// Core variables:
@@ -11540,7 +11540,8 @@ public abstract class GameCharacter implements XMLSaving {
 		if(hasStatusEffect(StatusEffect.WEATHER_STORM_VULNERABLE)) {
 			return 75;
 		}
-		return (int) Math.round(getAttributeValue(Attribute.MAJOR_CORRUPTION)/2);
+		return (int) Math.round(getAttributeValue(Attribute.MAJOR_CORRUPTION)/2
+				+ (hasTrait(Perk.NYMPHOMANIAC, true) ? 25:0));
 	}
 	
 	public String setLust(float lust) {

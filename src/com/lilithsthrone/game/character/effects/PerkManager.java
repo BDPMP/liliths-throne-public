@@ -42,6 +42,8 @@ public enum PerkManager {
 		addPerkEntry(perkTree, PerkCategory.BOTH, 0, Perk.BARREN);
 		addPerkEntry(perkTree, PerkCategory.BOTH, 0, Perk.FETISH_SEEDER);
 		addPerkEntry(perkTree, PerkCategory.BOTH, 0, Perk.FETISH_BROODMOTHER);
+		addPerkEntry(perkTree, PerkCategory.BOTH, 0, Perk.NYMPHOMANIAC);
+		
 		addPerkEntry(perkTree, PerkCategory.ARCANE, 0, Perk.CLOTHING_ENCHANTER);
 		
 		TreeEntry<PerkCategory, Perk> arcane1, arcane2, arcane3, arcane4, arcane5, arcane6;
@@ -58,8 +60,7 @@ public enum PerkManager {
 		both1 = addPerkEntry(perkTree, PerkCategory.BOTH, 2, Perk.MALE_ATTRACTION, both3);
 
 		both4 = addPerkEntry(perkTree, PerkCategory.BOTH, 3, Perk.SEDUCTION_5, both2);
-		both5 = addPerkEntry(perkTree, PerkCategory.BOTH, 3, Perk.NYMPHOMANIAC, both4);
-		both6 = addPerkEntry(perkTree, PerkCategory.BOTH, 3, Perk.SEDUCTION_5_B, both5, both1);
+		both6 = addPerkEntry(perkTree, PerkCategory.BOTH, 3, Perk.SEDUCTION_5_B, both1);
 
 		
 		//Physical:
@@ -152,6 +153,8 @@ public enum PerkManager {
 		addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 0, Perk.BARREN);
 		addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 0, Perk.FETISH_SEEDER);
 		addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 0, Perk.FETISH_BROODMOTHER);
+		addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 0, Perk.NYMPHOMANIAC);
+		
 		addPerkEntry(NPCPerkTree, PerkCategory.ARCANE, 0, Perk.CLOTHING_ENCHANTER);
 		
 		physical1 = addPerkEntry(NPCPerkTree, PerkCategory.PHYSICAL, 1, Perk.PHYSICAL_BASE);
@@ -164,8 +167,7 @@ public enum PerkManager {
 		both1 = addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 2, Perk.MALE_ATTRACTION, both3);
 
 		both4 = addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 3, Perk.SEDUCTION_5, both2);
-		both5 = addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 3, Perk.NYMPHOMANIAC, both4);
-		both6 = addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 3, Perk.SEDUCTION_5_B, both5, both1);
+		both6 = addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 3, Perk.SEDUCTION_5_B, both1);
 
 		
 		//Physical:
@@ -269,7 +271,10 @@ public enum PerkManager {
 		if(character.isPlayer()) {
 			character.addPerk(Perk.PHYSICAL_BASE);
 			character.addPerk(Perk.ARCANE_BASE);	
-			
+			character.addPerk(Perk.BARREN);
+			character.addPerk(Perk.FIRING_BLANKS);
+			character.removeTrait(Perk.BARREN);
+			character.removeTrait(Perk.FIRING_BLANKS);
 		} else {
 			character.addPerk(Perk.PHYSICAL_BASE);
 			character.addPerk(Perk.ARCANE_BASE_NPC);
