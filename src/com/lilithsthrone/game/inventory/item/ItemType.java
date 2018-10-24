@@ -3526,6 +3526,45 @@ public class ItemType {
 		}
 	};
 	
+	public static AbstractItemType ABORTIVE_PILL = new AbstractItemType(20,
+			"an",
+			false,
+			"Abortive Pill",
+			"Abortive Pills",
+			"This abortive pill is packaged in a foil and plastic wrapper."
+					+ " On the front of the foil, there's a before-and-after picture of a girl's hungry pussy overflowing with cum."
+					+ " The after image is of the girl showing off her flat stomach as she gives a thumbs up.",
+			"vixensVirility",
+			Colour.CLOTHING_BLUE,
+			null,
+			null,
+			Rarity.COMMON,
+			null,
+			Util.newArrayListOfValues(new ItemEffect(ItemEffectType.PROMISCUITY_PILL)),
+			Util.newArrayListOfValues(
+					ItemTag.DOMINION_ALLEYWAY_SPAWN,
+					ItemTag.SUBMISSION_TUNNEL_SPAWN,
+					ItemTag.BAT_CAVERNS_SPAWN,
+					ItemTag.ATTRIBUTE_TF_ITEM,
+					ItemTag.SOLD_BY_RALPH)) {
+
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public String getUseName() {
+			return "swallow";
+		}
+		
+		@Override
+		public String getUseDescription(GameCharacter user, GameCharacter target) {
+			return getGenericUseDescription(user, target,
+					"Popping the little blue pill out of its foil wrapper, you quickly put it in your mouth and swallow it down.",
+					"Popping the little blue pill out of its foil wrapper, you bring it up to [npc.namePos] [npc.lips], before forcing it into [npc.her] mouth and making sure that [npc.she] swallows it down.",
+					"[npc.Name] pops an abortive pill out of its little foil wrapper, before quickly placing it in [npc.her] mouth and swallowing it down.",
+					"[npc.Name] pops an abortive pill out of its little foil wrapper, before bringing it up to your [pc.lips], forcing it into your mouth, and making sure that you swallow it down.");
+		}
+	};
+	
 	public static AbstractItemType MOO_MILKER_EMPTY = new AbstractItemType(50,
 			"a",
 			false,

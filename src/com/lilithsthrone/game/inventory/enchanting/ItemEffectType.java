@@ -661,6 +661,35 @@ public class ItemEffectType {
 		}
 	};
 	
+	
+	// Abortive
+	
+	public static AbstractItemEffectType ABORTIVE_PILL = new AbstractItemEffectType(Util.newArrayListOfValues(
+			"Ends pregnancy."),
+			Colour.GENERIC_SEX) {
+		
+		@Override
+		public String applyEffect(TFModifier primaryModifier, TFModifier secondaryModifier, TFPotency potency, int limit, GameCharacter user, GameCharacter target, ItemEffectTimer timer) {
+
+			target.endPregnancy(false);
+			
+			target.removeStatusEffect(StatusEffect.PREGNANT_0);
+			
+			if(target.isPlayer()) {
+				return "<p>"
+							+ "The little blue pill easily slides down your throat, and after only a few moments, you feel a cool throbbing sensation taking root deep within your loins."
+						+ "</p>";
+			
+			} else {
+				return UtilText.parse(target,
+						"<p>"
+							+ "The little blue pill easily slides down [npc.her] throat, and after only a few moments, [npc.she] feels a cool throbbing sensation taking root deep within [npc.her] loins."
+						+ "</p>");
+			}
+		}
+	};
+	
+	
 	// Ingredients and potions:
 	
 	// Strength:
