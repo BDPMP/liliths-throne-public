@@ -3535,12 +3535,12 @@ public class ItemType {
 					+ " On the front of the foil, there's a before-and-after picture of a girl's hungry pussy overflowing with cum."
 					+ " The after image is of the girl showing off her flat stomach as she gives a thumbs up.",
 			"vixensVirility",
-			Colour.CLOTHING_BLUE,
+			Colour.CLOTHING_PURPLE_DARK,
 			null,
 			null,
 			Rarity.COMMON,
 			null,
-			Util.newArrayListOfValues(new ItemEffect(ItemEffectType.PROMISCUITY_PILL)),
+			Util.newArrayListOfValues(new ItemEffect(ItemEffectType.ABORTIVE_PILL)),
 			Util.newArrayListOfValues(
 					ItemTag.DOMINION_ALLEYWAY_SPAWN,
 					ItemTag.SUBMISSION_TUNNEL_SPAWN,
@@ -3558,10 +3558,10 @@ public class ItemType {
 		@Override
 		public String getUseDescription(GameCharacter user, GameCharacter target) {
 			return getGenericUseDescription(user, target,
-					"Popping the little blue pill out of its foil wrapper, you quickly put it in your mouth and swallow it down.",
-					"Popping the little blue pill out of its foil wrapper, you bring it up to [npc.namePos] [npc.lips], before forcing it into [npc.her] mouth and making sure that [npc.she] swallows it down.",
-					"[npc.Name] pops an abortive pill out of its little foil wrapper, before quickly placing it in [npc.her] mouth and swallowing it down.",
-					"[npc.Name] pops an abortive pill out of its little foil wrapper, before bringing it up to your [pc.lips], forcing it into your mouth, and making sure that you swallow it down.");
+					"Popping the little purple pill out of its foil wrapper, you quickly put it in your mouth and swallow it down.",
+					"Popping the little purple pill out of its foil wrapper, you bring it up to [npc.namePos] [npc.lips], before forcing it into [npc.her] mouth and making sure that [npc.she] swallows it down.",
+					"[npc.Name] pops a purple pill out of its little foil wrapper, before quickly placing it in [npc.her] mouth and swallowing it down.",
+					"[npc.Name] pops a purple pill out of its little foil wrapper, before bringing it up to your [pc.lips], forcing it into your mouth, and making sure that you swallow it down.");
 		}
 	};
 	

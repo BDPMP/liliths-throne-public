@@ -66,6 +66,7 @@ public class Ralph extends NPC {
 			ItemType.MOO_MILKER_EMPTY,
 			ItemType.VIXENS_VIRILITY,
 			ItemType.PROMISCUITY_PILL,
+			ItemType.ABORTIVE_PILL,
 			ItemType.MOTHERS_MILK,
 			ItemType.PREGNANCY_TEST);
 	

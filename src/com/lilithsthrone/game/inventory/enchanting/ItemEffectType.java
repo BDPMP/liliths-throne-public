@@ -677,13 +677,13 @@ public class ItemEffectType {
 			
 			if(target.isPlayer()) {
 				return "<p>"
-							+ "The little blue pill easily slides down your throat, and after only a few moments, you feel a cool throbbing sensation taking root deep within your loins."
+							+ "The little purple pill easily slides down your throat, and after only a few moments, you feel a cool throbbing sensation taking root deep within your loins."
 						+ "</p>";
 			
 			} else {
 				return UtilText.parse(target,
 						"<p>"
-							+ "The little blue pill easily slides down [npc.her] throat, and after only a few moments, [npc.she] feels a cool throbbing sensation taking root deep within [npc.her] loins."
+							+ "The little purple pill easily slides down [npc.her] throat, and after only a few moments, [npc.she] feels a cool throbbing sensation taking root deep within [npc.her] loins."
 						+ "</p>");
 			}
 		}
