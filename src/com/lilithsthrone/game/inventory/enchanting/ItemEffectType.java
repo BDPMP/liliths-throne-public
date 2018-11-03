@@ -360,6 +360,8 @@ public class ItemEffectType {
 					descriptions.add("Sets orientation to [style.boldMasculineStrong(androphilic)].");
 					descriptions.add("[style.boldTerrible(+5)] [style.boldCorruption(corruption)]");
 				}
+			} else {
+				descriptions.add("Enchantable.");
 			}
 			
 			return descriptions;
@@ -3166,6 +3168,9 @@ public class ItemEffectType {
 			if(primaryModifier == TFModifier.CLOTHING_ATTRIBUTE) {
 				return TFModifier.getClothingAttributeList();
 				
+			} else if(primaryModifier == TFModifier.CLOTHING_MAJOR_ATTRIBUTE) {
+				return TFModifier.getClothingMajorAttributeList();
+				
 			} else if(primaryModifier == TFModifier.TF_MOD_FETISH_BEHAVIOUR) {
 				return TFModifier.getTFBehaviouralFetishList();
 				
@@ -3184,6 +3189,7 @@ public class ItemEffectType {
 		@Override
 		public List<TFPotency> getPotencyModifiers(TFModifier primaryModifier, TFModifier secondaryModifier) {
 			if(primaryModifier == TFModifier.CLOTHING_ATTRIBUTE
+					|| primaryModifier == TFModifier.CLOTHING_MAJOR_ATTRIBUTE
 					|| primaryModifier == TFModifier.TF_MOD_FETISH_BEHAVIOUR
 					|| primaryModifier == TFModifier.TF_MOD_FETISH_BODY_PART
 					|| !getClothingTFSecondaryModifiers(primaryModifier).isEmpty()) {
@@ -3198,7 +3204,8 @@ public class ItemEffectType {
 		public List<String> getEffectsDescription(TFModifier primaryModifier, TFModifier secondaryModifier, TFPotency potency, int limit, GameCharacter user, GameCharacter target) {
 			List<String> effectsList = new ArrayList<>();
 			
-			if(primaryModifier == TFModifier.CLOTHING_ATTRIBUTE) { //This is overriden in a couple of places ,such as in InventoryTooltipEventListener
+			if(primaryModifier == TFModifier.CLOTHING_ATTRIBUTE
+					|| primaryModifier == TFModifier.CLOTHING_MAJOR_ATTRIBUTE) { //This is overriden in a couple of places ,such as in InventoryTooltipEventListener
 				effectsList.add(
 						(potency.getClothingBonusValue()<0
 								?"[style.boldBad("+potency.getClothingBonusValue()+")] "
@@ -3247,6 +3254,7 @@ public class ItemEffectType {
 		@Override
 		public String applyEffect(TFModifier primaryModifier, TFModifier secondaryModifier, TFPotency potency, int limit, GameCharacter user, GameCharacter target, ItemEffectTimer timer) {
 			if(primaryModifier == TFModifier.CLOTHING_ATTRIBUTE
+					|| primaryModifier == TFModifier.CLOTHING_MAJOR_ATTRIBUTE
 					|| primaryModifier == TFModifier.CLOTHING_ENSLAVEMENT
 					|| primaryModifier == TFModifier.CLOTHING_SEALING
 					|| primaryModifier == TFModifier.TF_MOD_FETISH_BEHAVIOUR
@@ -3270,7 +3278,10 @@ public class ItemEffectType {
 			if(primaryModifier == TFModifier.CLOTHING_ATTRIBUTE) {
 				return TFModifier.getClothingAttributeList();
 				
-			} else if(primaryModifier == TFModifier.TF_MOD_FETISH_BEHAVIOUR) {
+			}else if(primaryModifier == TFModifier.CLOTHING_MAJOR_ATTRIBUTE) {
+				return TFModifier.getClothingMajorAttributeList();
+				
+			}  else if(primaryModifier == TFModifier.TF_MOD_FETISH_BEHAVIOUR) {
 				return TFModifier.getTFBehaviouralFetishList();
 				
 			} else if(primaryModifier == TFModifier.TF_MOD_FETISH_BODY_PART) {
@@ -3284,6 +3295,7 @@ public class ItemEffectType {
 		@Override
 		public List<TFPotency> getPotencyModifiers(TFModifier primaryModifier, TFModifier secondaryModifier) {
 			if(primaryModifier == TFModifier.CLOTHING_ATTRIBUTE
+					|| primaryModifier == TFModifier.CLOTHING_MAJOR_ATTRIBUTE
 					|| primaryModifier == TFModifier.TF_MOD_FETISH_BEHAVIOUR
 					|| primaryModifier == TFModifier.TF_MOD_FETISH_BODY_PART
 					|| !getClothingTFSecondaryModifiers(primaryModifier).isEmpty()) {
@@ -3298,7 +3310,8 @@ public class ItemEffectType {
 		public List<String> getEffectsDescription(TFModifier primaryModifier, TFModifier secondaryModifier, TFPotency potency, int limit, GameCharacter user, GameCharacter target) {
 			List<String> effectsList = new ArrayList<>();
 			
-			if(primaryModifier == TFModifier.CLOTHING_ATTRIBUTE) { //This is overriden in a couple of places ,such as in InventoryTooltipEventListener
+			if(primaryModifier == TFModifier.CLOTHING_ATTRIBUTE
+					|| primaryModifier == TFModifier.CLOTHING_MAJOR_ATTRIBUTE) { //This is overriden in a couple of places ,such as in InventoryTooltipEventListener
 				effectsList.add(
 						(potency.getClothingBonusValue()<0
 								?"[style.boldBad("+potency.getClothingBonusValue()+")] "
@@ -3341,6 +3354,7 @@ public class ItemEffectType {
 		@Override
 		public String applyEffect(TFModifier primaryModifier, TFModifier secondaryModifier, TFPotency potency, int limit, GameCharacter user, GameCharacter target, ItemEffectTimer timer) {
 			if(primaryModifier == TFModifier.CLOTHING_ATTRIBUTE
+					|| primaryModifier == TFModifier.CLOTHING_MAJOR_ATTRIBUTE
 					|| primaryModifier == TFModifier.TF_MOD_FETISH_BEHAVIOUR
 					|| primaryModifier == TFModifier.TF_MOD_FETISH_BODY_PART) {
 				return "";
@@ -3360,7 +3374,11 @@ public class ItemEffectType {
 
 		@Override
 		public List<TFModifier> getSecondaryModifiers(TFModifier primaryModifier) {
-			return TFModifier.getWeaponAttributeList();
+			if(primaryModifier == TFModifier.CLOTHING_ATTRIBUTE) {
+				return TFModifier.getWeaponAttributeList();
+			} else {
+				return TFModifier.getWeaponMajorAttributeList();
+			}
 		}
 		
 		@Override
