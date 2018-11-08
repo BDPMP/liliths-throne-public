@@ -2325,7 +2325,7 @@ public class UtilText {
 			@Override
 			public String parse(String command, String arguments, String target) {
 				if(Main.game.isInSex()) {
-					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
+					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING && !character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
 						if(character.isFeminine()) {
 							return returnStringAtRandom("sob", "scream", "cry");
 						} else {
@@ -2361,7 +2361,7 @@ public class UtilText {
 			@Override
 			public String parse(String command, String arguments, String target) {
 				if(Main.game.isInSex()) {
-					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
+					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING && !character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
 						if(character.isFeminine()) {
 							return returnStringAtRandom("miserable", "pathetic", "distressed") + " " + returnStringAtRandom("sob", "scream", "cry");
 						} else {
@@ -2404,7 +2404,7 @@ public class UtilText {
 			public String parse(String command, String arguments, String target) {
 				if(character.isPlayer()) {
 					if(Main.game.isInSex()) {
-						if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
+						if(Sex.getSexPace(character)==SexPace.SUB_RESISTING && !character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
 							if(character.isFeminine()) {
 								return returnStringAtRandom("sob", "scream", "cry");
 							} else {
@@ -2420,7 +2420,7 @@ public class UtilText {
 					}
 				} else {
 					if(Main.game.isInSex()) {
-						if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
+						if(Sex.getSexPace(character)==SexPace.SUB_RESISTING && !character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
 							if(character.isFeminine()) {
 								return returnStringAtRandom("sobs", "screams", "cries");
 							} else {
@@ -2466,7 +2466,7 @@ public class UtilText {
 			public String parse(String command, String arguments, String target) {
 				if(character.isPlayer()) {
 					if(Main.game.isInSex()) {
-						if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
+						if(Sex.getSexPace(character)==SexPace.SUB_RESISTING && !character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
 							if(character.isFeminine()) {
 								return returnStringAtRandom("miserably", "pathetically") + " " + returnStringAtRandom("sob", "scream", "cry");
 							} else {
@@ -2489,7 +2489,7 @@ public class UtilText {
 					}
 				} else {
 					if(Main.game.isInSex()) {
-						if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
+						if(Sex.getSexPace(character)==SexPace.SUB_RESISTING && !character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
 							if(character.isFeminine()) {
 								return returnStringAtRandom("miserably", "pathetically", "desperately") + " " + returnStringAtRandom("sobs", "cries");
 							} else {
@@ -2529,7 +2529,7 @@ public class UtilText {
 			@Override
 			public String parse(String command, String arguments, String target) {
 				if(Main.game.isInSex()) {
-					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
+					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING && !character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
 						if(character.isFeminine()) {
 							return returnStringAtRandom("sobs", "cries");
 						} else {
@@ -2566,7 +2566,7 @@ public class UtilText {
 			@Override
 			public String parse(String command, String arguments, String target) {
 				if(Main.game.isInSex()) {
-					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
+					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING && !character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
 						if(character.isFeminine()) {
 							return returnStringAtRandom("miserable", "pathetic", "distressed") + " " + returnStringAtRandom("sobs", "cries");
 						} else {
@@ -2603,7 +2603,7 @@ public class UtilText {
 			@Override
 			public String parse(String command, String arguments, String target) {
 				if(Main.game.isInSex()) {
-					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
+					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING && !character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
 						if(character.isFeminine()) {
 							return returnStringAtRandom("sobbing", "crying");
 						} else {
@@ -2637,7 +2637,7 @@ public class UtilText {
 			@Override
 			public String parse(String command, String arguments, String target) {
 				if(Main.game.isInSex()) {
-					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
+					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING && !character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
 						if(character.isFeminine()) {
 							return returnStringAtRandom("miserably", "pathetically", "desperately") + " " + returnStringAtRandom("sobbing", "crying");
 						} else {
