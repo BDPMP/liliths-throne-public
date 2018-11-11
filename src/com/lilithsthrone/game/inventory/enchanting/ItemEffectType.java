@@ -667,16 +667,14 @@ public class ItemEffectType {
 	// Abortive
 	
 	public static AbstractItemEffectType ABORTIVE_PILL = new AbstractItemEffectType(Util.newArrayListOfValues(
-			"Ends pregnancy."),
+			"Removes risk of pregnancy."),
 			Colour.GENERIC_SEX) {
 		
 		@Override
 		public String applyEffect(TFModifier primaryModifier, TFModifier secondaryModifier, TFPotency potency, int limit, GameCharacter user, GameCharacter target, ItemEffectTimer timer) {
-
-			target.endPregnancy(false);
-			
-			target.removeStatusEffect(StatusEffect.PREGNANT_0);
-			
+			if(target.hasStatusEffect(StatusEffect.PREGNANT_0)) {
+				target.endPregnancy(false);				
+			}			
 			if(target.isPlayer()) {
 				return "<p>"
 							+ "The little purple pill easily slides down your throat, and after only a few moments, you feel a cool throbbing sensation taking root deep within your loins."

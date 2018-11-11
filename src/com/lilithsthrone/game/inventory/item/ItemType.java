@@ -3487,10 +3487,10 @@ public class ItemType {
 	public static AbstractItemType ABORTIVE_PILL = new AbstractItemType(20,
 			"an",
 			false,
-			"Abortive Pill",
-			"Abortive Pills",
-			"This abortive pill is packaged in a foil and plastic wrapper."
-					+ " On the front of the foil, there's a before-and-after picture of a girl's hungry pussy overflowing with cum."
+			"Morning After Pill",
+			"Morning After Pills",
+			"This morning after pill is packaged in a foil and plastic wrapper."
+					+ " On the front of the foil, there's a before-and-after picture of a girl looking at a pregnancy tester in horror."
 					+ " The after image is of the girl showing off her flat stomach as she gives a thumbs up.",
 			"vixensVirility",
 			Colour.CLOTHING_PURPLE_DARK,
