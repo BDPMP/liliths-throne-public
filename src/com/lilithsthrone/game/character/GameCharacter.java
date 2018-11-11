@@ -11557,7 +11557,7 @@ public abstract class GameCharacter implements XMLSaving {
 			return 75;
 		}
 		return (int) Math.round(getAttributeValue(Attribute.MAJOR_CORRUPTION)/2
-				+ (hasTrait(Perk.NYMPHOMANIAC, true) ? 25:0));
+				+ (hasTrait(Perk.NYMPHOMANIAC, true) ?25 :0));
 	}
 	
 	public String setLust(float lust) {

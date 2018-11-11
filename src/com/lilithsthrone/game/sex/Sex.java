@@ -767,7 +767,7 @@ public class Sex {
 					}
 					participant.addStatusEffect(StatusEffect.RECOVERING_AURA, 240);
 					
-					participant.setLust(0);
+					participant.setLust(0 + (participant.hasTrait(Perk.NYMPHOMANIAC, true) ?25 :0));
 				}
 				
 				
