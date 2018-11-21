@@ -450,11 +450,13 @@ public enum PerkManager {
 	public static void initialisePerks(GameCharacter character) {
 		if(character.isPlayer()) {
 			character.addPerk(Perk.PHYSICAL_BASE);
-			character.addPerk(Perk.ARCANE_BASE);	
+			character.addPerk(Perk.ARCANE_BASE);
 			character.addPerk(Perk.BARREN);
 			character.addPerk(Perk.FIRING_BLANKS);
+			character.addPerk(Perk.NYMPHOMANIAC);
 			character.removeTrait(Perk.BARREN);
 			character.removeTrait(Perk.FIRING_BLANKS);
+			character.removeTrait(Perk.NYMPHOMANIAC);
 		} else if(character instanceof Elemental) {
 			character.addPerk(Perk.ELEMENTAL_CORE);
 			character.addPerk(Perk.ELEMENTAL_CORRUPTION);
