@@ -2060,6 +2060,54 @@ public class MainControllerInitMethod {
 					}
 				}
 				
+				
+				if (Main.game.getCurrentDialogueNode() == CharacterCreation.CHOOSE_FETISHES) {
+					for (Fetish f : Fetish.values()) {
+						id = "fetishUnlock" + f;
+						if (((EventTarget) MainController.document.getElementById(id)) != null) {
+							((EventTarget) MainController.document.getElementById(id)).addEventListener("click", e -> {
+								if(!Main.game.getPlayer().hasFetish(f)) {
+									if(Main.game.getPlayer().addFetish(f)) {
+										Main.game.setContent(new Response("", "", Main.game.getCurrentDialogueNode()));
+									}
+								} else {
+									if(Main.game.getPlayer().removeFetish(f)) {
+										Main.game.setContent(new Response("", "", Main.game.getCurrentDialogueNode()));
+									}
+								}
+							}, false);
+							
+							MainController.addEventListener(MainController.document, id, "mousemove", MainController.moveTooltipListener, false);
+							MainController.addEventListener(MainController.document, id, "mouseleave", MainController.hideTooltipListener, false);
+							MainController.addEventListener(MainController.document, id, "mouseenter", new TooltipInformationEventListener().setFetish(f, Main.game.getPlayer()), false);
+						}
+						
+						id = f+"_EXPERIENCE";
+						if (((EventTarget) MainController.document.getElementById(id)) != null) {
+							MainController.addEventListener(MainController.document, id, "mousemove", MainController.moveTooltipListener, false);
+							MainController.addEventListener(MainController.document, id, "mouseleave", MainController.hideTooltipListener, false);
+							MainController.addEventListener(MainController.document, id, "mouseenter", new TooltipInformationEventListener().setFetishExperience(f, Main.game.getPlayer()), false);
+						}
+						
+						for (FetishDesire desire : FetishDesire.values()) {
+							id = f+"_"+desire;
+							if (((EventTarget) MainController.document.getElementById(id)) != null) {
+								((EventTarget) MainController.document.getElementById(id)).addEventListener("click", e -> {
+									if(Main.game.getPlayer().getEssenceCount(TFEssence.ARCANE)>=FetishDesire.getCostToChange()) {
+										if(Main.game.getPlayer().setFetishDesire(f, desire)) {
+											Main.game.getPlayer().incrementEssenceCount(TFEssence.ARCANE, -FetishDesire.getCostToChange(), false);
+											Main.game.setContent(new Response("", "", Main.game.getCurrentDialogueNode()));
+										}
+									}
+								}, false);
+								
+								MainController.addEventListener(MainController.document, id, "mousemove", MainController.moveTooltipListener, false);
+								MainController.addEventListener(MainController.document, id, "mouseleave", MainController.hideTooltipListener, false);
+								MainController.addEventListener(MainController.document, id, "mouseenter", new TooltipInformationEventListener().setFetishDesire(f, desire, Main.game.getPlayer()), false);
+							}
+						}
+					}
+				}
 			}
 			
 			if(!Main.game.isInNewWorld()
