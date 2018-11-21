@@ -85,7 +85,7 @@
 		You allow [prologueMale.name] to pull you into his strong, masculine torso, desperately moaning into his mouth as he dominantly gropes and fondles your body. Breaking off the kiss for a moment, he pulls something out of his pocket, before pushing it into your hands. [prologueMale.speech(I'd rather not, but if you want me to, I can wear this.)]
 	</p>
 	<p>
-		#pc.hasPenis()
+		#IF pc.hasPenis()
 		#THEN
 			You look down to see that you're holding a couple of little square packets - a pair of condoms.
 		#ELSE
