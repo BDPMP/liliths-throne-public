@@ -3496,7 +3496,7 @@ public class ItemType {
 	};
 	
 	public static AbstractItemType ABORTIVE_PILL = new AbstractItemType(20,
-			"an",
+			"a",
 			false,
 			"Morning After Pill",
 			"Morning After Pills",
