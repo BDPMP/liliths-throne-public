@@ -2198,6 +2198,9 @@ public abstract class NPC extends GameCharacter implements XMLSaving {
 		unpairedFetishMap.put(Fetish.FETISH_INCEST, true);
 		unpairedFetishMap.put(Fetish.FETISH_MASTURBATION, true);
 		
+		unpairedFetishMap.put(Fetish.FETISH_GENTLE, true);
+		unpairedFetishMap.put(Fetish.FETISH_EAGER, true);
+		
 		
 		for(Entry<Fetish, Boolean> entry : unpairedFetishMap.entrySet()) {
 			currentTopFetish = entry.getKey();
@@ -2491,7 +2494,12 @@ public abstract class NPC extends GameCharacter implements XMLSaving {
 		fetishAddFlavorText.put(TFModifier.TF_MOD_FETISH_KINK_RECEIVING, "You strike me as someone who would really enjoy trying new things.");
 		fetishRemoveFlavorText.put(TFModifier.TF_MOD_FETISH_KINK_RECEIVING, "I think you're already excitable enough as it is.");
 		
-		
+		// New behavioural
+		fetishAddFlavorText.put(TFModifier.TF_MOD_FETISH_GENTLE, "When you're in charge, be gentle, okay?");
+		fetishRemoveFlavorText.put(TFModifier.TF_MOD_FETISH_GENTLE, "If you're in charge, you're in charge, do what you want.");
+
+		fetishAddFlavorText.put(TFModifier.TF_MOD_FETISH_EAGER, "If someone's being kind enough to fuck you, the least you could do is show a little appreciation.");
+		fetishRemoveFlavorText.put(TFModifier.TF_MOD_FETISH_EAGER, "You don't need to act like such a desperate slut.");
 		
 		if(selectedEffect.getPotency() == TFPotency.MINOR_BOOST || selectedEffect.getPotency() == TFPotency.BOOST) {
 			// default for adding a fetish, just in case a fetish is somehow selected without a string defined in the lookup
@@ -3319,6 +3327,9 @@ public abstract class NPC extends GameCharacter implements XMLSaving {
 	public SexPace getTheoreticalSexPaceSubPreference(GameCharacter character) {
 		if(!isAttractedTo(character) || this.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
 			if(Main.game.isNonConEnabled()) {
+				if (hasFetish(Fetish.FETISH_EAGER_FUCK_TOY)) {
+					return SexPace.SUB_EAGER;
+				}
 				if(isSlave()) {
 					if(this.getObedienceValue()>=ObedienceLevel.POSITIVE_FIVE_SUBSERVIENT.getMinimumValue()) {
 						return SexPace.SUB_EAGER;
@@ -3347,6 +3358,7 @@ public abstract class NPC extends GameCharacter implements XMLSaving {
 		}
 		
 		if (hasFetish(Fetish.FETISH_SUBMISSIVE) // Subs like being sub I guess ^^
+				|| hasFetish(Fetish.FETISH_EAGER) // eager sub is eager
 				|| (hasFetish(Fetish.FETISH_PREGNANCY) && character.hasPenisIgnoreDildo() && hasVagina()) // Want to get pregnant
 				|| (hasFetish(Fetish.FETISH_IMPREGNATION) && character.hasVagina() && hasPenisIgnoreDildo()) // Want to impregnate player
 				) {
@@ -3365,7 +3377,7 @@ public abstract class NPC extends GameCharacter implements XMLSaving {
 	
 	// Most people don't have time to master the very lewd details of theoretical sex paces.
 	public SexPace getTheoreticalSexPaceDomPreference() {
-		if(hasStatusEffect(StatusEffect.FETISH_PURE_VIRGIN) || (hasFetish(Fetish.FETISH_SUBMISSIVE) && !hasFetish(Fetish.FETISH_DOMINANT))) {
+		if(hasStatusEffect(StatusEffect.FETISH_PURE_VIRGIN) || (hasFetish(Fetish.FETISH_SUBMISSIVE) && !hasFetish(Fetish.FETISH_DOMINANT)) || hasFetish(Fetish.FETISH_GENTLE)) {
 			return SexPace.DOM_GENTLE;
 		}
 		

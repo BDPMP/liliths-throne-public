@@ -131,7 +131,8 @@ public enum LustLevel {
 		SexPace pace;
 		if(Sex.isDom(character)) {
 			if((character.hasFetish(Fetish.FETISH_SUBMISSIVE) && !character.hasFetish(Fetish.FETISH_SADIST) && !character.hasFetish(Fetish.FETISH_DOMINANT))
-					|| character.getFetishDesire(Fetish.FETISH_SADIST) == FetishDesire.ZERO_HATE) {
+					|| character.getFetishDesire(Fetish.FETISH_SADIST) == FetishDesire.ZERO_HATE
+					|| character.hasFetish(Fetish.FETISH_GENTLE)) {
 				pace = SexPace.DOM_GENTLE;
 				
 			} else if(character.getFetishDesire(Fetish.FETISH_SADIST) == FetishDesire.ONE_DISLIKE) {
@@ -146,8 +147,12 @@ public enum LustLevel {
 			
 		} else {
 			pace = getSexPaceSubmissive();
-			if(character.hasFetish(Fetish.FETISH_NON_CON_SUB) || ((character instanceof NPC) && ((NPC)character).hasFlag(NPCFlagValue.genericNPCBetrayedByPlayer))) {
+			if(character.hasFetish(Fetish.FETISH_EAGER_FUCK_TOY)) {
+				pace = SexPace.SUB_EAGER;
+			} else if (character.hasFetish(Fetish.FETISH_NON_CON_SUB) || ((character instanceof NPC) && ((NPC)character).hasFlag(NPCFlagValue.genericNPCBetrayedByPlayer))) {
 				pace = SexPace.SUB_RESISTING;
+			} else if (!(pace == SexPace.SUB_RESISTING) && character.hasFetish(Fetish.FETISH_EAGER)) {
+				pace = SexPace.SUB_EAGER;
 			}
 		}
 		

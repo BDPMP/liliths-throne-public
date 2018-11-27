@@ -224,6 +224,7 @@ public abstract class SexAction implements SexActionInterface {
 					case DOM_GENTLE:
 						characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_DOMINANT);
 						characterFetishesForPartner.get(characterPerformingAction).add(Fetish.FETISH_SUBMISSIVE);
+						characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_GENTLE);
 						break;
 					case DOM_NORMAL:
 						characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_DOMINANT);
@@ -238,6 +239,7 @@ public abstract class SexAction implements SexActionInterface {
 					case SUB_EAGER:
 						characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_SUBMISSIVE);
 						characterFetishesForPartner.get(characterPerformingAction).add(Fetish.FETISH_DOMINANT);
+						characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_EAGER);
 						break;
 					case SUB_NORMAL:
 						characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_SUBMISSIVE);

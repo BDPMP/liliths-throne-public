@@ -1736,11 +1736,17 @@ public class CharacterCreation {
 		@Override
 		public String getContent() {
 			UtilText.nodeContentSB.setLength(0);
-			
-			UtilText.nodeContentSB.append(
-					"<p>"
-						+ "Having told [prologueFemale.name] all about your sexual experiences, you begin to talk about what turns you on."
-					+ "</p>");
+			if(femalePrologueNPC()) {
+				UtilText.nodeContentSB.append(
+						"<p>"
+							+ "Having told [prologueFemale.name] all about your sexual experiences, you begin to talk about what turns you on."
+						+ "</p>");				
+			} else {
+				UtilText.nodeContentSB.append(
+						"<p>"
+							+ "Having told [prologueMale.name] all about your sexual experiences, you begin to talk about what turns you on."
+						+ "</p>");
+			}
 			
 			UtilText.nodeContentSB.append(
 					"<details>"
@@ -1775,6 +1781,7 @@ public class CharacterCreation {
 			UtilText.nodeContentSB.append(getFetishEntry(Fetish.FETISH_KINK_GIVING, Fetish.FETISH_KINK_RECEIVING));
 			UtilText.nodeContentSB.append(getFetishEntry(Fetish.FETISH_SADIST, Fetish.FETISH_MASOCHIST));
 			UtilText.nodeContentSB.append(getFetishEntry(Fetish.FETISH_NON_CON_DOM, Fetish.FETISH_NON_CON_SUB));
+			UtilText.nodeContentSB.append(getFetishEntry(Fetish.FETISH_GENTLE, Fetish.FETISH_EAGER));
 
 //			UtilText.nodeContentSB.append("<div class='container-full-width' style='text-align:center; font-weight:bold; margin-top:16px;'><h6>Individual Fetishes</h6></div>");
 			UtilText.nodeContentSB.append(getFetishEntry(Fetish.FETISH_DENIAL, Fetish.FETISH_DENIAL_SELF));

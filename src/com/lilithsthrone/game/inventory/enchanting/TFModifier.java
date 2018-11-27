@@ -1095,6 +1095,9 @@ public enum TFModifier {
 	TF_MOD_FETISH_BIMBO(Fetish.FETISH_BIMBO),
 	TF_MOD_FETISH_KINK_GIVING(Fetish.FETISH_KINK_GIVING),
 	TF_MOD_FETISH_KINK_RECEIVING(Fetish.FETISH_KINK_RECEIVING),
+	
+	TF_MOD_FETISH_GENTLE(Fetish.FETISH_GENTLE),
+	TF_MOD_FETISH_EAGER(Fetish.FETISH_EAGER)
 	;
 
 	private static List<TFModifier> TFModStrengthList = new ArrayList<>();
@@ -1216,6 +1219,9 @@ public enum TFModifier {
 		TFBehaviouralFetishList.add(TF_MOD_FETISH_INCEST);
 		TFBehaviouralFetishList.add(TF_MOD_FETISH_KINK_GIVING);
 		TFBehaviouralFetishList.add(TF_MOD_FETISH_KINK_RECEIVING);
+		
+		TFBehaviouralFetishList.add(TF_MOD_FETISH_GENTLE);
+		TFBehaviouralFetishList.add(TF_MOD_FETISH_EAGER);
 
 		clothingPrimaryList.add(TFModifier.CLOTHING_MAJOR_ATTRIBUTE);
 		clothingPrimaryList.add(TFModifier.CLOTHING_ATTRIBUTE);
