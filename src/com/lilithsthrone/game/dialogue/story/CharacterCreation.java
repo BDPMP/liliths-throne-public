@@ -1340,11 +1340,10 @@ public class CharacterCreation {
 	}
 	
 	public static void moveNPCIntoPlayerTile() {
-		if(Main.game.getPlayer().getSexualOrientation()==SexualOrientation.ANDROPHILIC || (Main.game.getPlayer().getSexualOrientation()==SexualOrientation.AMBIPHILIC && Main.game.getPlayer().hasVagina())) {
-			Main.game.getPrologueMale().setLocation(Main.game.getPlayer().getWorldLocation(), Main.game.getPlayer().getLocation(), false);
-			
-		} else {
+		if(femalePrologueNPC()){
 			Main.game.getPrologueFemale().setLocation(Main.game.getPlayer().getWorldLocation(), Main.game.getPlayer().getLocation(), false);
+		} else {
+			Main.game.getPrologueMale().setLocation(Main.game.getPlayer().getWorldLocation(), Main.game.getPlayer().getLocation(), false);
 		}
 	}
 	
@@ -1354,7 +1353,7 @@ public class CharacterCreation {
 	}
 	
 	public static boolean femalePrologueNPC() {
-		return Main.game.getPlayer().getSexualOrientation()==SexualOrientation.GYNEPHILIC || (Main.game.getPlayer().getSexualOrientation()==SexualOrientation.AMBIPHILIC && Main.game.getPlayer().hasPenis());
+		return Main.game.getPlayer().getSexualOrientation()==SexualOrientation.GYNEPHILIC || Main.game.getPlayer().getSexualOrientation()==SexualOrientation.AMBIPHILIC;
 	}
 	
 	public static final DialogueNodeOld CHOOSE_BACKGROUND = new DialogueNodeOld("In the Museum", "-", true) {
