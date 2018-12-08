@@ -1614,7 +1614,7 @@ public enum Subspecies {
 		for(int i=1; i<=9; i++) {
 			try {
 				String SVGStringBackground = "";
-				InputStream is = youkoIconMap.getClass().getResourceAsStream("/com/lilithsthrone/res/statusEffects/race/raceBackground.svg");
+				InputStream is = Subspecies.class.getClassLoader().getResourceAsStream("com/lilithsthrone/res/statusEffects/race/raceBackground.svg");
 				if(is==null) {
 					System.err.println("Error! Subspecies background icon file does not exist (Trying to read from 'statusEffects/race/raceBackground')! (Code 1f)");
 				}
@@ -1633,15 +1633,22 @@ public enum Subspecies {
 		for(int i=1; i<=9; i++) {
 			try {
 				String SVGStringBackground = "";
-				InputStream is = youkoDesaturatedIconMap.getClass().getResourceAsStream("/com/lilithsthrone/res/statusEffects/race/raceBackground.svg");
+				InputStream is = Subspecies.class.getClassLoader().getResourceAsStream("com/lilithsthrone/res/statusEffects/race/raceBackground.svg");
 				if(is==null) {
 					System.err.println("Error! Subspecies background icon file does not exist (Trying to read from 'statusEffects/race/raceBackground')! (Code 2f)");
 				}
 				SVGStringBackground = "<div style='width:100%;height:100%;position:absolute;left:0;bottom:0;'>"+Util.inputStreamToString(is)+"</div>";
-
+				
 				is.close();
 				
 				String baseSVGString = SVGStringBackground + "<div style='width:100%;height:100%;position:absolute;left:0;bottom:0;'>"+SVGImages.SVG_IMAGE_PROVIDER.getFoxTailDesaturated(i)+"</div>";
+				
+				baseSVGString = SvgUtil.colourReplacement("youkoGradient"+i,
+						Colour.BASE_GREY,
+						Colour.BASE_GREY,
+						Colour.BASE_GREY,
+						baseSVGString);
+				
 				youkoDesaturatedIconMap.put(i, baseSVGString);
 				
 			} catch (IOException e) {

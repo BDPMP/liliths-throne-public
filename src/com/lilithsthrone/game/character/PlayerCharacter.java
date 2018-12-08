@@ -19,6 +19,7 @@ import com.lilithsthrone.game.character.attributes.Attribute;
 import com.lilithsthrone.game.character.effects.StatusEffect;
 import com.lilithsthrone.game.character.gender.Gender;
 import com.lilithsthrone.game.character.npc.NPC;
+import com.lilithsthrone.game.character.npc.dominion.DominionClubNPC;
 import com.lilithsthrone.game.character.npc.misc.NPCOffspring;
 import com.lilithsthrone.game.character.persona.NameTriplet;
 import com.lilithsthrone.game.character.persona.PersonalityTrait;
@@ -38,6 +39,8 @@ import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Colour;
 import com.lilithsthrone.utils.SizedStack;
 import com.lilithsthrone.utils.TreeNode;
+import com.lilithsthrone.utils.Util;
+import com.lilithsthrone.utils.Vector2i;
 import com.lilithsthrone.utils.XMLSaving;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
@@ -67,7 +70,7 @@ public class PlayerCharacter extends GameCharacter implements XMLSaving {
 	private List<String> charactersEncountered;
 	
 	public PlayerCharacter(NameTriplet nameTriplet, int level, LocalDateTime birthday, Gender gender, Subspecies startingSubspecies, RaceStage stage, CharacterInventory inventory, WorldType startingWorld, PlaceType startingPlace) {
-		super(nameTriplet, "", level, Main.game.getDateNow().minusYears(22), gender, startingSubspecies, stage, new CharacterInventory(0), startingWorld, startingPlace);
+		super(nameTriplet, "", "", level, Main.game.getDateNow().minusYears(22), gender, startingSubspecies, stage, new CharacterInventory(0), startingWorld, startingPlace);
 
 		this.setSexualOrientation(SexualOrientation.AMBIPHILIC);
 		
@@ -382,6 +385,28 @@ public class PlayerCharacter extends GameCharacter implements XMLSaving {
 		}
 	}
 	
+	@Override
+	public void setLocation(WorldType worldLocation, Vector2i location, boolean setAsHomeLocation) {
+		if(this.getWorldLocation()==WorldType.NIGHTLIFE_CLUB) {
+			List<GameCharacter> clubbers = new ArrayList<>(Main.game.getNonCompanionCharactersPresent());
+			clubbers.removeIf((npc) -> !(npc instanceof DominionClubNPC));
+			
+			WorldType worldLocationInitial = this.getWorldLocation();
+			Vector2i locationInitial = this.getLocation();
+			
+			super.setLocation(worldLocation, location, setAsHomeLocation);
+			
+			for(GameCharacter clubber : clubbers) {
+				clubber.setLocation(this, false);
+				// TODO Why is this needed? I can't figure out why IDs are not being removed without this line:
+				Main.game.getWorlds().get(worldLocationInitial).getCell(locationInitial).removeCharacterPresentId(clubber.getId());
+			}
+			
+		} else {
+			super.setLocation(worldLocation, location, setAsHomeLocation);
+		}
+	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -596,7 +621,7 @@ public class PlayerCharacter extends GameCharacter implements XMLSaving {
 				GameCharacter npc = Main.game.getNPCById(characterId);
 				npcsEncountered.add(npc);
 			} catch (Exception e) {
-				System.err.println("Main.game.getNPCById("+characterId+") returning null in method: getCharactersEncounteredAsGameCharacters()");
+				Util.logGetNpcByIdError("getCharactersEncounteredAsGameCharacters()", characterId);
 			}
 		}
 		return npcsEncountered;
@@ -609,7 +634,7 @@ public class PlayerCharacter extends GameCharacter implements XMLSaving {
 				GameCharacter npc = Main.game.getNPCById(characterId);
 				npcsEncountered.add(npc);
 			} catch (Exception e) {
-				System.err.println("Main.game.getNPCById("+characterId+") returning null in method: sortCharactersEncountered()");
+				Util.logGetNpcByIdError("sortCharactersEncountered()", characterId);
 			}
 		}
 		npcsEncountered.sort((npc1, npc2) -> npc1 instanceof NPCOffspring

@@ -433,10 +433,10 @@ public enum Combat {
 	}
 	
 	public static boolean isOpponent(GameCharacter character, GameCharacter target) {
-		if(allies.contains(character)) {
+		if(allies.contains(character) || character.isPlayer()) {
 			return enemies.contains(target);
 		} else {
-			return allies.contains(character);
+			return allies.contains(target) || target.isPlayer();
 		}
 	}
 	
@@ -1495,6 +1495,10 @@ public enum Combat {
 				case SPELL:
 					Map<Spell, Integer> spellsAvailableMap = npc.getWeightedSpellsAvailable(getTargetedCombatant(npc));
 					
+//					for(Entry<Spell, Integer> e : spellsAvailableMap.entrySet()) {
+//						System.out.println(e.getKey().getName()+" "+e.getValue());
+//					}
+					
 					Spell spell = Util.getRandomObjectFromWeightedMap(spellsAvailableMap);
 //					System.out.println(spellsAvailable.size());
 					attackSpell(npc, spell);
@@ -1624,13 +1628,20 @@ public enum Combat {
 		
 		if (Main.game.getPlayer().getMainWeapon() == null) {
 			attackDescriptionSB.append("<b>" + Attack.getMinimumDamage(Main.game.getPlayer(), targetedCombatant, Attack.MAIN) + " - " + Attack.getMaximumDamage(Main.game.getPlayer(), targetedCombatant, Attack.MAIN) + "</b>" + " <b style='color:"
-					+ Main.game.getPlayer().getBodyMaterial().getUnarmedDamageType().getColour().toWebHexString() + ";'>" + Util.capitaliseSentence(Main.game.getPlayer().getBodyMaterial().getUnarmedDamageType().getName()) + "</b> <b>damage</b><br/><br/>");
+						+ Main.game.getPlayer().getBodyMaterial().getUnarmedDamageType().getColour().toWebHexString() + ";'>"
+						+ Util.capitaliseSentence(Main.game.getPlayer().getBodyMaterial().getUnarmedDamageType().getName()) + "</b> <b>damage</b><br/>");
+			
 		} else {
+			int cost = Main.game.getPlayer().getMainWeapon().getWeaponType().getArcaneCost();
 			attackDescriptionSB.append("<b>" + Attack.getMinimumDamage(Main.game.getPlayer(), targetedCombatant, Attack.MAIN) + " - " + Attack.getMaximumDamage(Main.game.getPlayer(), targetedCombatant, Attack.MAIN) + "</b>" + " <b style='color:"
 					+ Main.game.getPlayer().getMainWeapon().getDamageType().getMultiplierAttribute().getColour().toWebHexString() + ";'>" + Util.capitaliseSentence(Main.game.getPlayer().getMainWeapon().getDamageType().getName())
-					+ "</b> <b>damage</b><br/><br/>");
+					+ "</b> <b>damage</b><br/>");
+			if(cost>0) {
+				attackDescriptionSB.append("Costs [style.boldArcane("+cost+" Arcane essence"+(cost>1?"s":"")+")] "+(Main.game.getPlayer().getMainWeapon().getWeaponType().isMelee()?"per attack":"to fire")+"<br/>");
+			}
 		}
-
+		
+		
 		attackDescriptionSB.append("Main and offhand attacks <b style='color:" + Colour.GENERIC_EXCELLENT.toWebHexString() + ";'>always hit</b>.");
 		
 		return attackDescriptionSB.toString();
@@ -1646,12 +1657,18 @@ public enum Combat {
 		}
 		
 		if (Main.game.getPlayer().getOffhandWeapon() == null) {
-			attackDescriptionSB.append("<b>" + Attack.getMinimumDamage(Main.game.getPlayer(), targetedCombatant, Attack.OFFHAND) + " - " + Attack.getMaximumDamage(Main.game.getPlayer(), targetedCombatant, Attack.OFFHAND) + "</b>" + " <b style='color:"
-					+ Main.game.getPlayer().getBodyMaterial().getUnarmedDamageType().getColour().toWebHexString() + ";'>" + Util.capitaliseSentence(Main.game.getPlayer().getBodyMaterial().getUnarmedDamageType().getName()) + "</b> <b>damage</b><br/><br/>");
+			attackDescriptionSB.append("<b>" + Attack.getMinimumDamage(Main.game.getPlayer(), targetedCombatant, Attack.OFFHAND) + " - " + Attack.getMaximumDamage(Main.game.getPlayer(), targetedCombatant, Attack.OFFHAND) + "</b>"
+					+ " <b style='color:"+ Main.game.getPlayer().getBodyMaterial().getUnarmedDamageType().getColour().toWebHexString() + ";'>"
+					+ Util.capitaliseSentence(Main.game.getPlayer().getBodyMaterial().getUnarmedDamageType().getName()) + "</b> <b>damage</b><br/>");
+		
 		} else {
-			attackDescriptionSB.append("<b>" + Attack.getMinimumDamage(Main.game.getPlayer(), targetedCombatant, Attack.OFFHAND) + " - " + Attack.getMaximumDamage(Main.game.getPlayer(), targetedCombatant, Attack.OFFHAND) + "</b>" + " <b style='color:"
-					+ Main.game.getPlayer().getOffhandWeapon().getDamageType().getMultiplierAttribute().getColour().toWebHexString() + ";'>" + Util.capitaliseSentence(Main.game.getPlayer().getOffhandWeapon().getDamageType().getName())
-					+ "</b> <b>damage</b><br/><br/>");
+			int cost = Main.game.getPlayer().getOffhandWeapon().getWeaponType().getArcaneCost();
+			attackDescriptionSB.append("<b>" + Attack.getMinimumDamage(Main.game.getPlayer(), targetedCombatant, Attack.OFFHAND) + " - " + Attack.getMaximumDamage(Main.game.getPlayer(), targetedCombatant, Attack.OFFHAND) + "</b>"
+					+ " <b style='color:"+ Main.game.getPlayer().getOffhandWeapon().getDamageType().getMultiplierAttribute().getColour().toWebHexString() + ";'>"
+					+ Util.capitaliseSentence(Main.game.getPlayer().getOffhandWeapon().getDamageType().getName())+ "</b> <b>damage</b><br/>");
+			if(cost>0) {
+				attackDescriptionSB.append("Costs [style.boldArcane("+cost+" Arcane essence"+(cost>1?"s":"")+")] "+(Main.game.getPlayer().getOffhandWeapon().getWeaponType().isMelee()?"per attack":"to fire")+"<br/>");
+			}
 		}
 
 		attackDescriptionSB.append("Main and offhand attacks <b style='color:" + Colour.GENERIC_EXCELLENT.toWebHexString() + ";'>always hit</b>.");
@@ -1668,18 +1685,26 @@ public enum Combat {
 			attackDescriptionSB.append("<b>" + Attack.getMinimumDamage(Main.game.getPlayer(), targetedCombatant, Attack.MAIN) + " - " + Attack.getMaximumDamage(Main.game.getPlayer(), targetedCombatant, Attack.MAIN) + "</b>" + " <b style='color:"
 					+ Main.game.getPlayer().getBodyMaterial().getUnarmedDamageType().getColour().toWebHexString() + ";'>" + Util.capitaliseSentence(Main.game.getPlayer().getBodyMaterial().getUnarmedDamageType().getName()) + "</b> <b>damage</b><br/>");
 		} else {
+			int cost = Main.game.getPlayer().getMainWeapon().getWeaponType().getArcaneCost();
 			attackDescriptionSB.append("<b>" + Attack.getMinimumDamage(Main.game.getPlayer(), targetedCombatant, Attack.MAIN) + " - " + Attack.getMaximumDamage(Main.game.getPlayer(), targetedCombatant, Attack.MAIN) + "</b>" + " <b style='color:"
 					+ Main.game.getPlayer().getMainWeapon().getDamageType().getMultiplierAttribute().getColour().toWebHexString() + ";'>" + Util.capitaliseSentence(Main.game.getPlayer().getMainWeapon().getDamageType().getName())
 					+ "</b> <b>damage</b><br/>");
+			if(cost>0) {
+				attackDescriptionSB.append("Costs [style.boldArcane("+cost+" Arcane essence"+(cost>1?"s":"")+")] "+(Main.game.getPlayer().getMainWeapon().getWeaponType().isMelee()?"per attack":"to fire")+"<br/>");
+			}
 		}
 		
 		if (Main.game.getPlayer().getOffhandWeapon() == null) {
 			attackDescriptionSB.append("<b>" + Attack.getMinimumDamage(Main.game.getPlayer(), targetedCombatant, Attack.OFFHAND) + " - " + Attack.getMaximumDamage(Main.game.getPlayer(), targetedCombatant, Attack.OFFHAND) + "</b>" + " <b style='color:"
 					+ Main.game.getPlayer().getBodyMaterial().getUnarmedDamageType().getColour().toWebHexString() + ";'>" + Util.capitaliseSentence(Main.game.getPlayer().getBodyMaterial().getUnarmedDamageType().getName()) + "</b> <b>damage</b><br/>");
 		} else {
+			int cost = Main.game.getPlayer().getOffhandWeapon().getWeaponType().getArcaneCost();
 			attackDescriptionSB.append("<b>" + Attack.getMinimumDamage(Main.game.getPlayer(), targetedCombatant, Attack.OFFHAND) + " - " + Attack.getMaximumDamage(Main.game.getPlayer(), targetedCombatant, Attack.OFFHAND) + "</b>" + " <b style='color:"
 					+ Main.game.getPlayer().getOffhandWeapon().getDamageType().getMultiplierAttribute().getColour().toWebHexString() + ";'>" + Util.capitaliseSentence(Main.game.getPlayer().getOffhandWeapon().getDamageType().getName())
 					+ "</b> <b>damage</b><br/>");
+			if(cost>0) {
+				attackDescriptionSB.append("Costs [style.boldArcane("+cost+" Arcane essence"+(cost>1?"s":"")+")] "+(Main.game.getPlayer().getOffhandWeapon().getWeaponType().isMelee()?"per attack":"to fire")+"<br/>");
+			}
 		}
 
 		attackDescriptionSB.append("You have a <b>50%</b> <b style='color:" + Colour.GENERIC_COMBAT.toWebHexString() + ";'>chance to hit</b>.");
@@ -1735,6 +1760,7 @@ public enum Combat {
 		if(allies.contains(attacker)) {
 			for(NPC enemy : enemies) {
 				if(!isCombatantDefeated(enemy)) {
+//					System.out.println("T1: "+enemy.getName());
 					return enemy;
 				}
 			}
@@ -1744,6 +1770,7 @@ public enum Combat {
 		if(enemies.contains(attacker)) {
 			for(NPC playerAlly : allies) {
 				if(!isCombatantDefeated(playerAlly)) {
+//					System.out.println("T2: "+playerAlly.getName());
 					return playerAlly;
 				}
 			}

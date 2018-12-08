@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.StringJoiner;
 import java.util.function.Function;
@@ -242,14 +243,12 @@ public abstract class AbstractClothingType extends AbstractCoreType {
 				availableSecondaryDyeColours,
 				availableTertiaryColours,
 				availableTertiaryDyeColours);
-		
-		if(itemTags==null) {
-			this.itemTags = new ArrayList<>();
-		} else {
+
+		this.itemTags = new ArrayList<>();
+		if(itemTags!=null) {
 			this.itemTags = itemTags;
 		}
 
-		
 		finalSetUp();
 	}
 	
@@ -272,6 +271,7 @@ public abstract class AbstractClothingType extends AbstractCoreType {
 				.getAllOf("effect") // Get all child elements with this tag (checking only contents of parent element) and return them as List<Element>
 				.stream() // Convert this list to Stream<Element>, which lets us do some nifty operations on every element at once
 				.map( e -> ItemEffect.loadFromXML(e.getInnerElement(), e.getDocument())) // Take every element and do something with them, return a Stream of results after this action. Here we load item effects and get Stream<ItemEffect>
+				.filter(Objects::nonNull) // Ensure that we only add non-null effects
 				.collect(Collectors.toList()); // Collect stream back into a list, but this time we get List<ItemEffect> we need! 
 			
 			if(debug) {
@@ -735,6 +735,10 @@ public abstract class AbstractClothingType extends AbstractCoreType {
 		return generateClothing(clothingType, colour, null, null, effects);
 	}
 	
+	public static AbstractClothing generateClothing(String clothingTypeId, Colour colour, List<ItemEffect> effects) {
+		return generateClothing(ClothingType.getClothingTypeFromId(clothingTypeId), colour, null, null, effects);
+	}
+	
 	/**
 	 * Uses random colour.
 	 */
@@ -873,15 +877,15 @@ public abstract class AbstractClothingType extends AbstractCoreType {
 			} else {
 				if(rough) {
 					if(displacementDescriptions.containsKey(DisplacementType.REMOVE_OR_EQUIP)
-							&& displacementDescriptions.get(DisplacementType.REMOVE_OR_EQUIP).containsKey(DisplacementDescriptionType.REPLACEMENT)) {
-						return UtilText.parse(clothingEquipper, clothingOwner, displacementDescriptions.get(DisplacementType.REMOVE_OR_EQUIP).get(DisplacementDescriptionType.REPLACEMENT));
+							&& displacementDescriptions.get(DisplacementType.REMOVE_OR_EQUIP).containsKey(DisplacementDescriptionType.REPLACEMENT_ROUGH)) {
+						return UtilText.parse(clothingEquipper, clothingOwner, displacementDescriptions.get(DisplacementType.REMOVE_OR_EQUIP).get(DisplacementDescriptionType.REPLACEMENT_ROUGH));
 					}
 					return UtilText.parse(clothingEquipper, clothingOwner, "[npc.name] [npc.verb(get)] [npc2.name] to equip the "+clothing.getName());
 					
 				} else {
 					if(displacementDescriptions.containsKey(DisplacementType.REMOVE_OR_EQUIP)
-							&& displacementDescriptions.get(DisplacementType.REMOVE_OR_EQUIP).containsKey(DisplacementDescriptionType.REPLACEMENT_ROUGH)) {
-						return UtilText.parse(clothingEquipper, clothingOwner, displacementDescriptions.get(DisplacementType.REMOVE_OR_EQUIP).get(DisplacementDescriptionType.REPLACEMENT_ROUGH));
+							&& displacementDescriptions.get(DisplacementType.REMOVE_OR_EQUIP).containsKey(DisplacementDescriptionType.REPLACEMENT)) {
+						return UtilText.parse(clothingEquipper, clothingOwner, displacementDescriptions.get(DisplacementType.REMOVE_OR_EQUIP).get(DisplacementDescriptionType.REPLACEMENT));
 					}
 					return UtilText.parse(clothingEquipper, clothingOwner, "[npc.name] roughly [npc.verb(force)] [npc2.name] to equip the "+clothing.getName());
 				}
@@ -1183,15 +1187,15 @@ public abstract class AbstractClothingType extends AbstractCoreType {
 			} else {
 				if(rough) {
 					if(displacementDescriptions.containsKey(dt)
-							&& displacementDescriptions.get(dt).containsKey(DisplacementDescriptionType.REPLACEMENT)) {
-						return UtilText.parse(clothingRemover, clothingOwner, displacementDescriptions.get(dt).get(DisplacementDescriptionType.REPLACEMENT));
+							&& displacementDescriptions.get(dt).containsKey(DisplacementDescriptionType.REPLACEMENT_ROUGH)) {
+						return UtilText.parse(clothingRemover, clothingOwner, displacementDescriptions.get(dt).get(DisplacementDescriptionType.REPLACEMENT_ROUGH));
 					}
 					return UtilText.parse(clothingRemover, clothingOwner, "[npc.name] "+(clothingRemover.isPlayer()?dt.getOppositeDescription():dt.getOppositeDescriptionThirdPerson())+" [npc2.namePos] "+this.getName());
 					
 				} else {
 					if(displacementDescriptions.containsKey(dt)
-							&& displacementDescriptions.get(dt).containsKey(DisplacementDescriptionType.REPLACEMENT_ROUGH)) {
-						return UtilText.parse(clothingRemover, clothingOwner, displacementDescriptions.get(dt).get(DisplacementDescriptionType.REPLACEMENT_ROUGH));
+							&& displacementDescriptions.get(dt).containsKey(DisplacementDescriptionType.REPLACEMENT)) {
+						return UtilText.parse(clothingRemover, clothingOwner, displacementDescriptions.get(dt).get(DisplacementDescriptionType.REPLACEMENT));
 					}
 					return UtilText.parse(clothingRemover, clothingOwner, "[npc.name] roughly "+(clothingRemover.isPlayer()?dt.getOppositeDescription():dt.getOppositeDescriptionThirdPerson())+" [npc2.namePos] "+this.getName());
 				}
@@ -1288,6 +1292,9 @@ public abstract class AbstractClothingType extends AbstractCoreType {
 		if(!clothingOwner.hasVagina() && this.getItemTags().contains(ItemTag.REQUIRES_VAGINA)) {
 			return false;
 		}
+		if(!clothingOwner.isBreastFuckableNipplePenetration() && this.getItemTags().contains(ItemTag.REQUIRES_FUCKABLE_NIPPLES)) {
+			return false;
+		}
 		return true;
 	}	
 
@@ -1327,6 +1334,11 @@ public abstract class AbstractClothingType extends AbstractCoreType {
 						"[npc.Name] doesn't have a vagina, so [npc.she] can't wear the "+this.getName()+"!");
 			}
 		}
+
+		if(!clothingOwner.isBreastFuckableNipplePenetration() && this.getItemTags().contains(ItemTag.REQUIRES_FUCKABLE_NIPPLES)) {
+			return UtilText.parse(clothingOwner,
+					"[npc.NamePos] nipples are not fuckable, so [npc.she] can't wear the "+this.getName()+"!");
+		}
 		
 		if(clothingOwner.isPlayer()) {
 			return "You cannot wear the "+this.getName()+"!";
@@ -1337,25 +1349,25 @@ public abstract class AbstractClothingType extends AbstractCoreType {
 	}
 	
 	public boolean isMufflesSpeech() {
-		return false;
+		return getItemTags().contains(ItemTag.MUFFLES_SPEECH);
 	}
 	
 	public boolean isHindersLegMovement() {
-		return false;
+		return getItemTags().contains(ItemTag.HINDERS_LEG_MOVEMENT);
 	}
 	
 	public boolean isHindersArmMovement() {
-		return false;
+		return getItemTags().contains(ItemTag.HINDERS_ARM_MOVEMENT);
 	}
 	
 	// Getters & setters:
 	
 	public boolean isDiscardedOnUnequip() {
-		return false;
+		return getItemTags().contains(ItemTag.DISCARDED_WHEN_UNEQUIPPED);
 	}
 	
 	public boolean isAbleToBeEquippedDuringSex() {
-		return false;
+		return getItemTags().contains(ItemTag.ENABLE_SEX_EQUIP);
 	}
 	
 	public String getDeterminer() {

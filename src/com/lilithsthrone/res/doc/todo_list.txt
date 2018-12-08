@@ -113,90 +113,51 @@
 	
 	Patch notes:
 	
-	Gameplay:
-		Added all dialogue for solo and companion scenes in the imp citadel.
-		Added post-defeat sex scene for losing Siren combat. (There was a more involved sequence of events planned for this, but I didn't have time to add it - it will be added at some point in the future.)
-	
-	Other:
-		Switched primary and secondary colours for tagged choker, and changed the icon's scribble to read 'Bound Bitch'.
-		Female horses and reindeer now have a base ass size of 'large', and female cows have 'huge'. (This is randomised when NPCs are generated, so some will still have larger or smaller asses.)
-		Increased base size of all race's female nipples, and additionally increased base size of female cow areolae.
-		Improved race menu in encyclopedia, so that subspecies of a race are displayed in a sub-menu.
-		Consolidated all elemental races into one 'elemental' race (keeping the elemental types as subspecies), and converted individual elemental damage/resistance to a universal 'elemental' one.
-		Moved witch set out into res folder, added tertiary colour to witch hat, and added 'wide-brimmed' hat variation.
-		
 	Bugs:
-		Fixed BDSM clothing set icon to be black instead of white.
-		You can no longer escape from the boss fights in imp fortresses, nor the imp 'challenge' fight in the citadel.
-		Fixed cause of tattoo tooltips being cut off at the bottom. (The tooltip formatting system is still a little buggy - I'll remake it at some point.)
-		Fixed breast size in subspecies encyclopedia using the enum name for the description.
-		Added some error handling for if clothing throws errors related to patterns not being present.
-		Fixed issue with youko icons not having a background circle.
-		Fixed imp damage/resistance attributes not working.
-		Fixed imps sometimes giving birth to non-imps.
-		Your companion now gets the same attribute boost as you do after winning the imp fight when using 'challenge' in the citadel.
-		Fixed being able to start the imp challenge even after the siren had been defeated.
-		Fixed issue with the citadel's imp challenge freezing at the end of combat.
-		Your status panel is no longer minimised when acting as a spectator.
-		Fixed issues with some unique NPCs not putting their clothing back on correctly after sex.
-		Takahashi will now correctly deny orgasms during her oral scene.
-		Fixed issue where dropping equipped clothing during sex wouldn't work on the first button press.
-		The demon leaders should now correctly be in the siren's throne room when you get there.
+		Fixed major bug where entering a lot of areas would freeze the game.
+		Exiting the citadel after beating the Siren now correctly displays the 'Enter' action.
+		Beating the Siren now correctly removes Takahashi from the citadel. (Also retroactively removes her if you've already beaten the Siren.)
+		Fixed desaturated youko tile icon still being coloured.
+		Fixed (for real this time) the bug where asking Elizabeth about her uniform would lock you into that tile.
+		The arcane revolver now correctly drains 1 essence when fired.
+		Fixed issue where Fyrsia would appear in the other imp fortresses, sometimes in the place of the correct leader. (She will move back to her own keep once you leave/re-enter any fortress.)
+		Fixed missing dialogue when entering Hyorlyss's pacified keep.
+		Enemies no longer only use defensive spells in combat.
+		Fixed numerous issues with clubbers in the Watering Hole - it should all work correctly again now.
+		Fixed age preferences not being saved and restored between games.
+		Fixed issue with changing Youko slaves' names.
+		Fixed background errors being generated when NPCs were removed from the game.
 	
 	
 	
 	
+	condoms
+	Final citadel refinements
+	Lyssieth palace
+		Demon TF
+	Fields
 	
 	
+	Elizabeth
 	
-	Do quest checks
+	Gates
+		The guard has multiple repeated lines when you tell her you beat the siren.
+		Double-check rings
+		when completing the quest it does not act like you talked to the guards earlier even if you did.
 		Make sure you have the already-completed citadel quest done properly when approaching Lyssieth palace
-		Also the uniform dialogue, and adding Elizabeth as an NPC, and to add proper detection for knowing her in the post-collapse scenes
+		Also the uniform dialogue, and adding Elizabeth as an NPC
+		i did the siren fortress and confirmed it at the gates of lissieth before even encountering zaranix or arthur, returned to home and built the room for arthur and went back to the gates to get the second ring.
+	 
+	Lyssieth
+		Demon TF
+			Remove Innoxia's gift and slime TF into demon
 		
-		
-	
-	Remove ring
-	Add ring to siren if tricked
-	
-	imps on exit?
-	
-	Need shrouded identity for the 4 of them
-	
-	Stop allies recovering full HP after combat
-	
-	when equipping items to your elemental is it suppsed to always use the rough description text
-		the NPC replace and displacement text for the new method seems to always default to the rough option
-	
-	
-	In game\dialogue\npcDialogue\submission\TunnelImpsDialogue.java, there's a function called IMP_ENSLAVEMENT_DIALOGUE which has a response that allows you to enslave multiple Imps without having to fight all of them more than once.
-	 There's a line, at 1454, which is the if statement meant to keep the player from getting stuck, which displays the option to keep enslaving if there's still imps left, and then kicks you out to the main game if there isn't.
-	  Problem is, the original if statement's parameter is getImpGroup().size()>1, and therefore it doesn't work on, say, the imps in fortresses, creating an inconvenient and ugly mess with visible parser errors and at least one infinite loop.
-	
-	
-	Youko to use surname unless full name known
-		Needs better handling
-	
-	Make names in speech use petNames
-	
-	Make it so if lose combat, stolen items are returned
-	
-	Add arcane cost of weapons to tooltip
-	
-	Anyway when is the potion discount going to be moved over to a perk
-		Make TF fetish remove corruption gains?
-	
-	Make sure siren doesn't use siren's call in combat
-	
-	Combat should only show health/mana bars and status effects
-	
-	Change all "The Dark Siren"... And make it non-capitalised
-	
-	make it so only normal nipples have any breast-feeding references
-		Also breast-feeding reference is onw hen lactation turned off
 		
 	
 	----------
 	use picobyte's condom code and run through all condom todos:
+	
+	"Deep throat" orgasm doesn't react to condoms being used
 	
 	Need mineral oil TF effect
 	
@@ -232,6 +193,20 @@
 	when using one with Lilaya and it breaks and theres a risk of pregnancy she doesnt get mad at you. She just hopes she doesnt get pregnant and she says something like. "Its not your fault at least you wore a condom. Too bad it broke".
 	----------
 	
+	Youko tail description "halo of arcane fire" and status effect
+	
+	Combat should only show health/mana bars and status effects
+	
+	prevent enslavement items from being put on people during sex
+	
+	Cum inflation is working on pregnant people
+	
+	Make it so if lose combat, stolen items are returned
+	
+	Need shrouded identity for the citadel bosses and for fortresses
+	
+	Locale is setting day names
+	
 	Essence extractor milking room upgrades - extremely expensive.
 	
 	>About to get raped with friend by imps
@@ -241,13 +216,20 @@
 	>Make potion to remove the othe one's effects
 	>"Heh, nice try, but do you really expect me to drink a random potion?"
 	
+	Buttplugs shouldn't count as preserving your modesty in terms of exhibitionism
+	
 	Need to be able to appendage interact with kneeling oral beside you
 	
-	Make it so completing a sex scene without virginity levels fetish up
+	also weird little thing, the only option when losing to blaze and crystal gives you corruption, theres no eager or resisting options
+	
+	Anyway when is the potion discount going to be moved over to a perk
+		Make TF fetish remove corruption gains?
 	
 	Requesting oral causes them to make you kneel instead, despite them agreeing.
 		You mean "offer oral"
 		I meant "request oral"
+	
+	Change all "The Dark Siren"... And make it non-capitalised?
 	
 	Sometimes when I remove the fetish for being raped. They will continue to have the resist pace as if they still have the fetish. Alexia here is also at maxed affection
 	
@@ -255,13 +237,28 @@
 	
 	i tried to extract 5,599 arcane essences and my game almost crashed
 	
+	I impregnated Kate, the stats screen show "imp" as race, but when found the daughter is a tall succubus.
+	
+	Make parser not use same word twice in a row
+	
+	change it so that they'll TF you even if non-con is off
+	
+	Start/stop receiving footjob still an issue
+	
+	Make +1 potion effect text stack
+	
 	switch knuckle dusters & demonstones to unarmed
 	
 	Maybe if item rarity effected how many enchanting slots an item had, and not just what it was pre-enchanted with?
 	
+	Make names in speech use petNames
+	
 	When the witches won when I was male they only hotdogged me and then stopped hotdogging me, they never removed any of my clothes
 	
 	split hymen/virginity
+	
+	Youko to use surname unless full name known
+		Needs better handling
 	
 	Make nympho trait increase minimum lust?
 	Also denying slave masturbation should do this?
