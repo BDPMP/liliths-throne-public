@@ -600,6 +600,8 @@ public class CharacterCreation {
 		@Override
 		public Response getResponse(int responseTab, int index) {
 			if (index == 1) {
+				ambiphilicFemalePrologueNPC = (Math.random() < 0.5)?true:false;
+				
 				return new Response("Continue", "Wait your turn, and hope that the event hasn't started yet.", CHOOSE_NAME);
 				
 			}
@@ -1352,8 +1354,9 @@ public class CharacterCreation {
 		Main.game.getPrologueFemale().setLocation(WorldType.EMPTY, PlaceType.GENERIC_EMPTY_TILE, false);
 	}
 	
+	private static boolean ambiphilicFemalePrologueNPC;
 	public static boolean femalePrologueNPC() {
-		return Main.game.getPlayer().getSexualOrientation()==SexualOrientation.GYNEPHILIC || Main.game.getPlayer().getSexualOrientation()==SexualOrientation.AMBIPHILIC;
+		return Main.game.getPlayer().getSexualOrientation()==SexualOrientation.GYNEPHILIC || (Main.game.getPlayer().getSexualOrientation()==SexualOrientation.AMBIPHILIC && ambiphilicFemalePrologueNPC);
 	}
 	
 	public static final DialogueNodeOld CHOOSE_BACKGROUND = new DialogueNodeOld("In the Museum", "-", true) {
