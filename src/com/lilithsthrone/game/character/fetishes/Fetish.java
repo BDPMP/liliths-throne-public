@@ -1342,7 +1342,7 @@ public enum Fetish {
 			"gentle giant",
 			"being gentle",
 			"fetish_gentle",
-			Fetish.BASE_EXPERIENCE_GAIN,
+			FetishExperience.BASE_EXPERIENCE_GAIN,
 			Colour.GENERIC_ARCANE,
 			null,
 			Util.newArrayListOfValues(
@@ -1375,7 +1375,7 @@ public enum Fetish {
 			"eager slut",
 			"being eager",
 			"fetish_eager",
-			Fetish.BASE_EXPERIENCE_GAIN,
+			FetishExperience.BASE_EXPERIENCE_GAIN,
 			Colour.GENERIC_ARCANE,
 			null,
 			Util.newArrayListOfValues(
@@ -1546,7 +1546,7 @@ public enum Fetish {
 			"eager fuck toy",
 			"eagerly accepting everything",
 			"fetish_eager_fuck_toy",
-			Fetish.BASE_EXPERIENCE_GAIN,
+			FetishExperience.BASE_EXPERIENCE_GAIN,
 			Colour.GENERIC_ARCANE,
 			null,
 			Util.newArrayListOfValues(
