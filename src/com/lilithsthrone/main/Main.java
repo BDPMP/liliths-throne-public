@@ -67,7 +67,7 @@ public class Main extends Application {
 	public static Stage primaryStage;
 	public static String author = "Innoxia";
 
-	public static final String VERSION_NUMBER = "0.2.12.95";
+	public static final String VERSION_NUMBER = "0.2.12.96";
 	public static final String VERSION_DESCRIPTION = "Alpha";
 	
 	/**
@@ -96,7 +96,7 @@ public class Main extends Application {
 			
 		+ "<p>"
 			+ "As I really want v0.3 to signify that the new area is in, I've called this 0.2.12.9."
-			+ " I'm going to lose Saturday due to staying up so late trying to get this version finished in time, but I'll spend Sunday and Monday getting Lyssieth's content aded, and will release a hotfix/mini-update of v0.3 on Tuesday. ^^"
+			+ " I'm going to lose Saturday due to staying up so late trying to get this version finished in time, but I'll spend Sunday and Monday getting Lyssieth's content added, and will release a hotfix/mini-update of v0.3 on Wednesday night. ^^"
 		+ "</p>"
 			
 		+ "<p>"
@@ -107,7 +107,12 @@ public class Main extends Application {
 		+ "<br/>"
 
 		+ "<list>"
-
+			+ "<h6>v0.2.12.96</h6>"
+			+"<li>Bugs:</li>"
+			+"<ul>Fixed issue where random NPCs were appearing in tiles.</ul>"
+			+"<ul>Fixed your name being displayed as 'You' in your character panel on the left of the screen.</ul>"
+			+ "<br/>"
+			
 			+ "<h6>v0.2.12.95</h6>"
 			+"<li>Bugs:</li>"
 			+"<ul>Fixed major bug where entering a lot of areas would freeze the game.</ul>"
