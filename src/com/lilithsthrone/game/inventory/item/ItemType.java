@@ -3408,8 +3408,6 @@ public class ItemType {
 					ItemTag.ATTRIBUTE_TF_ITEM,
 					ItemTag.SOLD_BY_RALPH)) {
 
-		private static final long serialVersionUID = 1L;
-
 		@Override
 		public String getUseName() {
 			return "swallow";
