@@ -157,12 +157,12 @@ public class CharacterModificationUtils {
 						+ "<span style='color:"+Colour.MASCULINE.getShades()[0]+";'>Penis</span>"
 					+ "</div>"
 					+ "<div class='cosmetics-button active'>"
-						+ "[style.boldFeminine(Female)]"
+						+ "[style.boldFeminine(Vagina)]"
 					+ "</div>");
 		} else {
 			contentSB.append(
 					"<div class='cosmetics-button active'>"
-						+ "[style.colourMasculine(Male)]"
+						+ "[style.colourMasculine(Penis)]"
 					+ "</div>"
 					+ "<div id='CHOOSE_GENDER_FEMALE' class='cosmetics-button'>"
 						+ "<span style='color:"+Colour.FEMININE.getShades()[0]+";'>Vagina</span>"
