@@ -23,7 +23,7 @@ import com.lilithsthrone.game.character.race.RaceStage;
 import com.lilithsthrone.game.character.race.RacialBody;
 import com.lilithsthrone.game.character.race.Subspecies;
 import com.lilithsthrone.game.dialogue.DialogueFlagValue;
-import com.lilithsthrone.game.dialogue.DialogueNodeOld;
+import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.dialogue.npcDialogue.SlaveDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.submission.TunnelAttackDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.submission.TunnelAttackDialogueCompanions;
@@ -85,7 +85,10 @@ public class SubmissionAttacker extends NPC {
 					case CAT_MORPH_CHEETAH:
 					case CAT_MORPH_CARACAL:
 					case COW_MORPH:
+					case HALF_DEMON:
 					case DEMON:
+					case LILIN:
+					case ELDER_LILIN:
 					case DOG_MORPH:
 					case DOG_MORPH_DOBERMANN:
 					case DOG_MORPH_BORDER_COLLIE:
@@ -245,7 +248,7 @@ public class SubmissionAttacker extends NPC {
 	}
 	
 	@Override
-	public DialogueNodeOld getEncounterDialogue() {
+	public DialogueNode getEncounterDialogue() {
 		if(this.getBodyMaterial()==BodyMaterial.SLIME) {
 			
 			if(this.getLastTimeEncountered()==NPC.DEFAULT_TIME_START_VALUE) {

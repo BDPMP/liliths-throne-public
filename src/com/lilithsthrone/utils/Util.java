@@ -33,6 +33,7 @@ import com.lilithsthrone.game.character.race.Subspecies;
 import com.lilithsthrone.game.inventory.InventorySlot;
 import com.lilithsthrone.game.inventory.clothing.AbstractClothing;
 import com.lilithsthrone.game.inventory.clothing.DisplacementType;
+
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
@@ -40,7 +41,7 @@ import javafx.scene.paint.Color;
  * This is just a big mess of utility classes that I wanted to throw somewhere.
  * 
  * @since 0.1.0
- * @version 0.2.6
+ * @version 0.3
  * @author Innoxia
  */
 public class Util {
@@ -408,7 +409,7 @@ public class Util {
 	}
 	
 	public static String getStringOfLocalDateTime(LocalDateTime date) {
-		return intToDate(date.getDayOfMonth())+" "+date.getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault())+", "+date.getYear();
+		return intToDate(date.getDayOfMonth())+" "+date.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH)+", "+date.getYear();
 	}
 	
 	/**

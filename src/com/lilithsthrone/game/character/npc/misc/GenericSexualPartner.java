@@ -23,7 +23,7 @@ import com.lilithsthrone.game.character.race.RaceStage;
 import com.lilithsthrone.game.character.race.RacialBody;
 import com.lilithsthrone.game.character.race.Subspecies;
 import com.lilithsthrone.game.dialogue.DialogueFlagValue;
-import com.lilithsthrone.game.dialogue.DialogueNodeOld;
+import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.dialogue.utils.UtilText;
 import com.lilithsthrone.game.inventory.CharacterInventory;
 import com.lilithsthrone.game.sex.Sex;
@@ -73,6 +73,9 @@ public class GenericSexualPartner extends NPC {
 					// No spawn chance:
 					case ANGEL:
 					case DEMON:
+					case HALF_DEMON:
+					case LILIN:
+					case ELDER_LILIN:
 					case IMP:
 					case IMP_ALPHA:
 					case FOX_ASCENDANT:
@@ -251,7 +254,7 @@ public class GenericSexualPartner extends NPC {
 	}
 	
 	@Override
-	public DialogueNodeOld getEncounterDialogue() {
+	public DialogueNode getEncounterDialogue() {
 		return null;
 	}
 	

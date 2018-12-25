@@ -1,6 +1,5 @@
 package com.lilithsthrone.world;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -25,11 +24,10 @@ import com.lilithsthrone.world.places.PlaceUpgrade;
 
 /**
  * @since 0.1.0
- * @version 0.2.11
+ * @version 0.3
  * @author Innoxia
  */
-public class Cell implements Serializable, XMLSaving {
-	private static final long serialVersionUID = 1L;
+public class Cell implements XMLSaving {
 
 	public static final int CELL_MAXIMUM_INVENTORY_SPACE = 48;
 	
@@ -49,6 +47,7 @@ public class Cell implements Serializable, XMLSaving {
 	private CharacterInventory inventory;
 	private Set<String> charactersPresentIds;
 	private Set<String> charactersHomeIds;
+	private Set<String> charactersGlobalIds;
 
 	public Cell(WorldType type, Vector2i location) {
 		this.type = type;
@@ -361,6 +360,31 @@ public class Cell implements Serializable, XMLSaving {
 			charactersHomeIds.remove(id);
 		}
 	}
-	
+
+
+	public Set<String> getCharactersGlobalIds() {
+		return charactersGlobalIds;
+	}
+
+	public void addCharacterGlobalId(String id) {
+		if(id.equals("NOT_SET")) {
+			return;
+		}
+		if(charactersGlobalIds==null) {
+			charactersGlobalIds = Collections.synchronizedSet(new HashSet<>());
+		}
+		synchronized (charactersGlobalIds) {
+			charactersGlobalIds.add(id);
+		}
+	}
+
+	public void removeCharacterGlobalId(String id) {
+		if(charactersGlobalIds==null) {
+			return;
+		}
+		synchronized (charactersGlobalIds) {
+			charactersGlobalIds.remove(id);
+		}
+	}
 	
 }

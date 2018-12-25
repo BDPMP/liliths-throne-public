@@ -22,7 +22,7 @@ import com.lilithsthrone.game.character.race.RaceStage;
 import com.lilithsthrone.game.character.race.RacialBody;
 import com.lilithsthrone.game.character.race.Subspecies;
 import com.lilithsthrone.game.dialogue.DialogueFlagValue;
-import com.lilithsthrone.game.dialogue.DialogueNodeOld;
+import com.lilithsthrone.game.dialogue.DialogueNode;
 import com.lilithsthrone.game.dialogue.npcDialogue.SlaveDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.dominion.AlleywayAttackerDialogue;
 import com.lilithsthrone.game.dialogue.npcDialogue.dominion.AlleywayAttackerDialogueCompanions;
@@ -83,6 +83,8 @@ public class DominionAlleywayAttacker extends NPC {
 					case ANGEL:
 					case BAT_MORPH:
 					case DEMON:
+					case LILIN:
+					case ELDER_LILIN:
 					case HARPY:
 					case HARPY_RAVEN:
 					case HARPY_BALD_EAGLE:
@@ -96,6 +98,9 @@ public class DominionAlleywayAttacker extends NPC {
 					case ELEMENTAL_EARTH:
 					case ELEMENTAL_FIRE:
 					case ELEMENTAL_WATER:
+						break;
+					case HALF_DEMON:
+//						addToSubspeciesMap(1000, gender, s, availableRaces); // Testing
 						break;
 						
 					// Canals spawn only:
@@ -317,7 +322,7 @@ public class DominionAlleywayAttacker extends NPC {
 	}
 	
 	@Override
-	public DialogueNodeOld getEncounterDialogue() {
+	public DialogueNode getEncounterDialogue() {
 		PlaceType pt = Main.game.getActiveWorld().getCell(location).getPlace().getPlaceType();
 		
 		if(pt == PlaceType.DOMINION_BACK_ALLEYS
