@@ -449,7 +449,7 @@ public enum PerkManager {
 	
 	public static int getInitialPerkCount(GameCharacter character) { //TODO Calculate this from the initialisePerks() method - this current methodology is terrible.
 		if(character.isPlayer()) {
-			return 2;
+			return 5;
 		} else  if(character instanceof Elemental) {
 			return 7;
 		} else {
