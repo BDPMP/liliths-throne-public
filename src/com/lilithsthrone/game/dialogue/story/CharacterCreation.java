@@ -1331,9 +1331,9 @@ public class CharacterCreation {
 	
 	public static void moveNPCIntoPlayerTile() {
 		if(femalePrologueNPC()){
-			Main.game.getNpc(PrologueMale.class).setLocation(Main.game.getPlayer().getWorldLocation(), Main.game.getPlayer().getLocation(), false);
-		} else {
 			Main.game.getNpc(PrologueFemale.class).setLocation(Main.game.getPlayer().getWorldLocation(), Main.game.getPlayer().getLocation(), false);
+		} else {
+			Main.game.getNpc(PrologueMale.class).setLocation(Main.game.getPlayer().getWorldLocation(), Main.game.getPlayer().getLocation(), false);
 		}
 	}
 	
