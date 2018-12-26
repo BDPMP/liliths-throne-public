@@ -41,7 +41,6 @@
     </blockedPartsList>
 
     <incompatibleSlots>
-      <slot>CHEST</slot>
     </incompatibleSlots>
     
     <primaryColours values="ALL_METAL"/>

@@ -2414,10 +2414,18 @@ public class UtilText {
 			public String parse(String command, String arguments, String target, GameCharacter character) {
 				if(Main.game.isInSex()) {
 					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
-						if(character.isFeminine()) {
-							return returnStringAtRandom("sob", "scream", "cry");
+						if (character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
+							if(character.isFeminine()) {
+								return returnStringAtRandom("scream", "cry", "moan", "squeal", "whine");
+							} else {
+								return returnStringAtRandom("shout", "groan", "grunt");
+							}							
 						} else {
-							return returnStringAtRandom("shout", "cry");
+							if(character.isFeminine()) {
+								return returnStringAtRandom("sob", "scream", "cry", "whine");
+							} else {
+								return returnStringAtRandom("shout", "cry");
+							}
 						}
 					}
 				}
@@ -2450,12 +2458,19 @@ public class UtilText {
 			public String parse(String command, String arguments, String target, GameCharacter character) {
 				if(Main.game.isInSex()) {
 					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
-						if(character.isFeminine()) {
-							return returnStringAtRandom("miserable", "pathetic", "distressed") + " " + returnStringAtRandom("sob", "scream", "cry");
+						if(character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
+							if(character.isFeminine()) {
+								return returnStringAtRandom("pathetic", "desperate") + " " + returnStringAtRandom("squeal", "scream", "cry", "moan", "whine");
+							} else {
+								return returnStringAtRandom("pathetic", "desperate") + " " + returnStringAtRandom("shout", "groan", "grunt");
+							}
 						} else {
-							return returnStringAtRandom("miserable", "pathetic", "distressed") + " " + returnStringAtRandom("shout", "cry");
+							if(character.isFeminine()) {
+								return returnStringAtRandom("miserable", "pathetic", "distressed") + " " + returnStringAtRandom("sob", "scream", "cry", "whine");
+							} else {
+								return returnStringAtRandom("miserable", "pathetic", "distressed") + " " + returnStringAtRandom("shout", "cry");
+							}
 						}
-						
 					} else if(Sex.getSexPace(character)==SexPace.DOM_GENTLE) {
 						if(character.isFeminine()) {
 							return returnStringAtRandom("soft", "gentle", "quiet") + " " + returnStringAtRandom("moan", "sigh", "gasp");
@@ -2493,10 +2508,18 @@ public class UtilText {
 				if(character.isPlayer()) {
 					if(Main.game.isInSex()) {
 						if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
-							if(character.isFeminine()) {
-								return returnStringAtRandom("sob", "scream", "cry");
+							if(character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
+								if(character.isFeminine()) {
+									return returnStringAtRandom("squeal", "scream", "cry", "moan", "whine");
+								} else {
+									return returnStringAtRandom("shout", "groan", "grunt");
+								}
 							} else {
-								return returnStringAtRandom("shout", "cry");
+								if(character.isFeminine()) {
+									return returnStringAtRandom("sob", "scream", "cry", "whine");
+								} else {
+									return returnStringAtRandom("shout", "cry");
+								}
 							}
 						}
 					}
@@ -2509,10 +2532,18 @@ public class UtilText {
 				} else {
 					if(Main.game.isInSex()) {
 						if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
-							if(character.isFeminine()) {
-								return returnStringAtRandom("sobs", "screams", "cries");
+							if(character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
+								if(character.isFeminine()) {
+									return returnStringAtRandom("squeals", "screams", "cries", "moans", "whine");
+								} else {
+									return returnStringAtRandom("shouts", "groans", "grunts");
+								}
 							} else {
-								return returnStringAtRandom("shouts", "cries");
+								if(character.isFeminine()) {
+									return returnStringAtRandom("sobs", "screams", "cries", "whine");
+								} else {
+									return returnStringAtRandom("shouts", "cries");
+								}
 							}
 						}
 					}
@@ -2555,12 +2586,19 @@ public class UtilText {
 				if(character.isPlayer()) {
 					if(Main.game.isInSex()) {
 						if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
-							if(character.isFeminine()) {
-								return returnStringAtRandom("miserably", "pathetically") + " " + returnStringAtRandom("sob", "scream", "cry");
+							if(character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
+								if(character.isFeminine()) {
+									return returnStringAtRandom("desperately", "pathetically") + " " + returnStringAtRandom("squeal", "scream", "cry", "moan", "whine");
+								} else {
+									return returnStringAtRandom("desperately", "pathetically") + " " + returnStringAtRandom("shout", "groan", "grunt");
+								}
 							} else {
-								return returnStringAtRandom("miserably", "pathetically") + " " + returnStringAtRandom("shout", "cry");
+								if(character.isFeminine()) {
+									return returnStringAtRandom("miserably", "pathetically") + " " + returnStringAtRandom("sob", "scream", "cry", "whine");
+								} else {
+									return returnStringAtRandom("miserably", "pathetically") + " " + returnStringAtRandom("shout", "cry");
+								}
 							}
-							
 						} else if(Sex.getSexPace(character)==SexPace.DOM_GENTLE) {
 							if(character.isFeminine()) {
 								return returnStringAtRandom("softly", "gently", "quietly") + " " + returnStringAtRandom("moan", "sigh", "cry", "gasp");
@@ -2578,10 +2616,18 @@ public class UtilText {
 				} else {
 					if(Main.game.isInSex()) {
 						if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
-							if(character.isFeminine()) {
-								return returnStringAtRandom("miserably", "pathetically", "desperately") + " " + returnStringAtRandom("sobs", "cries");
+							if(character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
+								if(character.isFeminine()) {
+									return returnStringAtRandom("pathetically", "desperately") + " " + returnStringAtRandom("squeals", "screams", "cries", "moans", "whines");
+								} else {
+									return returnStringAtRandom("pathetically", "desperately") + " " + returnStringAtRandom("shouts", "groans", "grunts");
+								}
 							} else {
-								return returnStringAtRandom("miserably", "pathetically", "desperately") + " " + returnStringAtRandom("shouts", "cries");
+								if(character.isFeminine()) {
+									return returnStringAtRandom("miserably", "pathetically", "desperately") + " " + returnStringAtRandom("sobs", "cries", "whines");
+								} else {
+									return returnStringAtRandom("miserably", "pathetically", "desperately") + " " + returnStringAtRandom("shouts", "cries");
+								}
 							}
 							
 						} else if(Sex.getSexPace(character)==SexPace.DOM_GENTLE) {
@@ -2618,10 +2664,18 @@ public class UtilText {
 			public String parse(String command, String arguments, String target, GameCharacter character) {
 				if(Main.game.isInSex()) {
 					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
-						if(character.isFeminine()) {
-							return returnStringAtRandom("sobs", "cries");
+						if(character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
+							if(character.isFeminine()) {
+								return returnStringAtRandom("squeals", "cries", "moans", "whines");
+							} else {
+								return returnStringAtRandom("shouts", "groans", "grunts");
+							}
 						} else {
-							return returnStringAtRandom("shouts", "cries");
+							if(character.isFeminine()) {
+								return returnStringAtRandom("sobs", "cries", "whines");
+							} else {
+								return returnStringAtRandom("shouts", "cries");
+							}
 						}
 					}
 				}
@@ -2655,11 +2709,20 @@ public class UtilText {
 			public String parse(String command, String arguments, String target, GameCharacter character) {
 				if(Main.game.isInSex()) {
 					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
-						if(character.isFeminine()) {
-							return returnStringAtRandom("miserable", "pathetic", "distressed") + " " + returnStringAtRandom("sobs", "cries");
+						if(character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
+							if(character.isFeminine()) {
+								return returnStringAtRandom("pathetic", "desperate") + " " + returnStringAtRandom("squeals", "cries", "moans", "whines");
+							} else {
+								return returnStringAtRandom("pathetic", "desperate") + " " + returnStringAtRandom("shouts", "groans", "grunts");
+							}
 						} else {
-							return returnStringAtRandom("miserable", "pathetic", "distressed") + " " + returnStringAtRandom("shouts", "cries");
+							if(character.isFeminine()) {
+								return returnStringAtRandom("miserable", "pathetic", "distressed") + " " + returnStringAtRandom("sobs", "cries", "whines");
+							} else {
+								return returnStringAtRandom("miserable", "pathetic", "distressed") + " " + returnStringAtRandom("shouts", "cries");
+							}
 						}
+						
 						
 					} else if(Sex.getSexPace(character)==SexPace.DOM_GENTLE) {
 						if(character.isFeminine()) {
@@ -2692,11 +2755,20 @@ public class UtilText {
 			public String parse(String command, String arguments, String target, GameCharacter character) {
 				if(Main.game.isInSex()) {
 					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
-						if(character.isFeminine()) {
-							return returnStringAtRandom("sobbing", "crying");
+						if(character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
+							if(character.isFeminine()) {
+								return returnStringAtRandom("squealing", "crying", "moaning", "whining");
+							} else {
+								return returnStringAtRandom("shouting", "protesting", "groaning", "grunting");
+							}
 						} else {
-							return returnStringAtRandom("shouting", "protesting");
+							if(character.isFeminine()) {
+								return returnStringAtRandom("sobbing", "crying", "whining");
+							} else {
+								return returnStringAtRandom("shouting", "protesting");
+							}
 						}
+						
 					}
 				}
 					
@@ -2726,11 +2798,20 @@ public class UtilText {
 			public String parse(String command, String arguments, String target, GameCharacter character) {
 				if(Main.game.isInSex()) {
 					if(Sex.getSexPace(character)==SexPace.SUB_RESISTING) {
-						if(character.isFeminine()) {
-							return returnStringAtRandom("miserably", "pathetically", "desperately") + " " + returnStringAtRandom("sobbing", "crying");
+						if(character.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
+							if(character.isFeminine()) {
+								return returnStringAtRandom("pathetically", "desperately") + " " + returnStringAtRandom("squealing", "crying", "moaning", "whining");
+							} else {
+								return returnStringAtRandom("pathetically", "desperately") + " " + returnStringAtRandom("shouting", "protesting", "groaning", "grunting");
+							}
 						} else {
-							return returnStringAtRandom("miserably", "pathetically", "desperately") + " " + returnStringAtRandom("shouting", "protesting");
+							if(character.isFeminine()) {
+								return returnStringAtRandom("miserably", "pathetically", "desperately") + " " + returnStringAtRandom("sobbing", "crying", "whining");
+							} else {
+								return returnStringAtRandom("miserably", "pathetically", "desperately") + " " + returnStringAtRandom("shouting", "protesting");
+							}
 						}
+						
 						
 					} else if(Sex.getSexPace(character)==SexPace.DOM_GENTLE) {
 						if(character.isFeminine()) {

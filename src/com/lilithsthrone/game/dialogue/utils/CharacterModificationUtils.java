@@ -145,27 +145,27 @@ public class CharacterModificationUtils {
 		
 		contentSB.append("<div class='cosmetics-inner-container'>"
 						+ "<h5 style='text-align:center;'>"
-							+"Gender"
+							+"Genitals"
 						+"</h5>"
 						+ "<p style='text-align:center;'>"
-							+ "Your gender is used to determine what genitals you start the game with."
+							+ "What genitals you start the game with."
 						+ "</p>");
 		
 		if(Main.game.getPlayer().getGender().getGenderName().isHasVagina()) {
 			contentSB.append(
 					"<div id='CHOOSE_GENDER_MALE' class='cosmetics-button'>"
-						+ "<span style='color:"+Colour.MASCULINE.getShades()[0]+";'>Male</span>"
+						+ "<span style='color:"+Colour.MASCULINE.getShades()[0]+";'>Penis</span>"
 					+ "</div>"
 					+ "<div class='cosmetics-button active'>"
-						+ "[style.boldFeminine(Female)]"
+						+ "[style.boldFeminine(Vagina)]"
 					+ "</div>");
 		} else {
 			contentSB.append(
 					"<div class='cosmetics-button active'>"
-						+ "[style.colourMasculine(Male)]"
+						+ "[style.colourMasculine(Penis)]"
 					+ "</div>"
 					+ "<div id='CHOOSE_GENDER_FEMALE' class='cosmetics-button'>"
-						+ "<span style='color:"+Colour.FEMININE.getShades()[0]+";'>Female</span>"
+						+ "<span style='color:"+Colour.FEMININE.getShades()[0]+";'>Vagina</span>"
 					+ "</div>");
 		}
 		
@@ -186,7 +186,7 @@ public class CharacterModificationUtils {
 							+ "Femininity is a measure of how masculine or feminine your face and body are."
 						+ "</p>");
 		
-		if(Main.game.getPlayer().getGender().getGenderName().isHasVagina()) {
+		/*if(Main.game.getPlayer().getGender().getGenderName().isHasVagina()) {
 			if(Main.game.getPlayer().getFemininity()==Femininity.ANDROGYNOUS) {
 				contentSB.append(
 						"<div class='cosmetics-button active'>"
@@ -255,7 +255,63 @@ public class CharacterModificationUtils {
 							+ "<span style='color:"+Colour.MASCULINE_PLUS.getShades()[0]+";'>Very Masculine</span>"
 						+ "</div>");
 			}
+		}*/
+		if(BodyChanging.getTarget().getFemininity()==Femininity.MASCULINE_STRONG) {
+			contentSB.append(
+					"<div class='cosmetics-button active'>"
+						+ "[style.colourMasculineStrong(Very Masculine)]"
+					+ "</div>");
+		} else {
+			contentSB.append(
+					"<div id='CHOOSE_FEM_MASCULINE_STRONG' class='cosmetics-button'>"
+						+ "<span style='color:"+Colour.MASCULINE_PLUS.getShades()[0]+";'>Very Masculine</span>"
+					+ "</div>");
 		}
+		if(BodyChanging.getTarget().getFemininity()==Femininity.MASCULINE) {
+			contentSB.append(
+					"<div class='cosmetics-button active'>"
+						+ "[style.colourMasculine(Masculine)]"
+					+ "</div>");
+		} else {
+			contentSB.append(
+					"<div id='CHOOSE_FEM_MASCULINE' class='cosmetics-button'>"
+						+ "<span style='color:"+Colour.MASCULINE.getShades()[0]+";'>Masculine</span>"
+					+ "</div>");
+		}
+		if(BodyChanging.getTarget().getFemininity()==Femininity.ANDROGYNOUS) {
+			contentSB.append(
+					"<div class='cosmetics-button active'>"
+						+ "[style.colourAndrogynous(Androgynous)]"
+					+ "</div>");
+		} else {
+			contentSB.append(
+					"<div id='CHOOSE_FEM_ANDROGYNOUS' class='cosmetics-button'>"
+						+ "<span style='color:"+Colour.ANDROGYNOUS.getShades()[0]+";'>Androgynous</span>"
+					+ "</div>");
+		}
+		if(BodyChanging.getTarget().getFemininity()==Femininity.FEMININE) {
+			contentSB.append(
+					"<div class='cosmetics-button active'>"
+						+ "[style.colourFeminine(Feminine)]"
+					+ "</div>");
+		} else {
+			contentSB.append(
+					"<div id='CHOOSE_FEM_FEMININE' class='cosmetics-button'>"
+						+ "<span style='color:"+Colour.FEMININE.getShades()[0]+";'>Feminine</span>"
+					+ "</div>");
+		}
+		if(BodyChanging.getTarget().getFemininity()==Femininity.FEMININE_STRONG) {
+			contentSB.append(
+					"<div class='cosmetics-button active'>"
+						+ "[style.colourFeminineStrong(Very Feminine)]"
+					+ "</div>");
+		} else {
+			contentSB.append(
+					"<div id='CHOOSE_FEM_FEMININE_STRONG' class='cosmetics-button'>"
+						+ "<span style='color:"+Colour.FEMININE_PLUS.getShades()[0]+";'>Very Feminine</span>"
+					+ "</div>");
+		}
+		
 		
 		contentSB.append("</div>");
 		
