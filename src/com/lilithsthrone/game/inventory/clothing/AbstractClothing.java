@@ -532,10 +532,10 @@ public abstract class AbstractClothing extends AbstractCoreItem implements XMLSa
 		if(this.isSealed() || this.isBadEnchantment()) {
 			return Rarity.JINXED;
 		}
-		if(this.getEffects().size()>1) {
+		if(this.getEffects().size()>1 || rarity==Rarity.RARE) {
 			return Rarity.RARE;
 		}
-		if(!this.getEffects().isEmpty()) {
+		if(!this.getEffects().isEmpty() || rarity==Rarity.UNCOMMON) {
 			return Rarity.UNCOMMON;
 		}
 		
