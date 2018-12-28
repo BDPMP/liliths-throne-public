@@ -1,6 +1,8 @@
 package com.lilithsthrone.game.character.body;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.lilithsthrone.game.character.GameCharacter;
@@ -12,8 +14,8 @@ import com.lilithsthrone.game.dialogue.utils.UtilText;
 
 /**
  * @since 0.2.8
- * @version 0.2.8
- * @author Innoxia
+ * @version 0.3.0
+ * @author Innoxia, BDPMP
  */
 public class Clitoris implements BodyPartInterface {
 	
@@ -473,4 +475,30 @@ public class Clitoris implements BodyPartInterface {
 		return "<p style='text-align:center;'>[style.colourDisabled(Nothing happens...)]</p>";
 	}
 	
+	public String getClitHeadName(GameCharacter gc) {
+		List<String> list = new ArrayList<>();
+		list.add("head");
+        
+		if(clitModifiers.contains(PenetrationModifier.TAPERED)) {
+			list.add("tip");
+		}
+		
+        return UtilText.returnStringAtRandom(list.toArray(new String[]{}));
+	}
+	
+	public String getClitHeadDescriptor(GameCharacter gc) {
+		List<String> list = new ArrayList<>();
+        
+		if(clitModifiers.contains(PenetrationModifier.TAPERED)) {
+			list.add("tapered");
+			list.add("pointed");
+		}
+		if(clitModifiers.contains(PenetrationModifier.FLARED)) {
+			list.add("wide");
+			list.add("flared");
+			list.add("flat");
+		}
+		
+        return UtilText.returnStringAtRandom(list.toArray(new String[]{}));
+	}
 }

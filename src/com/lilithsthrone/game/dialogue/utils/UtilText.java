@@ -67,8 +67,8 @@ import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
 
 /**
  * @since 0.1.0
- * @version 0.2.12
- * @author Innoxia, Pimvgd, AlacoGit
+ * @version 0.3.0
+ * @author Innoxia, Pimvgd, AlacoGit, BDPMP
  */
 public class UtilText {
 
@@ -5056,13 +5056,48 @@ public class UtilText {
 		
 		commandsList.add(new ParserCommand(
 				Util.newArrayListOfValues(
+						"clitorisHead",
+						"clitHead",
+						"clitTip"),
+				true,
+				true,
+				"",
+				"Description of method",
+				BodyPartType.CLIT){//TODO
+			@Override
+			public String parse(String command, String arguments, String target, GameCharacter character) {
+				return character.getBody().getVagina().getClitoris().getClitHeadName(character);
+			}
+		});
+		
+		commandsList.add(new ParserCommand(
+				Util.newArrayListOfValues(
+						"clitorisHead+",
+						"clitorisHeadD",
+						"clitHead+",
+						"clitHeadD",
+						"clitTip+",
+						"clitTipD"),
+				true,
+				true,
+				"",
+				"Description of method",
+				BodyPartType.CLIT){//TODO
+			@Override
+			public String parse(String command, String arguments, String target, GameCharacter character) {
+				return applyDescriptor(character.getBody().getVagina().getClitoris().getClitHeadDescriptor(character), character.getBody().getVagina().getClitoris().getClitHeadName(character));
+			}
+		});
+		
+		commandsList.add(new ParserCommand(
+				Util.newArrayListOfValues(
 						"clitSize",
 						"clitorisSize"),
 				true,
 				true,
 				"",
 				"Description of method",
-				BodyPartType.VAGINA){//TODO
+				BodyPartType.CLIT){//TODO
 			@Override
 			public String parse(String command, String arguments, String target, GameCharacter character) {
 				return character.getVaginaClitorisSize().getDescriptor();
@@ -5077,7 +5112,7 @@ public class UtilText {
 				true,
 				"",
 				"Description of method",
-				BodyPartType.VAGINA){//TODO
+				BodyPartType.CLIT){//TODO
 			@Override
 			public String parse(String command, String arguments, String target, GameCharacter character) {
 				return String.valueOf(character.getVaginaRawClitorisSizeValue());
@@ -5092,7 +5127,7 @@ public class UtilText {
 				true,
 				"",
 				"Description of method",
-				BodyPartType.VAGINA){//TODO
+				BodyPartType.CLIT){//TODO
 			@Override
 			public String parse(String command, String arguments, String target, GameCharacter character) {
 				return character.getClitorisGirth().getName();
