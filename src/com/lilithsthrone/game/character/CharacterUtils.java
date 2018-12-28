@@ -118,7 +118,7 @@ import com.lilithsthrone.world.places.PlaceType;
 
 /**
  * @since 0.1.67
- * @version 0.2.8
+ * @version 0.3.0
  * @author Innoxia, tukaima
  */
 public class CharacterUtils {
@@ -1716,7 +1716,7 @@ public class CharacterUtils {
 				if(character.isFeminine())
 					allowedFetishes.add(f);
 				
-			} else if (f==Fetish.FETISH_PREGNANCY || f==Fetish.FETISH_VAGINAL_RECEIVING) {
+			} else if (f==Fetish.FETISH_PREGNANCY || f==Fetish.FETISH_VAGINAL_RECEIVING || f==Fetish.FETISH_CLIT_SELF) {
 				if(character.hasVagina())
 					allowedFetishes.add(f);
 				

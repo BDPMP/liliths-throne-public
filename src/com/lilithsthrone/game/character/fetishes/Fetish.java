@@ -21,8 +21,8 @@ import com.lilithsthrone.utils.Util.Value;
 
 /**
  * @since 0.1.?
- * @version 0.1.99
- * @author Innoxia
+ * @version 0.3.0
+ * @author Innoxia, BDPMP
  */
 public enum Fetish {
 	
@@ -531,6 +531,66 @@ public enum Fetish {
 		@Override
 		public String getFetishDesireDescription(GameCharacter target, FetishDesire desire) {
 			return getGenericFetishDesireDescription(target, desire, "using your cock");
+		}
+		
+		@Override
+		public CorruptionLevel getAssociatedCorruptionLevel() {
+			return CorruptionLevel.TWO_HORNY;
+		}
+	},
+
+	FETISH_CLIT_OTHERS(60,
+			"clit lover",
+			"other's clits",
+			"fetish_clit_others",
+			FetishExperience.BASE_EXPERIENCE_GAIN,
+			Colour.GENERIC_ARCANE,
+			null,
+			Util.newArrayListOfValues("<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Unlocks</span> <span style='color:"+ Colour.GENERIC_SEX.toWebHexString()+ ";'>clit lover tease</span> (Requires vagina)",
+					"<span style='color:"+ Colour.GENERIC_BAD.toWebHexString()+ ";'>Weak to</span> <span style='color:"+ Colour.GENERIC_SEX.toWebHexString()+ ";'>clitoral tease</span>"),
+			null) {
+		
+		@Override
+		public String getDescription(GameCharacter owner) {
+			if (owner.isPlayer())
+				return "You absolutely love to worship other's clits. Licking and playing with someone's clit drives you wild, and you can't get the thought of a giant clit fucking you out of your mind.";
+			else
+				return UtilText.parse(owner, "[npc.Name] is hopelessly addicted to clit.");
+		}
+
+		@Override
+		public String getFetishDesireDescription(GameCharacter target, FetishDesire desire) {
+			return getGenericFetishDesireDescription(target, desire, "others' cocks");
+		}
+		
+		@Override
+		public CorruptionLevel getAssociatedCorruptionLevel() {
+			return CorruptionLevel.TWO_HORNY;
+		}
+	},
+	
+	FETISH_CLIT_SELF(60,
+			"clitoral",
+			"using their clit",
+			"fetish_clit_self",
+			FetishExperience.BASE_EXPERIENCE_GAIN,
+			Colour.GENERIC_ARCANE,
+			null,
+			Util.newArrayListOfValues("<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Unlocks</span> <span style='color:"+ Colour.GENERIC_SEX.toWebHexString()+ ";'>clitoral tease</span> (Requires vagina)",
+					"<span style='color:"+ Colour.GENERIC_BAD.toWebHexString()+ ";'>Weak to</span> <span style='color:"+ Colour.GENERIC_SEX.toWebHexString()+ ";'>clit lover tease</span>"),
+			null) {
+		
+		@Override
+		public String getDescription(GameCharacter owner) {
+			if (owner.isPlayer())
+				return "You are obsessed with receiving clitoral stimulation. Having your clit sucked or played with brings you immense pleasure. If it were big enough, you'd even want to use your clit like a cock.";
+			else
+				return UtilText.parse(owner, "[npc.Name] has a fetish for clitoral stimulation.");
+		}
+
+		@Override
+		public String getFetishDesireDescription(GameCharacter target, FetishDesire desire) {
+			return getGenericFetishDesireDescription(target, desire, "others' cocks");
 		}
 		
 		@Override

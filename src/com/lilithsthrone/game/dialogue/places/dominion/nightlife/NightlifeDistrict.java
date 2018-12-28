@@ -50,7 +50,7 @@ import com.lilithsthrone.world.places.Population;
 
 /**
  * @since 0.1.0
- * @version 0.2.10
+ * @version 0.3.0
  * @author Innoxia
  */
 public class NightlifeDistrict {
@@ -3537,6 +3537,7 @@ public class NightlifeDistrict {
 		npc.removeFetish(Fetish.FETISH_NON_CON_SUB);
 		if(npc.hasVagina()) {
 			npc.setFetishDesire(Fetish.FETISH_VAGINAL_RECEIVING, FetishDesire.THREE_LIKE);
+			npc.setFetishDesire(Fetish.FETISH_CLIT_SELF, FetishDesire.THREE_LIKE);
 		}
 		if(npc.hasPenis()) {
 			npc.setFetishDesire(Fetish.FETISH_PENIS_GIVING, FetishDesire.THREE_LIKE);

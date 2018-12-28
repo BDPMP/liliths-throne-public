@@ -37,7 +37,7 @@ import com.lilithsthrone.utils.Util;
 
 /**
  * @since 0.1.0
- * @version 0.2.7
+ * @version 0.3.0
  * @author Innoxia
  */
 public interface SexActionInterface {
@@ -1089,7 +1089,7 @@ public interface SexActionInterface {
 		if(performingArea!=null && performingArea.isPenetration()) {
 			switch((SexAreaPenetration)performingArea) {
 				case CLIT:
-					associatedFetishes.add(Fetish.FETISH_VAGINAL_RECEIVING);
+					associatedFetishes.add(Fetish.FETISH_CLIT_SELF);
 					break;
 				case FINGER:
 					break;
@@ -1154,7 +1154,7 @@ public interface SexActionInterface {
 		if(targetedArea!=null && targetedArea.isPenetration()) {
 			switch((SexAreaPenetration)targetedArea) {
 				case CLIT:
-					associatedFetishes.add(Fetish.FETISH_VAGINAL_GIVING);
+					associatedFetishes.add(Fetish.FETISH_CLIT_OTHERS);
 					break;
 				case FINGER:
 					break;
@@ -1323,6 +1323,12 @@ public interface SexActionInterface {
 					break;
 				case FETISH_VAGINAL_RECEIVING:
 					associatedFetishesPartner.add(Fetish.FETISH_VAGINAL_GIVING);
+					break;
+				case FETISH_CLIT_SELF:
+					associatedFetishesPartner.add(Fetish.FETISH_CLIT_OTHERS);
+					break;
+				case FETISH_CLIT_OTHERS:
+					associatedFetishesPartner.add(Fetish.FETISH_CLIT_SELF);
 					break;
 				case FETISH_VOYEURIST:
 					break;

@@ -23,8 +23,8 @@ import com.lilithsthrone.utils.Util.Value;
 
 /**
  * @since 0.1.0
- * @version 0.2.0
- * @author Innoxia
+ * @version 0.3.0
+ * @author Innoxia, BDPMP
  */
 public enum SpecialAttack {
 
@@ -349,6 +349,126 @@ public enum SpecialAttack {
 		public boolean isConditionsMet(GameCharacter owner) {
 			return owner.hasFetish(Fetish.FETISH_VAGINAL_GIVING)
 					&& (!Main.game.isInCombat() || Combat.getTargetedCombatant(owner).hasVagina());
+		}
+	},
+	
+	TEASE_CLIT_SELF(50,
+			"clitoral tease",
+			"fetish_generic",
+			Colour.GENERIC_ARCANE,
+			DamageType.LUST,
+			20,
+			DamageVariance.LOW,
+			5,
+			null) {
+		@Override
+		public String applyEffect(GameCharacter caster, GameCharacter target, boolean isHit, boolean isCritical) {
+			
+			String attackText = "";
+			
+			if(caster.isPlayer()) {
+				attackText = UtilText.parse(target,
+						(UtilText.returnStringAtRandom(
+						"You slide your [pc.hands] down between your [pc.legs] and [pc.moanVerb], "
+								+ "[pc.speech(My clit's aching for your touch!)]",
+								
+						"You slip one [pc.hand] down between your [pc.legs] and [pc.moanVerb], "
+								+ "[pc.speech(Come play with my clit!)]",
+								
+						"You thrust your [pc.hips+] out a little and [pc.moanVerb], "
+								+ "[pc.speech(I'm getting wet already! Come play with my little clit!)]",
+										
+						"You wink at [npc.name] and [pc.moanVerb], "
+								+ "[pc.speech(My slutty clit <i>needs</i> some attention!)]")));
+				
+			} else if(target.isPlayer()) {
+				attackText = UtilText.parse(caster,
+						(UtilText.returnStringAtRandom(
+						"[npc.Name] slides [npc.her] [npc.hands] down between [npc.her] [npc.legs] and [npc.moansVerb], "
+								+ "[npc.speech(My clit's aching for your touch!)]",
+								
+						"[npc.Name] slips one [npc.hand] down between [npc.her] [npc.legs] and [npc.moansVerb], "
+								+ "[npc.speech(Come play with my clit!)]",
+								
+						"[npc.Name] thrusts [npc.her] [npc.hips+] out a little and [npc.moansVerb], "
+								+ "[npc.speech(I'm getting wet already! Come play with my little clit!)]",
+										
+						"[npc.Name] winks at you and [npc.moansVerb], "
+								+ "[npc.speech(My slutty clit <i>needs</i> some attention!)]")));
+				
+			} else {
+				attackText = UtilText.parse(caster, target,
+						(UtilText.returnStringAtRandom(
+						"[npc.Name] slides [npc.her] [npc.hands] down between [npc.her] [npc.legs] and [npc.moansVerb], "
+								+ "[npc.speech(My clit's aching for your touch!)]",
+								
+						"[npc.Name] slips one [npc.hand] down between [npc.her] [npc.legs] and [npc.moansVerb], "
+								+ "[npc.speech(Come play with my clit!)]",
+								
+						"[npc.Name] thrusts [npc.her] [npc.hips+] out a little and [npc.moansVerb], "
+								+ "[npc.speech(I'm getting wet already! Come play with my little clit!)]",
+										
+						"[npc.Name] winks at [npc2.name] and [npc.moansVerb], "
+								+ "[npc.speech(My slutty clit <i>needs</i> some attention!)]")));
+				
+			}
+			
+			return applySpecialSeduction(caster, target, Fetish.FETISH_CLIT_OTHERS, attackText);
+
+		}
+
+		@Override
+		public String getDescription(GameCharacter owner) {
+			if (owner.isPlayer()) {
+				return "Due to your "+Fetish.FETISH_CLIT_SELF.getName(owner)+" fetish, you're able to use your clit as a tool to seduce your opponents.";
+			} else {
+				return UtilText.parse(owner, "[npc.Name] is able to use [npc.her] clit in an attempt to seduce you!");
+			}
+		}
+
+		@Override
+		public boolean isConditionsMet(GameCharacter owner) {
+			return owner.hasFetish(Fetish.FETISH_CLIT_SELF) && owner.hasVagina();
+		}
+	},
+	
+	TEASE_CLIT_OTHERS(50,
+			"clit lover tease",
+			"fetish_generic",
+			Colour.GENERIC_ARCANE,
+			DamageType.LUST,
+			20,
+			DamageVariance.LOW,
+			5,
+			null) {
+		@Override
+		public String applyEffect(GameCharacter caster, GameCharacter target, boolean isHit, boolean isCritical) {
+			
+
+			String attackText = UtilText.parse(caster, target,
+						(UtilText.returnStringAtRandom(
+						"[npc.Name] [npc.verb(stare)] down between [npc2.namePos] [npc2.legs] as [npc.she] [npc.moanVerb], [npc.speech(I'll be getting a taste of your [npc2.clit] soon enough!)]",
+
+						"[npc.Name] hungrily [npc.verb(gaze)] down between [npc2.namePos] [npc2.legs] and [npc.moanVerb], [npc.speech(I want to play with your clit!)]",
+
+						"[npc.Name] [npc.verb(grin)] at [npc2.name], licking [npc.her] [npc.lips+] and flicking [npc.her] gaze down to rest on [npc2.namePos] crotch as [npc.she] [npc.moanVerb], [npc.speech(I'll take good care of your clit!)]")));
+			
+			return applySpecialSeduction(caster, target, Fetish.FETISH_CLIT_SELF, attackText);
+
+		}
+
+		@Override
+		public String getDescription(GameCharacter owner) {
+			if (owner.isPlayer()) {
+				return "Due to your "+Fetish.FETISH_CLIT_OTHERS.getName(owner)+", you're able to use a special tease attack to seduce your opponents.";
+			} else {
+				return UtilText.parse(owner, "[npc.Name] is able to use a special "+Fetish.FETISH_CLIT_OTHERS.getName(owner)+" tease attack in an attempt to seduce you!");
+			}
+		}
+
+		@Override
+		public boolean isConditionsMet(GameCharacter owner) {
+			return owner.hasFetish(Fetish.FETISH_PENIS_RECEIVING);
 		}
 	},
 	

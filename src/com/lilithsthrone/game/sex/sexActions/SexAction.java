@@ -22,7 +22,7 @@ import com.lilithsthrone.game.sex.SexParticipantType;
 
 /**
  * @since 0.1.0
- * @version 0.2.8
+ * @version 0.3.0
  * @author Innoxia
  */
 public abstract class SexAction implements SexActionInterface {
@@ -407,12 +407,12 @@ public abstract class SexAction implements SexActionInterface {
 					} else {
 						switch((SexAreaPenetration)area) {
 							case CLIT:
-								characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_VAGINAL_GIVING);
+								characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_CLIT_OTHERS);
 								characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_IMPREGNATION);
 								if(this.getParticipantType()==SexParticipantType.SELF) {
 									characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_PREGNANCY);
 								}
-								characterFetishesForPartner.get(characterPerformingAction).add(Fetish.FETISH_VAGINAL_RECEIVING);
+								characterFetishesForPartner.get(characterPerformingAction).add(Fetish.FETISH_CLIT_SELF);
 								characterFetishesForPartner.get(characterPerformingAction).add(Fetish.FETISH_PREGNANCY);
 								break;
 							case FINGER:
@@ -482,12 +482,12 @@ public abstract class SexAction implements SexActionInterface {
 					} else {
 						switch((SexAreaPenetration)area) {
 							case CLIT:
-								characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_VAGINAL_RECEIVING);
+								characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_CLIT_SELF);
 								characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_PREGNANCY);
 								if(this.getParticipantType()==SexParticipantType.SELF) {
 									characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_IMPREGNATION);
 								}
-								characterFetishesForPartner.get(characterPerformingAction).add(Fetish.FETISH_VAGINAL_GIVING);
+								characterFetishesForPartner.get(characterPerformingAction).add(Fetish.FETISH_CLIT_OTHERS);
 								characterFetishesForPartner.get(characterPerformingAction).add(Fetish.FETISH_IMPREGNATION);
 								break;
 							case FINGER:
@@ -534,8 +534,8 @@ public abstract class SexAction implements SexActionInterface {
 				}
 			}
 			
-			characterFetishes.get(characterPerformingAction).removeIf(f -> !characterTarget.hasVagina() && (f==Fetish.FETISH_VAGINAL_GIVING || f==Fetish.FETISH_IMPREGNATION));
-			characterFetishesForPartner.get(characterPerformingAction).removeIf(f -> !characterTarget.hasVagina() && (f==Fetish.FETISH_VAGINAL_GIVING || f==Fetish.FETISH_IMPREGNATION));
+			characterFetishes.get(characterPerformingAction).removeIf(f -> !characterTarget.hasVagina() && (f==Fetish.FETISH_VAGINAL_GIVING || f==Fetish.FETISH_IMPREGNATION || f==Fetish.FETISH_CLIT_OTHERS));
+			characterFetishesForPartner.get(characterPerformingAction).removeIf(f -> !characterTarget.hasVagina() && (f==Fetish.FETISH_VAGINAL_GIVING || f==Fetish.FETISH_IMPREGNATION || f==Fetish.FETISH_CLIT_OTHERS));
 //		}
 		
 		

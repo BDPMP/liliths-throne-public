@@ -1,8 +1,11 @@
 package com.lilithsthrone.game.sex.sexActions.baseActions;
 
+import java.util.List;
 import java.util.Map;
 
+import com.lilithsthrone.game.character.GameCharacter;
 import com.lilithsthrone.game.character.attributes.CorruptionLevel;
+import com.lilithsthrone.game.character.fetishes.Fetish;
 import com.lilithsthrone.game.dialogue.utils.UtilText;
 import com.lilithsthrone.game.sex.ArousalIncrease;
 import com.lilithsthrone.game.sex.Sex;
@@ -106,7 +109,8 @@ public class ClitMouth {
 		
 		@Override
 		public Map<SexAreaInterface, SexAreaInterface> getSexAreaInteractions() {
-			if(Sex.getCharactersHavingOngoingActionWith(Sex.getCharacterTargetedForSexAction(this), SexAreaOrifice.VAGINA).contains(Sex.getCharacterPerformingAction())) {
+			if(Sex.getCharactersHavingOngoingActionWith(Sex.getCharacterTargetedForSexAction(this), SexAreaOrifice.VAGINA).contains(Sex.getCharacterPerformingAction()) && 
+					Sex.getOngoingActionsMap(Sex.getCharacterTargetedForSexAction(this)).get(SexAreaOrifice.VAGINA).get(Sex.getCharacterPerformingAction()).contains(SexAreaPenetration.TONGUE)) {
 				return Util.newHashMapOfValues(new Value<>(SexAreaPenetration.TONGUE, SexAreaOrifice.VAGINA));
 			} else {
 				return Util.newHashMapOfValues(new Value<>(SexAreaOrifice.MOUTH, SexAreaPenetration.CLIT));
@@ -115,7 +119,8 @@ public class ClitMouth {
 		
 		@Override
 		public SexActionType getActionType(){
-			if(Sex.getCharactersHavingOngoingActionWith(Sex.getCharacterTargetedForSexAction(this), SexAreaOrifice.VAGINA).contains(Sex.getCharacterPerformingAction())) {
+			if(Sex.getCharactersHavingOngoingActionWith(Sex.getCharacterTargetedForSexAction(this), SexAreaOrifice.VAGINA).contains(Sex.getCharacterPerformingAction()) && 
+					Sex.getOngoingActionsMap(Sex.getCharacterTargetedForSexAction(this)).get(SexAreaOrifice.VAGINA).get(Sex.getCharacterPerformingAction()).contains(SexAreaPenetration.TONGUE)) {
 				return SexActionType.ONGOING;
 			} else {
 				return SexActionType.REQUIRES_NO_PENETRATION_AND_EXPOSED;
@@ -188,7 +193,7 @@ public class ClitMouth {
 							"Sliding [npc.her] [npc.tongue] over [npc2.namePos] [npc2.pussy+], [npc.name] [npc.verb(press)] [npc.her] [npc.lips+] against [npc2.her] [npc2.clit+], before starting to suck and kiss it.",
 
 							"With a long, wet lick, [npc.name] [npc.verb(run)] [npc.her] [npc.tongue] up and over [npc2.namePos] [npc2.clit+],"
-									+ " pressing [npc.her] [npc.lips+] against it as [npc.she] [npc.verb(start)] kissing and sucking on [npc2.her] [npc2.clit+].",
+									+ " pressing [npc.her] [npc.lips+] against it as [npc.she] [npc.verb(start)] )kissing and sucking on [npc2.her] [npc2.clit+].",
 
 							"Kissing and licking [npc2.namePos] [npc2.pussy+], [npc.name] [npc.verb(make)] [npc.her] way to [npc2.her] [npc2.clit+],"
 									+ " and with a series of wet licks from [npc.her] [npc.tongue+], [npc.she] [npc.verb(start)] focusing on pleasuring [npc2.her] [npc2.clit+]."));
@@ -260,5 +265,15 @@ public class ClitMouth {
 			return UtilText.nodeContentSB.toString();
 		}
 		
+		@Override
+		public List<Fetish> getExtraFetishes(GameCharacter character) {
+			if(character.equals(Sex.getCharacterPerformingAction())) {
+				return Util.newArrayListOfValues(Fetish.FETISH_CLIT_OTHERS);
+			}
+			if(character.equals(Sex.getCharacterTargetedForSexAction(this))) {
+				return Util.newArrayListOfValues(Fetish.FETISH_CLIT_SELF);
+			}
+			return null;
+		}
 	};
 }

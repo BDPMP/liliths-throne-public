@@ -14,7 +14,7 @@ import com.lilithsthrone.utils.Util;
 
 /**
  * @since 0.1.7
- * @version 0.2.11
+ * @version 0.3.0
  * @author Innoxia
  */
 public enum TFModifier {
@@ -1071,6 +1071,9 @@ public enum TFModifier {
 	TF_MOD_FETISH_FOOT_RECEIVING(Fetish.FETISH_FOOT_RECEIVING),
 	TF_MOD_FETISH_LACTATION_OTHERS(Fetish.FETISH_LACTATION_OTHERS),
 	TF_MOD_FETISH_LACTATION_SELF(Fetish.FETISH_LACTATION_SELF),
+	TF_MOD_FETISH_CLIT_SELF(Fetish.FETISH_CLIT_SELF),
+	TF_MOD_FETISH_CLIT_OTHERS(Fetish.FETISH_CLIT_OTHERS),
+	
 	
 	TF_MOD_FETISH_DOMINANT(Fetish.FETISH_DOMINANT),
 	TF_MOD_FETISH_SUBMISSIVE(Fetish.FETISH_SUBMISSIVE),
@@ -1186,6 +1189,8 @@ public enum TFModifier {
 		TFBodyPartFetishList.add(TF_MOD_FETISH_VAGINAL_RECEIVING);
 		TFBodyPartFetishList.add(TF_MOD_FETISH_PENIS_GIVING);
 		TFBodyPartFetishList.add(TF_MOD_FETISH_PENIS_RECEIVING);
+		TFBodyPartFetishList.add(TF_MOD_FETISH_CLIT_SELF);
+		TFBodyPartFetishList.add(TF_MOD_FETISH_CLIT_OTHERS);
 		TFBodyPartFetishList.add(TF_MOD_FETISH_LEG_LOVER);
 		TFBodyPartFetishList.add(TF_MOD_FETISH_STRUTTER);
 		TFBodyPartFetishList.add(TF_MOD_FETISH_FOOT_GIVING);
