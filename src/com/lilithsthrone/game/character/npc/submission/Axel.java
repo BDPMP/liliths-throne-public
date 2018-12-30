@@ -177,6 +177,7 @@ public class Axel extends NPC {
 		this.setTesticleSize(TesticleSize.FOUR_HUGE);
 		this.setPenisCumStorage(CumProduction.FOUR_LARGE.getMedianValue());
 		this.fillCumToMaxStorage();
+		this.setPenisSterile(false);
 		// Leave cum as normal value
 		
 		// Vagina:

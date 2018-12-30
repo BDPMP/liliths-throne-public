@@ -47,8 +47,10 @@ public enum PerkManager {
 		addPerkEntry(perkTree, PerkCategory.BOTH, 0, Perk.FETISH_SEEDER);
 		addPerkEntry(perkTree, PerkCategory.BOTH, 0, Perk.FETISH_BROODMOTHER);
 		addPerkEntry(perkTree, PerkCategory.BOTH, 0, Perk.NYMPHOMANIAC);
-		
+
 		addPerkEntry(perkTree, PerkCategory.ARCANE, 0, Perk.CLOTHING_ENCHANTER);
+		addPerkEntry(perkTree, PerkCategory.ARCANE, 0, Perk.WEAPON_ENCHANTER);
+		addPerkEntry(perkTree, PerkCategory.ARCANE, 0, Perk.POTION_ENCHANTER);
 		
 		TreeEntry<PerkCategory, Perk> arcane1, arcane2, arcane3, arcane4, arcane5, arcane6;
 		TreeEntry<PerkCategory, Perk> physical1, physical2, physical3, physical4, physical5, physical6;
@@ -159,8 +161,10 @@ public enum PerkManager {
 		addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 0, Perk.FETISH_SEEDER);
 		addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 0, Perk.FETISH_BROODMOTHER);
 		addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 0, Perk.NYMPHOMANIAC);
-		
+
 		addPerkEntry(NPCPerkTree, PerkCategory.ARCANE, 0, Perk.CLOTHING_ENCHANTER);
+		addPerkEntry(NPCPerkTree, PerkCategory.ARCANE, 0, Perk.WEAPON_ENCHANTER);
+		addPerkEntry(NPCPerkTree, PerkCategory.ARCANE, 0, Perk.POTION_ENCHANTER);
 		
 		physical1 = addPerkEntry(NPCPerkTree, PerkCategory.PHYSICAL, 1, Perk.PHYSICAL_BASE);
 		arcane1 = addPerkEntry(NPCPerkTree, PerkCategory.ARCANE, 1, Perk.ARCANE_BASE_NPC);

@@ -239,12 +239,14 @@ public class DarkSiren extends NPC {
 //		this.setTesticleSize(TesticleSize.TWO_AVERAGE);
 //		this.setPenisCumStorage(100);
 //		this.fillCumToMaxStorage();
+//		this.setPenisSterile(false);
 		
 		// Vagina:
 		this.setVaginaVirgin(true);
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.ZERO_TINY);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.ONE_EXTREMELY_TIGHT, true);
 		this.setVaginaWetness(Wetness.TWO_MOIST);
 		this.setVaginaElasticity(OrificeElasticity.TWO_FIRM.getValue());

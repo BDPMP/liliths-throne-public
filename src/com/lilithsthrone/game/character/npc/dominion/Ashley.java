@@ -174,6 +174,7 @@ public class Ashley extends NPC {
 //		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 //		this.setVaginaLabiaSize(LabiaSize.THREE_LARGE);
 //		this.setVaginaSquirter(false);
+//		this.setVaginaInfertile(false);
 //		this.setVaginaCapacity(Capacity.SEVEN_GAPING, true);
 //		this.setVaginaWetness(Wetness.FIVE_SLOPPY);
 //		this.setVaginaElasticity(OrificeElasticity.SEVEN_ELASTIC.getValue());

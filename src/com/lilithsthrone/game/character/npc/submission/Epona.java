@@ -185,12 +185,14 @@ public class Epona extends NPC {
 		this.setTesticleSize(TesticleSize.FOUR_HUGE);
 		this.setPenisCumStorage(550);
 		this.fillCumToMaxStorage();
+		this.setPenisSterile(false);
 		
 		// Vagina:
 		this.setVaginaVirgin(false);
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.FOUR_MASSIVE);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.FIVE_ROOMY, true);
 		this.setVaginaWetness(Wetness.FIVE_SLOPPY);
 		this.setVaginaElasticity(OrificeElasticity.THREE_FLEXIBLE.getValue());

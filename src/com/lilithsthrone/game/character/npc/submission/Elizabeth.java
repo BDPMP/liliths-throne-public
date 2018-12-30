@@ -193,12 +193,14 @@ public class Elizabeth extends NPC {
 //		this.setTesticleSize(TesticleSize.TWO_AVERAGE);
 //		this.setPenisCumStorage(100);
 //		this.fillCumToMaxStorage();
+//		this.setPenisSterile(false);
 		
 		// Vagina:
 		this.setVaginaVirgin(false);
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.THREE_LARGE);
 		this.setVaginaSquirter(false);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.THREE_SLIGHTLY_LOOSE, true);
 		this.setVaginaWetness(Wetness.THREE_WET);
 		this.setVaginaElasticity(OrificeElasticity.THREE_FLEXIBLE.getValue());

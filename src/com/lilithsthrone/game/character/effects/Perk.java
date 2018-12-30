@@ -1046,6 +1046,54 @@ public enum Perk {
 		}
 	},
 	
+	WEAPON_ENCHANTER(20,
+			false,
+			"arcane weaponsmith",
+			PerkCategory.ARCANE,
+			"perks/arcaneWeaponsmith",
+			Colour.GENERIC_ARCANE,
+			Util.newHashMapOfValues(new Value<Attribute, Integer>(Attribute.MAJOR_ARCANE, 1)),
+			Util.newArrayListOfValues("<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Halves cost of all weapon enchantments</span>")) {
+
+		@Override
+		public boolean isAlwaysAvailable() {
+			return true;
+		}
+		
+		@Override
+		public String getDescription(GameCharacter owner) {
+			if (owner.isPlayer()) {
+				return "You have a natural affinity for working arcane enchantments into weapons, allowing you to expend only half of the usual arcane essences when enchanting weapons.";
+			} else {
+				return UtilText.parse(owner, "[npc.Name] has a natural affinity for working arcane enchantments into weapons, allowing [npc.herHim] to expend only half of the usual arcane essences when enchanting weapons.");
+			}
+		}
+	},
+	
+	POTION_ENCHANTER(20,
+			false,
+			"alchemist",
+			PerkCategory.ARCANE,
+			"perks/alchemist",
+			Colour.GENERIC_ARCANE,
+			Util.newHashMapOfValues(new Value<Attribute, Integer>(Attribute.MAJOR_ARCANE, 1)),
+			Util.newArrayListOfValues("<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Halves cost of all potion enchantments</span>")) {
+
+		@Override
+		public boolean isAlwaysAvailable() {
+			return true;
+		}
+		
+		@Override
+		public String getDescription(GameCharacter owner) {
+			if (owner.isPlayer()) {
+				return "You have a natural affinity for distilling arcane enchantments into potions, allowing you to expend only half of the usual arcane essences when enchanting potions.";
+			} else {
+				return UtilText.parse(owner, "[npc.Name] has a natural affinity for distilling arcane enchantments into potions, allowing [npc.herHim] to expend only half of the usual arcane essences when enchanting potions.");
+			}
+		}
+	},
+	
 	BARREN(20,
 			true,
 			"barren",

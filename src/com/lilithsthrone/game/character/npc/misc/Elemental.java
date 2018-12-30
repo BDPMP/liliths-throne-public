@@ -220,12 +220,14 @@ public class Elemental extends NPC {
 //				this.setTesticleSize(TesticleSize.TWO_AVERAGE);
 //				this.setPenisCumStorage(100);
 //				this.fillCumToMaxStorage();
+//				this.setPenisSterile(false);
 			
 			// Vagina:
 			this.setVaginaVirgin(true);
 			this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 			this.setVaginaLabiaSize(LabiaSize.ZERO_TINY);
 			this.setVaginaSquirter(true);
+			this.setVaginaInfertile(true);
 			this.setVaginaCapacity(Capacity.ONE_EXTREMELY_TIGHT, true);
 			this.setVaginaWetness(Wetness.THREE_WET);
 			this.setVaginaElasticity(OrificeElasticity.TWO_FIRM.getValue());

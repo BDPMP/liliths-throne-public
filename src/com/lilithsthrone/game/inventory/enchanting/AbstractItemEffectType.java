@@ -1723,6 +1723,7 @@ public abstract class AbstractItemEffectType {
 				secondaryModPotencyMap.put(TFModifier.TF_MOD_REGENERATION, TFPotency.getAllPotencies());
 				secondaryModPotencyMap.put(TFModifier.TF_MOD_CUM_EXPULSION, TFPotency.getAllPotencies());
 				secondaryModPotencyMap.put(TFModifier.TF_MOD_INTERNAL, Util.newArrayListOfValues(TFPotency.MINOR_DRAIN, TFPotency.MINOR_BOOST));
+				secondaryModPotencyMap.put(TFModifier.TF_MOD_PENIS_STERILE, Util.newArrayListOfValues(TFPotency.MINOR_DRAIN, TFPotency.MINOR_BOOST));
 				
 				if(Main.game.isPubicHairEnabled()) {
 					secondaryModPotencyMap.put(TFModifier.TF_MOD_BODY_HAIR, TFPotency.getAllPotencies());
@@ -1782,6 +1783,8 @@ public abstract class AbstractItemEffectType {
 				
 				secondaryModPotencyMap.put(TFModifier.TF_MOD_VAGINA_SQUIRTER, Util.newArrayListOfValues(TFPotency.MINOR_DRAIN, TFPotency.MINOR_BOOST));
 				
+				secondaryModPotencyMap.put(TFModifier.TF_MOD_VAGINA_INFERTILE, Util.newArrayListOfValues(TFPotency.MINOR_DRAIN, TFPotency.MINOR_BOOST));
+								
 				secondaryModPotencyMap.put(TFModifier.TF_MOD_ORIFICE_PUFFY, Util.newArrayListOfValues(TFPotency.MINOR_DRAIN, TFPotency.MINOR_BOOST));
 				secondaryModPotencyMap.put(TFModifier.TF_MOD_ORIFICE_RIBBED, Util.newArrayListOfValues(TFPotency.MINOR_DRAIN, TFPotency.MINOR_BOOST));
 				secondaryModPotencyMap.put(TFModifier.TF_MOD_ORIFICE_MUSCLED, Util.newArrayListOfValues(TFPotency.MINOR_DRAIN, TFPotency.MINOR_BOOST));
@@ -3159,6 +3162,14 @@ public abstract class AbstractItemEffectType {
 								return new RacialEffectUtil("Adds internal tentacles to urethra.", 0, "") { @Override public String applyEffect() { return target.addUrethraOrificeModifier(OrificeModifier.TENTACLED); } };
 						}
 						
+					case TF_MOD_PENIS_STERILE:
+						switch(potency) {
+							case MINOR_BOOST:
+								return new RacialEffectUtil("Makes penis sterile.", 0, "") { @Override public String applyEffect() { return target.setPenisSterile(true); } };
+							case MINOR_DRAIN: default:
+								return new RacialEffectUtil("Makes penis sterile.", 0, "") { @Override public String applyEffect() { return target.setPenisSterile(false); } };
+						}
+						
 					default:
 						return new RacialEffectUtil(Util.capitaliseSentence(race.getName())+" penis transformation.", 0, "") { @Override public String applyEffect() { return target.setPenisType(RacialBody.valueOfRace(race).getPenisType()); } };
 				}
@@ -3519,6 +3530,15 @@ public abstract class AbstractItemEffectType {
 								return new RacialEffectUtil("Removes internal tentacles from urethra.", 0, "") { @Override public String applyEffect() { return target.removeVaginaUrethraOrificeModifier(OrificeModifier.TENTACLED); } };
 							case MINOR_BOOST: default:
 								return new RacialEffectUtil("Adds internal tentacles to urethra.", 0, "") { @Override public String applyEffect() { return target.addVaginaUrethraOrificeModifier(OrificeModifier.TENTACLED); } };
+						}
+						
+					// infertility
+					case TF_MOD_VAGINA_INFERTILE:
+						switch(potency) {
+							case MINOR_BOOST:
+								return new RacialEffectUtil("Makes vagina infertile.", 0, "") { @Override public String applyEffect() { return target.setVaginaInfertile(true); } };
+							case MINOR_DRAIN: default:
+								return new RacialEffectUtil("Makes vagina fertile.", 0, "") { @Override public String applyEffect() { return target.setVaginaInfertile(false); } };
 						}
 						
 					default:

@@ -174,6 +174,7 @@ public class Scarlett extends NPC {
 		this.setTesticleSize(TesticleSize.ZERO_VESTIGIAL);
 		this.setPenisCumStorage(2);
 		this.fillCumToMaxStorage();
+		this.setPenisSterile(false);
 		// Leave cum as normal value
 		
 		// Vagina:

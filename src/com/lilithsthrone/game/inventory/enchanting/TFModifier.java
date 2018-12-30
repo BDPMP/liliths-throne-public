@@ -890,6 +890,13 @@ public enum TFModifier {
 			Colour.BASE_AQUA,
 			Rarity.COMMON),
 	
+	TF_MOD_PENIS_STERILE("sterile",
+			"Applies an effect related to making some sterile",
+			"sterility",
+			"modifier_circle_removal",
+			Colour.GENERIC_ARCANE,
+			Rarity.COMMON),
+	
 	// vagina:
 	
 
@@ -898,6 +905,13 @@ public enum TFModifier {
 			"squirting",
 			"modifier_circle_squirter",
 			Colour.BASE_AQUA,
+			Rarity.COMMON),
+	
+	TF_MOD_VAGINA_INFERTILE("infertile",
+			"Applies an effect related to making someone infertile.",
+			"infertility",
+			"modifier_circle_removal",
+			Colour.GENERIC_ARCANE,
 			Rarity.COMMON),
 	
 	// fluid modifiers:

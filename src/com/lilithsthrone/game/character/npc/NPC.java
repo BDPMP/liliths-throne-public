@@ -213,6 +213,7 @@ public abstract class NPC extends GameCharacter implements XMLSaving {
 	 * <br/>
 	 * <b>Penis:</b><br/>
 	 * <b>-</b> Virginity.<br/>
+	 * <b>-</b> Sterility.<br/>
 	 * <b>-</b> Penis size.<br/>
 	 * <b>-</b> Testicle size.<br/>
 	 * <b>-</b> Testicle count.<br/>
@@ -226,6 +227,7 @@ public abstract class NPC extends GameCharacter implements XMLSaving {
 	 * <b>-</b> Clit size.<br/>
 	 * <b>-</b> Labia size.<br/>
 	 * <b>-</b> Squirter.<br/>
+	 * <b>-</b> Infertility.<br/>
 	 * <b>-</b> Girlcum modifiers & flavour.<br/>
 	 * <b>-</b> Vagina settings (capacity, wetness, plasticity, elasticity, modifiers).<br/>
 	 * <b>-</b> Vagina urethra settings (capacity, wetness, plasticity, elasticity, modifiers).<br/>

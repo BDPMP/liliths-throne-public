@@ -199,6 +199,7 @@ public class SlimeGuardIce extends NPC {
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.ONE_SMALL);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.FIVE_ROOMY, true);
 		this.setVaginaWetness(Wetness.FIVE_SLOPPY);
 		this.setVaginaElasticity(OrificeElasticity.SEVEN_ELASTIC.getValue());

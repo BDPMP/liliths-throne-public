@@ -204,12 +204,14 @@ public class SubmissionCitadelArcanist extends NPC {
 //		this.setPenisCumStorage(200);
 //		this.setPenisCumExpulsion(FluidExpulsion.THREE_LARGE.getMedianValue());
 //		this.fillCumToMaxStorage();
+//		this.setPenisSterile(false);
 		
 		// Vagina:
 		this.setVaginaVirgin(false);
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.TWO_AVERAGE);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.TWO_TIGHT, true);
 		this.setVaginaWetness(Wetness.THREE_WET);
 		this.setVaginaElasticity(OrificeElasticity.TWO_FIRM.getValue());

@@ -11946,6 +11946,10 @@ public abstract class GameCharacter implements XMLSaving {
 			return PregnancyDescriptor.NO_CHANCE.getDescriptor(this, partner)
 					+"<p style='text-align:center;'>[style.italicsMinorBad(Elementals cannot impregnate anyone!)]<br/>[style.italicsDisabled(I will add support for impregnating/being impregnated by elementals soon!)]</p>";
 		}
+
+		if((isVaginaInfertile()&&getBodyMaterial()!=BodyMaterial.SLIME) || partner.isPenisSterile()) {
+			return PregnancyDescriptor.NO_CHANCE.getDescriptor(this, partner);
+		}
 		
 		if(isVisiblyPregnant()) {
 			return PregnancyDescriptor.ALREADY_PREGNANT.getDescriptor(this, partner);
@@ -17364,6 +17368,13 @@ public abstract class GameCharacter implements XMLSaving {
 	public void setPenisVirgin(boolean virgin) {
 		getCurrentPenis().setVirgin(virgin);
 	}
+	// Sterility:
+	public boolean isPenisSterile() {
+		return body.getPenis().isSterile();
+	}
+	public String setPenisSterile(boolean sterile) {
+		return body.getPenis().setSterile(this, sterile);
+	}
 	// Names:
 	public String getPenisName() {
 		return getCurrentPenis().getName(this);
@@ -18218,6 +18229,13 @@ public abstract class GameCharacter implements XMLSaving {
 	}
 	public String setVaginaSquirter(boolean squirter) {
 		return body.getVagina().getOrificeVagina().setSquirter(this, squirter);
+	}
+	// Infertile:
+	public boolean isVaginaInfertile() {
+		return body.getVagina().getOrificeVagina().isInfertile();
+	}
+	public String setVaginaInfertile(boolean infertile) {
+		return body.getVagina().getOrificeVagina().setInfertile(this, infertile);
 	}
 	// Modifiers:
 	public Set<OrificeModifier> getVaginaOrificeModifiers() {

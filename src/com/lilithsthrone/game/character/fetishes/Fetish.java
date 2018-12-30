@@ -808,7 +808,7 @@ public enum Fetish {
 			Colour.GENERIC_ARCANE,
 			null,
 			Util.newArrayListOfValues(
-					"<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Halves cost of all potion making</span>"),
+					"<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Enjoy transforming others!</span>"),
 			null) {
 		
 		@Override

@@ -212,12 +212,14 @@ public class FortressMalesLeader extends NPC {
 		this.setPenisCumStorage(1000);
 		this.setPenisCumExpulsion(FluidExpulsion.FOUR_HUGE.getMedianValue());
 		this.fillCumToMaxStorage();
+		this.setPenisSterile(false);
 		
 		// Vagina:
 //		this.setVaginaVirgin(false);
 //		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 //		this.setVaginaLabiaSize(LabiaSize.TWO_AVERAGE);
 //		this.setVaginaSquirter(true);
+//		this.setVaginaInfertile(false);
 //		this.setVaginaCapacity(Capacity.SIX_STRETCHED_OPEN, true);
 //		this.setVaginaWetness(Wetness.SEVEN_DROOLING);
 //		this.setVaginaElasticity(OrificeElasticity.SEVEN_ELASTIC.getValue());

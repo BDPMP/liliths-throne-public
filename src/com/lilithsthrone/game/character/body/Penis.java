@@ -40,6 +40,8 @@ public class Penis implements BodyPartInterface {
 	
 	protected Testicle testicle;
 	protected OrificePenisUrethra orificeUrethra;
+	
+	protected boolean sterile;
 
 	public Penis(PenisType type, int size, int girth, int testicleSize, int cumProduction, int testicleCount) {
 		this.type = type;
@@ -47,6 +49,8 @@ public class Penis implements BodyPartInterface {
 		this.girth = girth;
 		pierced = false;
 		virgin = true;
+		
+		sterile = false;
 		
 		testicle = new Testicle(type.getTesticleType(), testicleSize, cumProduction, testicleCount);
 		
@@ -1050,4 +1054,35 @@ public class Penis implements BodyPartInterface {
 	public void clearPenisModifiers() {
 		penisModifiers.clear();
 	}
+
+	public boolean isSterile() {
+		return sterile;
+	}
+
+	public String setSterile(GameCharacter owner, boolean sterile) {
+		if(owner == null) {
+			this.sterile = sterile;
+			return "";
+		}
+		if(this.sterile == sterile || !owner.hasPenis()) {
+			return "<p style='text-align:center;'>[style.colourDisabled(Nothing happens...)]</p>";
+		}
+		
+		this.sterile = sterile;
+		
+		if(sterile) {
+			if(owner.isPlayer()) {
+				return "<p>You are now [style.boldGrow(sterile)]!</p>";
+			} else {
+				return UtilText.parse(owner,
+						"<p>[npc.Name] is now [style.boldGrow(sterile)]!</p>");
+			}
+		} else {
+			if(owner.isPlayer()) {
+				return "<p>You are no longer [style.boldShrink(sterile)]!</p>";
+			} else {
+				return UtilText.parse(owner,
+						"<p>[npc.Name] is no longer [style.boldShrink(sterile)]!</p>");
+			}
+		}	}
 }

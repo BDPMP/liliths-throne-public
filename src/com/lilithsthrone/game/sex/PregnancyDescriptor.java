@@ -55,7 +55,7 @@ public enum PregnancyDescriptor {
 									+(isSlime
 										?"dispersing through your slimy body, seeking to impregnate your core"
 										:"deep in your womb")
-								+", you feel that <b style='color:" + Colour.GENERIC_SEX.toWebHexString() + ";'>you aren't going to get pregnant from this.</b>"
+								+", you know that <b style='color:" + Colour.GENERIC_SEX.toWebHexString() + ";'>you aren't going to get pregnant from this.</b>"
 							+ "</p>");
 			}else{
 				if(characterProvidingCum.isPlayer()) {
