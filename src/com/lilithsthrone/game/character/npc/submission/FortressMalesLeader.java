@@ -61,8 +61,8 @@ import com.lilithsthrone.game.sex.Sex;
 import com.lilithsthrone.game.sex.SexAreaOrifice;
 import com.lilithsthrone.game.sex.SexAreaPenetration;
 import com.lilithsthrone.game.sex.SexParticipantType;
-import com.lilithsthrone.game.sex.SexPositionSlot;
 import com.lilithsthrone.game.sex.SexType;
+import com.lilithsthrone.game.sex.positions.SexSlotBipeds;
 import com.lilithsthrone.game.sex.sexActions.SexActionType;
 import com.lilithsthrone.game.sex.sexActions.submission.FortressMalesLeaderSA;
 import com.lilithsthrone.main.Main;
@@ -321,7 +321,7 @@ public class FortressMalesLeader extends NPC {
 
 	@Override
 	public SexType getForeplayPreference(GameCharacter target) {
-		if(Sex.getSexPositionSlot(this)==SexPositionSlot.MISSIONARY_KNEELING_BETWEEN_LEGS && this.hasPenis()) {
+		if(Sex.getSexPositionSlot(this)==SexSlotBipeds.MISSIONARY_KNEELING_BETWEEN_LEGS && this.hasPenis()) {
 			return new SexType(SexParticipantType.NORMAL, SexAreaPenetration.PENIS, SexAreaOrifice.VAGINA);
 		}
 		
@@ -330,7 +330,7 @@ public class FortressMalesLeader extends NPC {
 
 	@Override
 	public SexType getMainSexPreference(GameCharacter target) {
-		if(Sex.getSexPositionSlot(this)==SexPositionSlot.MISSIONARY_KNEELING_BETWEEN_LEGS && this.hasPenis()) {
+		if(Sex.getSexPositionSlot(this)==SexSlotBipeds.MISSIONARY_KNEELING_BETWEEN_LEGS && this.hasPenis()) {
 			return new SexType(SexParticipantType.NORMAL, SexAreaPenetration.PENIS, SexAreaOrifice.VAGINA);
 		}
 

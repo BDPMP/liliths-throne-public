@@ -187,13 +187,7 @@ public class Elizabeth extends NPC {
 		// Anus settings and modifiers
 		
 		// Penis:
-//		this.setPenisVirgin(false);
-//		this.setPenisGirth(PenisGirth.TWO_AVERAGE);
-//		this.setPenisSize(8);
-//		this.setTesticleSize(TesticleSize.TWO_AVERAGE);
-//		this.setPenisCumStorage(100);
-//		this.fillCumToMaxStorage();
-//		this.setPenisSterile(false);
+		// n/a
 		
 		// Vagina:
 		this.setVaginaVirgin(false);
