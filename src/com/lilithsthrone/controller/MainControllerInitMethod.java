@@ -2199,13 +2199,11 @@ public class MainControllerInitMethod {
 						if (((EventTarget) MainController.document.getElementById(id)) != null) {
 							((EventTarget) MainController.document.getElementById(id)).addEventListener("click", e -> {
 								if(!Main.game.getPlayer().hasFetish(f)) {
-									if(Main.game.getPlayer().addFetish(f)) {
-										Main.game.setContent(new Response("", "", Main.game.getCurrentDialogueNode()));
-									}
+									Main.game.getPlayer().addFetish(f);
+									Main.game.setContent(new Response("", "", Main.game.getCurrentDialogueNode()));
 								} else {
-									if(Main.game.getPlayer().removeFetish(f)) {
-										Main.game.setContent(new Response("", "", Main.game.getCurrentDialogueNode()));
-									}
+									Main.game.getPlayer().removeFetish(f);
+									Main.game.setContent(new Response("", "", Main.game.getCurrentDialogueNode()));									
 								}
 							}, false);
 							
@@ -2225,11 +2223,9 @@ public class MainControllerInitMethod {
 							id = f+"_"+desire;
 							if (((EventTarget) MainController.document.getElementById(id)) != null) {
 								((EventTarget) MainController.document.getElementById(id)).addEventListener("click", e -> {
-									if(Main.game.getPlayer().getEssenceCount(TFEssence.ARCANE)>=FetishDesire.getCostToChange()) {
-										if(Main.game.getPlayer().setFetishDesire(f, desire)) {
-											Main.game.getPlayer().incrementEssenceCount(TFEssence.ARCANE, -FetishDesire.getCostToChange(), false);
-											Main.game.setContent(new Response("", "", Main.game.getCurrentDialogueNode()));
-										}
+									if(Main.game.getPlayer().getFetishDesire(f)!=desire) {
+										Main.game.getPlayer().setFetishDesire(f, desire);
+										Main.game.setContent(new Response("", "", Main.game.getCurrentDialogueNode()));
 									}
 								}, false);
 								
