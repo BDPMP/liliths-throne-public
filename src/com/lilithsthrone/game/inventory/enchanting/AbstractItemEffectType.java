@@ -1964,6 +1964,7 @@ public abstract class AbstractItemEffectType {
 				secondaryModPotencyMap.put(TFModifier.TF_MOD_FLUID_SLIMY, Util.newArrayListOfValues(TFPotency.MINOR_DRAIN, TFPotency.MINOR_BOOST));
 				secondaryModPotencyMap.put(TFModifier.TF_MOD_FLUID_STICKY, Util.newArrayListOfValues(TFPotency.MINOR_DRAIN, TFPotency.MINOR_BOOST));
 				secondaryModPotencyMap.put(TFModifier.TF_MOD_FLUID_VISCOUS, Util.newArrayListOfValues(TFPotency.MINOR_DRAIN, TFPotency.MINOR_BOOST));
+				secondaryModPotencyMap.put(TFModifier.TF_MOD_FLUID_CORRUPTIVE, Util.newArrayListOfValues(TFPotency.MINOR_DRAIN, TFPotency.MINOR_BOOST));
 				
 				secondaryModPotencyMap.put(TFModifier.TF_MOD_FLAVOUR_BEER, Util.newArrayListOfValues(TFPotency.MINOR_BOOST));
 				secondaryModPotencyMap.put(TFModifier.TF_MOD_FLAVOUR_CHOCOLATE, Util.newArrayListOfValues(TFPotency.MINOR_BOOST));
@@ -4068,6 +4069,12 @@ public abstract class AbstractItemEffectType {
 						} else {
 							return new RacialEffectUtil("Makes cum thick and viscous.", 0, "") { @Override public String applyEffect() { return target.addCumModifier(FluidModifier.VISCOUS); } };
 						}
+					case TF_MOD_FLUID_CORRUPTIVE:
+						if(potency == TFPotency.MINOR_DRAIN) {
+							return new RacialEffectUtil("Removes corruptive effect from cum.", 0, "") { @Override public String applyEffect() { return target.removeCumModifier(FluidModifier.CORRUPTIVE); } };
+						} else {
+							return new RacialEffectUtil("Makes cum corruptive.", 0, "") { @Override public String applyEffect() { return target.addCumModifier(FluidModifier.CORRUPTIVE); } };
+						}
 						
 					default:
 						switch(potency) {
@@ -4159,6 +4166,12 @@ public abstract class AbstractItemEffectType {
 							return new RacialEffectUtil("Removes viscous effect from milk.", 0, "") { @Override public String applyEffect() { return target.removeMilkModifier(FluidModifier.VISCOUS); } };
 						} else {
 							return new RacialEffectUtil("Makes milk thick and viscous.", 0, "") { @Override public String applyEffect() { return target.addMilkModifier(FluidModifier.VISCOUS); } };
+						}
+					case TF_MOD_FLUID_CORRUPTIVE:
+						if(potency == TFPotency.MINOR_DRAIN) {
+							return new RacialEffectUtil("Removes corruptive effect from milk.", 0, "") { @Override public String applyEffect() { return target.removeMilkModifier(FluidModifier.CORRUPTIVE); } };
+						} else {
+							return new RacialEffectUtil("Makes milk corruptive.", 0, "") { @Override public String applyEffect() { return target.addMilkModifier(FluidModifier.CORRUPTIVE); } };
 						}
 						
 					default:
@@ -4252,6 +4265,12 @@ public abstract class AbstractItemEffectType {
 						} else {
 							return new RacialEffectUtil("Makes udder-milk thick and viscous.", 0, "") { @Override public String applyEffect() { return target.addMilkCrotchModifier(FluidModifier.VISCOUS); } };
 						}
+					case TF_MOD_FLUID_CORRUPTIVE:
+						if(potency == TFPotency.MINOR_DRAIN) {
+							return new RacialEffectUtil("Removes corruptive effect from udder-milk.", 0, "") { @Override public String applyEffect() { return target.removeMilkCrotchModifier(FluidModifier.CORRUPTIVE); } };
+						} else {
+							return new RacialEffectUtil("Makes udder-milk corruptive.", 0, "") { @Override public String applyEffect() { return target.addMilkCrotchModifier(FluidModifier.CORRUPTIVE); } };
+						}
 						
 					default:
 						switch(potency) {
@@ -4343,6 +4362,12 @@ public abstract class AbstractItemEffectType {
 							return new RacialEffectUtil("Removes viscous effect from girlcum.", 0, "") { @Override public String applyEffect() { return target.removeGirlcumModifier(FluidModifier.VISCOUS); } };
 						} else {
 							return new RacialEffectUtil("Makes girlcum thick and viscous.", 0, "") { @Override public String applyEffect() { return target.addGirlcumModifier(FluidModifier.VISCOUS); } };
+						}
+					case TF_MOD_FLUID_CORRUPTIVE:
+						if(potency == TFPotency.MINOR_DRAIN) {
+							return new RacialEffectUtil("Removes corruptive effect from girlcum.", 0, "") { @Override public String applyEffect() { return target.removeGirlcumModifier(FluidModifier.CORRUPTIVE); } };
+						} else {
+							return new RacialEffectUtil("Makes girlcum corruptive.", 0, "") { @Override public String applyEffect() { return target.addGirlcumModifier(FluidModifier.CORRUPTIVE); } };
 						}
 						
 					default:
