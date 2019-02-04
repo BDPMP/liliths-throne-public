@@ -6022,6 +6022,48 @@ public enum StatusEffect {
 		
 	},
 	
+	CORRUPTIVE_FLUIDS(
+			80,
+			"corruptive fluids",
+			"creampie",
+			Colour.ATTRIBUTE_CORRUPTION,
+			false,
+			null,
+			null) {
+
+		@Override
+		public boolean isConditionsMet(GameCharacter target) {
+			return (target.getCorruptiveFluidsStored() > 0);
+		}
+		
+		@Override
+		public String applyEffect(GameCharacter target, int minutesPassed) {
+			float corruptiveFluidsStored = target.getCorruptiveFluidsStored();
+			target.updateCorruptiveFluidsStored();
+			corruptiveFluidsStored += target.getCorruptiveFluidsStored();
+			corruptiveFluidsStored /= 2f;
+			
+			if (corruptiveFluidsStored*minutesPassed > 50) {
+				return target.incrementAttribute(Attribute.MAJOR_CORRUPTION, corruptiveFluidsStored * minutesPassed * 0.01f);
+			} else {
+				target.incrementAttribute(Attribute.MAJOR_CORRUPTION, corruptiveFluidsStored * minutesPassed * 0.01f);
+				return "";
+			}
+		}
+		
+		@Override
+		public boolean isSexEffect() {
+			return true;
+		}
+		
+		@Override
+		public String getDescription(GameCharacter target) {
+			return "Your corruption is being increased by " + (target.getCorruptiveFluidsStored() * 0.01f) + " per minute due to the corruptive fluids you have inside.";
+		}
+		
+		
+	},
+	
 	HAPPINESS(
 			70,
 			"happiness",
