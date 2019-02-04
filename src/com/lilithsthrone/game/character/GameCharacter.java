@@ -326,6 +326,7 @@ public abstract class GameCharacter implements XMLSaving {
 	private float alcoholLevel = 0f;
 	private List<Addiction> addictions;
 	private Set<FluidType> psychoactiveFluidsIngested;
+	private int corruptiveFluidsStored;
 	
 	
 	// Misc.:
@@ -2412,6 +2413,8 @@ public abstract class GameCharacter implements XMLSaving {
 			}
 		}
 
+		// ************** Corruptives ************** //
+		character.updateCorruptiveFluidsStored();
 
 		// ************** Artwork **************//
 
@@ -12467,6 +12470,11 @@ public abstract class GameCharacter implements XMLSaving {
 						+ "</p>"));
 		}
 		
+		if (modifiers.contains(FluidModifier.CORRUPTIVE)) {
+			fluidIngestionSB.append(this.incrementAttribute(Attribute.MAJOR_CORRUPTION, millilitres * 0.01f));
+			this.updateCorruptiveFluidsStored();
+		}
+		
 		return fluidIngestionSB.toString();
 	}
 	
@@ -12664,6 +12672,22 @@ public abstract class GameCharacter implements XMLSaving {
 	
 	
 	// Combat:
+
+	public int getCorruptiveFluidsStored() {
+		return corruptiveFluidsStored;
+	}
+
+	public void updateCorruptiveFluidsStored() {
+		int newValue = 0;
+		
+		for (FluidStored fs : this.getAllFluidsStored()) {
+			if (fs.getFluid().getFluidModifiers().contains(FluidModifier.CORRUPTIVE)) {
+				newValue++;
+			}
+		}
+		
+		this.corruptiveFluidsStored = newValue;
+	}
 
 	public boolean isImmuneToDamageType(DamageType type) {
 		return false;

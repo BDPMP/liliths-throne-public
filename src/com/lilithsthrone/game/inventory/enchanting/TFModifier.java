@@ -1055,6 +1055,13 @@ public enum TFModifier {
 			Colour.BASE_MAGENTA,
 			Rarity.COMMON),
 	
+	TF_MOD_FLUID_CORRUPTIVE("corruptive",
+			"Applies an effect related to changing a fluid.",
+			"corruptive",
+			"modifier_circle_fluid_modifier",
+			Colour.BASE_PINK,
+			Rarity.RARE),
+
 	// fluid flavours:
 	
 	TF_MOD_FLAVOUR_CUM("cum-flavour",
