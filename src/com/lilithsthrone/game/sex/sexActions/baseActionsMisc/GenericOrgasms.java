@@ -1480,6 +1480,9 @@ public class GenericOrgasms {
 								case MINERAL_OIL:
 									cumTargetSB.append(" tasty [npc1.cum] as you possibly can.");
 									break;
+								case CORRUPTIVE:
+									cumTargetSB.append(" corruptive [npc1.cum] as you possibly can.");
+									break;
 							}
 						} else {
 							cumTargetSB.append(" [npc1.cum] as you possibly can.");

@@ -349,6 +349,19 @@ public class FluidCum implements FluidInterface, XMLSaving {
 								+ "[npc.NamePos] [npc.cum] is now [style.boldGrow(mineral oil)]!"
 							+ "</p>");
 				}
+			case CORRUPTIVE:
+				if(owner.isPlayer()) {
+					return "<p>"
+								+ "You feel an intense, burning heat grow in your [pc.balls], causing you to let out [pc.a_moan+].<br/>"
+								+ "Your [pc.cum] is now [style.boldGrow(corruptive)]!"
+							+ "</p>";
+				} else {
+					return UtilText.parse(owner,
+							"<p>"
+								+ "An intense, burning heat grows in [npc.namePos] [npc.balls], causing [npc.herHim] to let out [npc.a_moan+].<br/>"
+								+ "[npc.NamePos] [npc.cum] is now [style.boldGrow(corruptive)]!"
+							+ "</p>");
+				}
 		}
 		
 		return "<p style='text-align:center;'>[style.colourDisabled(Nothing happens...)]</p>";
@@ -482,6 +495,19 @@ public class FluidCum implements FluidInterface, XMLSaving {
 							"<p>"
 								+ "A short relief flows up into [npc.namePos] [npc.balls], causing [npc.herHim] to let out a gentle sigh.<br/>"
 								+ "[npc.NamePos] [npc.cum] is [style.boldShrink(no longer mineral oil)]!"
+							+ "</p>");
+				}
+			case CORRUPTIVE:
+				if(owner.isPlayer()) {
+					return "<p>"
+								+ "You feel a relaxing coolness spread through your [pc.balls], causing you to let out a gentle sigh.<br/>"
+								+ "Your [pc.cum] is [style.boldShrink(no longer corruptive)]!"
+							+ "</p>";
+				} else {
+					return UtilText.parse(owner,
+							"<p>"
+								+ "A relaxing coolness spreads through [npc.namePos] [npc.balls], causing [npc.herHim] to let out a gentle sigh.<br/>"
+								+ "[npc.NamePos] [npc.cum] is [style.boldShrink(no longer corruptive)]!"
 							+ "</p>");
 				}
 		}

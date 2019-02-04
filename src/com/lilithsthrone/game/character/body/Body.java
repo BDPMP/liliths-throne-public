@@ -4094,6 +4094,10 @@ public class Body implements XMLSaving {
 									break;
 								case MINERAL_OIL:
 									descriptionSB.append(" It is rich in minerals good for your skin but not for latex.");
+									break;
+								case CORRUPTIVE:
+									descriptionSB.append(" It is seething with corruptive arcane energy.");
+									break;
 							}
 						}
 					}
@@ -4344,6 +4348,10 @@ public class Body implements XMLSaving {
 									break;
 								case MINERAL_OIL:
 									descriptionSB.append(" It is rich in minerals good for your skin but not for latex.");
+									break;
+								case CORRUPTIVE:
+									descriptionSB.append(" It is seething with corruptive arcane energy.");
+									break;
 							}
 						}
 					}
@@ -4999,6 +5007,9 @@ public class Body implements XMLSaving {
 							break;
 						case MINERAL_OIL:
 							descriptionSB.append(" It contains mineral oils that deteriorate latex.");
+							break;
+						case CORRUPTIVE:
+							descriptionSB.append(" It is seething with corruptive arcane energy.");
 							break;
 					}
 				}

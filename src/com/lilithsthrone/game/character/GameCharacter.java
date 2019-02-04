@@ -12467,6 +12467,10 @@ public abstract class GameCharacter implements XMLSaving {
 						+ "</p>"));
 		}
 		
+		if (modifiers.contains(FluidModifier.CORRUPTIVE)) {
+			fluidIngestionSB.append(this.incrementAttribute(Attribute.MAJOR_CORRUPTION, millilitres * 0.01f));
+		}
+		
 		return fluidIngestionSB.toString();
 	}
 	
@@ -13129,6 +13133,9 @@ public abstract class GameCharacter implements XMLSaving {
 					}
 					if(fs.getFluid().getFluidModifiers().contains(FluidModifier.HALLUCINOGENIC)) {
 						this.addStatusEffect(StatusEffect.PSYCHOACTIVE, 6*60);
+					}
+					if(fs.getFluid().getFluidModifiers().contains(FluidModifier.CORRUPTIVE)) {
+						this.incrementAttribute(Attribute.MAJOR_CORRUPTION, fs.getMillilitres() * 0.005f);
 					}
 				}
 			}

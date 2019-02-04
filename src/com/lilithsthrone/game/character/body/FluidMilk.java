@@ -319,6 +319,19 @@ public class FluidMilk implements FluidInterface {
 								+ "[npc.NamePos] [npc.milk] is now [style.boldGrow(mineral oil)]!"
 							+ "</p>");
 				}
+			case CORRUPTIVE:
+				if(owner.isPlayer()) {
+					return "<p>"
+								+ "You feel an intense, burning heat grow in your [pc.breasts], causing you to let out [pc.a_moan+].<br/>"
+								+ "Your [pc.milk] is now [style.boldGrow(corruptive)]!"
+							+ "</p>";
+				} else {
+					return UtilText.parse(owner,
+							"<p>"
+								+ "An intense, burning heat grows in [npc.namePos] [npc.breasts], causing [npc.herHim] to let out [npc.a_moan+].<br/>"
+								+ "[npc.NamePos] [npc.milk] is now [style.boldGrow(corruptive)]!"
+							+ "</p>");
+				}
 		}
 		
 		return "<p style='text-align:center;'>[style.colourDisabled(Nothing happens...)]</p>";
@@ -451,6 +464,19 @@ public class FluidMilk implements FluidInterface {
 							"<p>"
 								+ "A short relief flows up into [npc.namePos] [npc.breasts], causing [npc.herHim] to let out a gentle sigh.<br/>"
 								+ "[npc.NamePos] [npc.milk] is [style.boldShrink(no longer mineral oil)]!"
+							+ "</p>");
+				}
+			case CORRUPTIVE:
+				if(owner.isPlayer()) {
+					return "<p>"
+								+ "You feel a relaxing coolness spread through your [pc.breasts], causing you to let out a gentle sigh.<br/>"
+								+ "Your [pc.milk] is [style.boldShrink(no longer corruptive)]!"
+							+ "</p>";
+				} else {
+					return UtilText.parse(owner,
+							"<p>"
+								+ "A relaxing coolness spreads through [npc.namePos] [npc.breasts], causing [npc.herHim] to let out a gentle sigh.<br/>"
+								+ "[npc.NamePos] [npc.milk] is [style.boldShrink(no longer corruptive)]!"
 							+ "</p>");
 				}
 		}
