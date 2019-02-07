@@ -13,9 +13,13 @@ public enum DifficultyLevel {
 
 	LEVEL_SCALING("Morph", "Enemies level up alongside your character, but do normal damage.", Colour.RACE_CAT_MORPH, true, 1, 1),
 	
-	HARD("Demon", "Enemies level up alongside your character and do 200% damage.", Colour.RACE_DEMON, true, 2, 1),
+	HARD("Half-Demon", "Enemies and do 200% damage.", Colour.RACE_DEMON, false, 2, 1),
+
+	HARD_SCALING("Demon", "Enemies level up alongside your character and do 200% damage.", Colour.RACE_DEMON, true, 2, 1),
+
+	NIGHTMARE("Lilin", "Enemies do 200% damage, and take only 50% damage from all sources.", Colour.BASE_PURPLE, true, 2, 0.5f),
 	
-	NIGHTMARE("Lilin", "Enemies level up alongside your character, do 200% damage, and take only 50% damage from all sources.", Colour.BASE_PURPLE, true, 2, 0.5f),
+	NIGHTMARE_SCALING("Elder Lilin", "Enemies level up alongside your character, do 200% damage, and take only 50% damage from all sources.", Colour.BASE_PURPLE, false, 2, 0.5f),	
 	
 	HELL("Lilith", "Enemies are always 2x your character's level, do 400% damage, and take only 25% damage from all sources. Be prepared to lose. A lot.", Colour.BASE_CRIMSON, true, 4, 0.25f);
 
