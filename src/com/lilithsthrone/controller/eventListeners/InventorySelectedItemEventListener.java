@@ -36,7 +36,8 @@ public class InventorySelectedItemEventListener implements EventListener {
 		if(Main.game.getCurrentDialogueNode().getDialogueNodeType()!=DialogueNodeType.INVENTORY
 				&& !Main.game.isInSex()
 				&& !Main.game.isInCombat()
-				&& (clothingEquipped!=null || weaponEquipped!=null)) {
+				&& (clothingEquipped!=null || weaponEquipped!=null)
+				&& Main.game.getCurrentDialogueNode().isInventoryDisabled()) {
 			return;
 		}
 		
