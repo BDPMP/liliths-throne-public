@@ -956,7 +956,10 @@ public enum RenderingEngine {
 						+"</p>"
 					+ "</div>"
 				+ "</div>"
-				+ "<div class='full-width-container' style='height: calc(100% - 138vw); overflow-y: auto;'>");
+				+ "<div class='full-width-container' style='height: calc(100% - "
+				+ "236"
+//				+ ((Main.game.getCurrentDialogueNode().getDialogueNodeType() != DialogueNodeType.INVENTORY) ? "236" : "138")
+				+ "vw); overflow-y: auto;'>");
 			
 			uiAttributeSB.append(getCharacterPanelDiv(!Main.game.getPlayer().getCompanions().isEmpty(), "PLAYER_", Main.game.getPlayer()));
 			
@@ -972,6 +975,11 @@ public enum RenderingEngine {
 		}
 
 		uiAttributeSB.append("</div>");
+
+		// Map
+		if(!(Main.game.isInCombat() || Main.game.isInSex())) {
+			uiAttributeSB.append("<div>" + renderedHTMLMap() + "</div>");
+		}
 		
 		uiAttributeSB.append("<div class='full-width-container' style='background-color:#19191a; border-radius:5px; margin-bottom:1px; padding:4px;'>"
 					+ "<div class='full-width-container' style='text-align:center; margin-left:4px;'>"
@@ -1004,14 +1012,14 @@ public enum RenderingEngine {
 				+ "</div>"
 				);
 		
-		if(Main.game.getCurrentDialogueNode().getDialogueNodeType() == DialogueNodeType.INVENTORY || Main.game.isInCombat() || Main.game.isInSex()) {
+//		if(Main.game.getCurrentDialogueNode().getDialogueNodeType() == DialogueNodeType.INVENTORY || Main.game.isInCombat() || Main.game.isInSex()) {
 
 			//TODO
 			uiAttributeSB.append(getInventoryEquippedPanel(Main.game.getPlayer()));
 			
-		} else {
-			uiAttributeSB.append("<div>" + renderedHTMLMap() + "</div>");
-		}
+//		} else {
+//			uiAttributeSB.append("<div>" + renderedHTMLMap() + "</div>");
+//		}
 		
 		uiAttributeSB.append("</body>");
 
@@ -1760,16 +1768,16 @@ public enum RenderingEngine {
 
 		}
 
+		
 		if(!Main.game.isInNewWorld() || Main.game.getCurrentDialogueNode().isTravelDisabled()) {
-			mapSB.append("<div style='left:0; top:0; margin:0; padding:0; width:100%; height:100vw; background-color:#000; opacity:0.7; border-radius:5px;'></div>");
+			mapSB.append("<div style='left:0; top:0; margin:0; padding:0; width:100%; height:98vw; background-color:#000; opacity:0.7; border-radius:5px;'></div>");
 			renderedDisabledMap = true;
 		} else {
 			renderedDisabledMap = false;
 		}
 		
-		
 		mapSB.append("</div>");
-
+		
 
 //		long t2 = System.nanoTime();
 //		System.out.println("HTML map: "+(t2-t1)/1000000000f);
