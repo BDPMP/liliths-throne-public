@@ -784,7 +784,7 @@ public class NightlifeDistrict {
 						return new Response("Import (as sub)", "You don't have any characters to import.", null);
 					} else {
 						return new Response("Import (as sub)",
-								"Import someone to meet in the club. This will put you in the dominant role, where you'll be the one leading your partner around the club.",
+								"Import someone to meet in the club. This will put you in the submissive role, where you'll be the one leading your partner around the club.",
 								WATERING_HOLE_IMPORT) {
 							@Override
 							public void effects() {
@@ -1096,7 +1096,9 @@ public static final DialogueNode WATERING_HOLE_IMPORT = new DialogueNode("The Wa
 
 		@Override
 		public String getContent() {
-			return UtilText.parseFromXMLFile("places/dominion/nightlife/theWateringHole", "WATERING_HOLE_IMPORT");
+//			TODO: add content to xml
+//			return UtilText.parseFromXMLFile("places/dominion/nightlife/theWateringHole", "WATERING_HOLE_IMPORT");
+			return "Choose a file to import a character from.";
 		}
 
 		@Override
@@ -1108,7 +1110,7 @@ public static final DialogueNode WATERING_HOLE_IMPORT = new DialogueNode("The Wa
 			for (File f : Main.getCharactersForImport()) {
 				if (index==count) {
 					String fileIdentifier = f.getName().substring(0, f.getName().lastIndexOf('.'));
-					return new Response(fileIdentifier, "", 
+					return new Response(fileIdentifier, "Import the character from " + fileIdentifier, 
 							(isSearchingForASub
 									?WATERING_HOLE_SEARCH_GENERATE
 									:WATERING_HOLE_SEARCH_GENERATE_DOM)) {
