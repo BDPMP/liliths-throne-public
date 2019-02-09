@@ -1,8 +1,10 @@
 package com.lilithsthrone.game.dialogue.places.dominion.nightlife;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lilithsthrone.game.Game;
 import com.lilithsthrone.game.Weather;
 import com.lilithsthrone.game.character.GameCharacter;
 import com.lilithsthrone.game.character.attributes.AffectionLevel;
@@ -723,7 +725,20 @@ public class NightlifeDistrict {
 							}
 						};
 					}
-					
+				} else if(index==4) {
+					if (Main.getCharactersForImport().isEmpty()) {
+						return new Response("Import (as dom)", "You don't have any characters to import.", null);
+					} else {
+						return new Response("Import (as dom)",
+								"Import someone to meet in the club. This will put you in the dominant role, where you'll be the one leading your partner around the club.",
+								WATERING_HOLE_IMPORT) {
+							@Override
+							public void effects() {
+								isSearchingForASub = true;
+							}
+						};
+					}
+				
 				} if(index==6) {
 					return new Response("Search (as sub)",
 							"Loiter in the main area of the club and try to catch the eye of someone you like the look of. This will put you in the submissive role, where your partner will be the one leading you around the club.",
@@ -758,6 +773,19 @@ public class NightlifeDistrict {
 						return new Response("Contacts (as sub)",
 								"Search for one of your dominant contacts who you've already met in the club before. This will put you in the submissive role, where your partner will be the one leading you around the club.",
 								WATERING_HOLE_CONTACTS_DOM) {
+							@Override
+							public void effects() {
+								isSearchingForASub = false;
+							}
+						};
+					}
+				} else if(index==9) {
+					if (Main.getCharactersForImport().isEmpty()) {
+						return new Response("Import (as sub)", "You don't have any characters to import.", null);
+					} else {
+						return new Response("Import (as sub)",
+								"Import someone to meet in the club. This will put you in the submissive role, where you'll be the one leading your partner around the club.",
+								WATERING_HOLE_IMPORT) {
 							@Override
 							public void effects() {
 								isSearchingForASub = false;
@@ -1055,6 +1083,46 @@ public class NightlifeDistrict {
 				}
 				count++;
 			}
+			return null;
+		}
+	};
+	
+public static final DialogueNode WATERING_HOLE_IMPORT = new DialogueNode("The Watering Hole", "", true) {
+		
+		@Override
+		public int getMinutesPassed(){
+			return 0;
+		}
+
+		@Override
+		public String getContent() {
+//			TODO: add content to xml
+//			return UtilText.parseFromXMLFile("places/dominion/nightlife/theWateringHole", "WATERING_HOLE_IMPORT");
+			return "Choose a file to import a character from.";
+		}
+
+		@Override
+		public Response getResponse(int responseTab, int index) {
+			if(index==0) {
+				return new Response("Back", "Decide to stop searching for someone you've met before.", WATERING_HOLE_MAIN);
+			}
+			int count = 1;
+			for (File f : Main.getCharactersForImport()) {
+				if (index==count) {
+					String fileIdentifier = f.getName().substring(0, f.getName().lastIndexOf('.'));
+					return new Response(fileIdentifier, "Import the character from " + fileIdentifier, 
+							(isSearchingForASub
+									?WATERING_HOLE_SEARCH_GENERATE
+									:WATERING_HOLE_SEARCH_GENERATE_DOM)) {
+						@Override
+						public void effects() {
+							Game.importCharacterAsClubNPC(fileIdentifier);
+						};
+					};
+				}
+				count++;
+			}
+			
 			return null;
 		}
 	};
