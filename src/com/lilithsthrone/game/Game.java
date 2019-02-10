@@ -394,7 +394,7 @@ public class Game implements XMLSaving {
 				// Load NPCs:
 				DominionClubNPC importedNPC = new DominionClubNPC();
 
-				importedNPC.importFromXML(characterElement, doc, CharacterImportSetting.NO_PREGNANCY, CharacterImportSetting.NO_COMPANIONS, CharacterImportSetting.NO_ELEMENTAL, CharacterImportSetting.CLEAR_SLAVERY);
+				importedNPC.importFromXML(characterElement, doc, CharacterImportSetting.NO_PREGNANCY, CharacterImportSetting.NO_COMPANIONS, CharacterImportSetting.NO_ELEMENTAL, CharacterImportSetting.CLEAR_SLAVERY, CharacterImportSetting.CLEAR_ID);
 				Main.game.addNPC(importedNPC, false);
 				
 			} catch (Exception e) {
