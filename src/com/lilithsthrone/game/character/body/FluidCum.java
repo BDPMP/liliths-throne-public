@@ -543,6 +543,6 @@ public class FluidCum implements FluidInterface, XMLSaving {
 		if(owner==null) {
 			return false;
 		}
-		return owner.getLegConfiguration().getBestialParts().contains(FluidCum.class);
+		return owner.getLegConfiguration().getBestialParts().contains(FluidCum.class) && getType().getRace().isBestialPartsAvailable();
 	}
 }

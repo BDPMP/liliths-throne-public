@@ -512,6 +512,6 @@ public class FluidMilk implements FluidInterface {
 		if(owner==null) {
 			return false;
 		}
-		return owner.getLegConfiguration().getBestialParts().contains(FluidMilk.class);
+		return owner.getLegConfiguration().getBestialParts().contains(FluidMilk.class) && getType().getRace().isBestialPartsAvailable();
 	}
 }
