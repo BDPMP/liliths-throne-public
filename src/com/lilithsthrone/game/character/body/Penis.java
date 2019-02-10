@@ -8,6 +8,7 @@ import java.util.Set;
 import com.lilithsthrone.game.character.GameCharacter;
 import com.lilithsthrone.game.character.body.types.BodyCoveringType;
 import com.lilithsthrone.game.character.body.types.PenisType;
+import com.lilithsthrone.game.character.body.valueEnums.Capacity;
 import com.lilithsthrone.game.character.body.valueEnums.OrificeElasticity;
 import com.lilithsthrone.game.character.body.valueEnums.OrificeModifier;
 import com.lilithsthrone.game.character.body.valueEnums.OrificePlasticity;
@@ -141,7 +142,7 @@ public class Penis implements BodyPartInterface {
 		
 		descriptorList.add(type.getDescriptor(owner));
 		
-		descriptorList.add(orificeUrethra.getCapacity().getDescriptor());
+		descriptorList.add(Capacity.getCapacityFromValue(orificeUrethra.getStretchedCapacity()).getDescriptor());
 		
 		return UtilText.returnStringAtRandom(descriptorList.toArray(new String[]{}));
 	}
@@ -1111,6 +1112,6 @@ public class Penis implements BodyPartInterface {
 		if(owner==null) {
 			return false;
 		}
-		return owner.getLegConfiguration().getBestialParts().contains(Penis.class);
+		return owner.getLegConfiguration().getBestialParts().contains(Penis.class) && getType().getRace().isBestialPartsAvailable();
 	}
 }
