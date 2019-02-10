@@ -1194,6 +1194,7 @@ public abstract class GameCharacter implements XMLSaving {
 		boolean noCompanions = Arrays.asList(settings).contains(CharacterImportSetting.NO_COMPANIONS);
 		boolean noElemental = Arrays.asList(settings).contains(CharacterImportSetting.NO_ELEMENTAL);
 		boolean noSlavery = Arrays.asList(settings).contains(CharacterImportSetting.CLEAR_SLAVERY);
+		boolean noId = Arrays.asList(settings).contains(CharacterImportSetting.CLEAR_ID);
 		
 		// ************** Core information **************//
 		
@@ -1201,12 +1202,17 @@ public abstract class GameCharacter implements XMLSaving {
 		Element element = (Element) nodes.item(0);
 
 		String version = getValueFromElementWithTagName(element, "version", "");
-		String loadedCharacterId = getValueFromElementWithTagName(element, "id");
-		if (loadedCharacterId != null) {
-			character.setId(loadedCharacterId);
-			CharacterUtils.appendToImportLog(log, "<br/>Set id: " + character.getId());
+		
+		if (noId) {
+			character.setId("");
+		} else {
+			String loadedCharacterId = getValueFromElementWithTagName(element, "id");
+			if (loadedCharacterId != null) {
+				character.setId(loadedCharacterId);
+				CharacterUtils.appendToImportLog(log, "<br/>Set id: " + character.getId());
+			}
 		}
-
+		
 		// Name:
 		Element nameElement = (Element) element.getElementsByTagName("name").item(0);
 		String nameElementValue = nameElement.getAttribute("value");

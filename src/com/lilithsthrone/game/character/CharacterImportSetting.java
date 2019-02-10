@@ -13,6 +13,7 @@ public enum CharacterImportSetting {
 	
 	NO_COMPANIONS,
 	
-	NO_PREGNANCY;
+	NO_PREGNANCY,
 	
+	CLEAR_ID;
 }
