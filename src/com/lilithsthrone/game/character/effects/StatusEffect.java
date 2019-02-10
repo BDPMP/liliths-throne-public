@@ -4722,7 +4722,7 @@ public enum StatusEffect {
 		}
 		
 		@Override
-		public String applyEffect(GameCharacter target, int minutesPassed) {
+		public String applyEffect(GameCharacter target, int secondsPassed) {
 			float totalCorruptionToAdd = 0f;
 			Map<SexAreaOrifice, Integer> oldCorruptiveFluidsMap = new HashMap<>();
 			for(SexAreaOrifice area : SexAreaOrifice.values()) {
