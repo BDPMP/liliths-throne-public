@@ -326,7 +326,8 @@ public abstract class GameCharacter implements XMLSaving {
 	private float alcoholLevel = 0f;
 	private List<Addiction> addictions;
 	private Set<FluidType> psychoactiveFluidsIngested;
-	private int corruptiveFluidsStored;
+	private int corruptiveFluidVolume;
+	private Map<SexAreaOrifice, Integer> corruptiveFluidVolumeMap;
 	
 	
 	// Misc.:
@@ -499,6 +500,10 @@ public abstract class GameCharacter implements XMLSaving {
 		// Addictions:
 		addictions = new ArrayList<>();
 		psychoactiveFluidsIngested = new HashSet<>();
+		
+		// Corruptive Fluids:
+		corruptiveFluidVolume = 0;
+		this.corruptiveFluidVolumeMap = new HashMap<>();
 		
 		// Start all attributes and bonus attributes at 0:
 		for (Attribute a : Attribute.values()) {
@@ -2414,7 +2419,7 @@ public abstract class GameCharacter implements XMLSaving {
 		}
 
 		// ************** Corruptives ************** //
-		character.updateCorruptiveFluidsStored();
+		character.updateCorruptiveFluidVolumes();
 
 		// ************** Artwork **************//
 
@@ -12471,8 +12476,8 @@ public abstract class GameCharacter implements XMLSaving {
 		}
 		
 		if (modifiers.contains(FluidModifier.CORRUPTIVE)) {
-			fluidIngestionSB.append(this.incrementAttribute(Attribute.MAJOR_CORRUPTION, millilitres * 0.01f));
-			this.updateCorruptiveFluidsStored();
+			fluidIngestionSB.append(this.incrementAttribute(Attribute.MAJOR_CORRUPTION, millilitres * 0.005f));
+			this.updateCorruptiveFluidVolumes();
 		}
 		
 		return fluidIngestionSB.toString();
@@ -12669,25 +12674,39 @@ public abstract class GameCharacter implements XMLSaving {
 		}
 		return false;
 	}
-	
-	
-	// Combat:
 
-	public int getCorruptiveFluidsStored() {
-		return corruptiveFluidsStored;
+	public int getCorruptiveFluidVolumeTotal() {
+		return corruptiveFluidVolume;
 	}
 
-	public void updateCorruptiveFluidsStored() {
-		int newValue = 0;
+	public void updateCorruptiveFluidVolumes() {
+		this.corruptiveFluidVolume = 0;
 		
 		for (FluidStored fs : this.getAllFluidsStored()) {
 			if (fs.getFluid().getFluidModifiers().contains(FluidModifier.CORRUPTIVE)) {
-				newValue++;
+				this.corruptiveFluidVolume+=fs.getMillilitres();
 			}
 		}
-		
-		this.corruptiveFluidsStored = newValue;
+
+		for (SexAreaOrifice area : SexAreaOrifice.values()) {
+			int runningTotal = 0;
+			
+			for (FluidStored fs : getFluidsStoredInOrifice(area)) {
+				runningTotal += (fs.getFluid().getFluidModifiers().contains(FluidModifier.CORRUPTIVE)?fs.getMillilitres():0);
+			}
+			
+			this.corruptiveFluidVolumeMap.put(area, runningTotal);
+		}
 	}
+	
+	public int getCorruptiveFluidVolumeInArea (SexAreaOrifice area) {
+		this.corruptiveFluidVolumeMap.putIfAbsent(area, 0);
+		
+		return corruptiveFluidVolumeMap.get(area);
+	}
+	
+	
+	// Combat:
 
 	public boolean isImmuneToDamageType(DamageType type) {
 		return false;

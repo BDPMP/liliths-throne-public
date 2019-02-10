@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -4693,6 +4694,57 @@ public enum StatusEffect {
 		}
 	},
 	
+	CORRUPTIVE_FLUIDS(
+			80,
+			"corruptive fluids",
+			"creampie",
+			Colour.ATTRIBUTE_CORRUPTION,
+			false,
+			null,
+			null) {
+
+		@Override
+		public boolean isConditionsMet(GameCharacter target) {
+			return (target.getCorruptiveFluidVolumeTotal() > 0);
+		}
+		
+		@Override
+		public String applyEffect(GameCharacter target, int minutesPassed) {
+			float totalCorruptionToAdd = 0f;
+			Map<SexAreaOrifice, Integer> oldCorruptiveFluidsMap = new HashMap<>();
+			for(SexAreaOrifice area : SexAreaOrifice.values()) {
+				oldCorruptiveFluidsMap.put(area, target.getCorruptiveFluidVolumeInArea(area));
+			}
+			
+			target.updateCorruptiveFluidVolumes();
+			
+			for(SexAreaOrifice area : SexAreaOrifice.values()) {
+				totalCorruptionToAdd += (oldCorruptiveFluidsMap.get(area) - target.getCorruptiveFluidVolumeInArea(area))
+						* area.getCumAbsorptionPerMinute()
+						/ area.getCharactersCumLossPerMinute(target)
+						* 0.01f;
+			}
+			
+			if (totalCorruptionToAdd > 0.5) {
+				return target.incrementAttribute(Attribute.MAJOR_CORRUPTION, totalCorruptionToAdd);
+			} else {
+				target.incrementAttribute(Attribute.MAJOR_CORRUPTION, totalCorruptionToAdd);
+				return "";
+			}
+		}
+		
+		@Override
+		public boolean isSexEffect() {
+			return true;
+		}
+		
+		@Override
+		public String getDescription(GameCharacter target) {
+			return "Your corruption is being increased by 0.01 per ml of corruptive fluids you absorb.";
+		}		
+	},
+	
+	
 	
 	CUM_INFLATION_1(
 			80,
@@ -6019,48 +6071,6 @@ public enum StatusEffect {
 			return "";
 		}
 
-		
-	},
-	
-	CORRUPTIVE_FLUIDS(
-			80,
-			"corruptive fluids",
-			"creampie",
-			Colour.ATTRIBUTE_CORRUPTION,
-			false,
-			null,
-			null) {
-
-		@Override
-		public boolean isConditionsMet(GameCharacter target) {
-			return (target.getCorruptiveFluidsStored() > 0);
-		}
-		
-		@Override
-		public String applyEffect(GameCharacter target, int minutesPassed) {
-			float corruptiveFluidsStored = target.getCorruptiveFluidsStored();
-			target.updateCorruptiveFluidsStored();
-			corruptiveFluidsStored += target.getCorruptiveFluidsStored();
-			corruptiveFluidsStored /= 2f;
-			
-			if (corruptiveFluidsStored*minutesPassed > 50) {
-				return target.incrementAttribute(Attribute.MAJOR_CORRUPTION, corruptiveFluidsStored * minutesPassed * 0.01f);
-			} else {
-				target.incrementAttribute(Attribute.MAJOR_CORRUPTION, corruptiveFluidsStored * minutesPassed * 0.01f);
-				return "";
-			}
-		}
-		
-		@Override
-		public boolean isSexEffect() {
-			return true;
-		}
-		
-		@Override
-		public String getDescription(GameCharacter target) {
-			return "Your corruption is being increased by " + (target.getCorruptiveFluidsStored() * 0.01f) + " per minute due to the corruptive fluids you have inside.";
-		}
-		
 		
 	},
 	
