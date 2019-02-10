@@ -100,6 +100,23 @@ public class DominionClubNPC extends NPC {
 		}
 	}
 	
+	public void importFromXML(Element parentElement, Document doc, CharacterImportSetting... settings) {
+		loadNPCVariablesFromXML(this, null, parentElement, doc, settings);
+		
+		if(!this.getId().endsWith("DominionClubNPC")) {
+			this.setId(Main.game.getNextNPCId(DominionClubNPC.class));
+		}
+		
+		this.setHomeLocation(WorldType.EMPTY, PlaceType.GENERIC_HOLDING_CELL);
+		
+		this.setLocation(Main.game.getPlayer(), false);
+
+		this.endPregnancy(false);
+		this.getSlavesOwned().clear();
+		this.clearAffectionMap();
+		this.setPlayerKnowsName(true);
+	}
+	
 	@Override
 	public void loadFromXML(Element parentElement, Document doc, CharacterImportSetting... settings) {
 		loadNPCVariablesFromXML(this, null, parentElement, doc, settings);

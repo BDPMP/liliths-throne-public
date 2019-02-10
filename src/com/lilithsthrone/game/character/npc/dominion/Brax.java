@@ -234,6 +234,7 @@ public class Brax extends NPC {
 		this.setPenisGirth(PenisGirth.THREE_THICK);
 		this.setPenisSize(8);
 		this.setTesticleSize(TesticleSize.THREE_LARGE);
+		this.setPenisSterile(false);
 		// Leave cum as normal value
 		
 		// Vagina:

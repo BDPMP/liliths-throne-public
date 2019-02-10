@@ -192,6 +192,7 @@ public class Kruger extends NPC {
 		this.setTesticleSize(TesticleSize.THREE_LARGE);
 		this.setPenisCumStorage(60);
 		this.fillCumToMaxStorage();
+		this.setPenisSterile(false);
 		// Leave cum as normal value
 		
 		// Vagina:

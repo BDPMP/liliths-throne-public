@@ -181,6 +181,7 @@ public class Bunny extends NPC {
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.TWO_AVERAGE);
 		this.setVaginaSquirter(false);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.THREE_SLIGHTLY_LOOSE, true);
 		this.setVaginaWetness(Wetness.THREE_WET);
 		this.setVaginaElasticity(OrificeElasticity.FIVE_STRETCHY.getValue());

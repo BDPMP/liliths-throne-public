@@ -944,6 +944,8 @@ public class Sex {
 						
 					}
 					participant.addStatusEffect(StatusEffect.RECOVERING_AURA, (240*60)+(postSexDialogue.getSecondsPassed()));
+          
+					participant.setLust(0 + (participant.hasTrait(Perk.NYMPHOMANIAC, true) ?25 :0));
 				}
 				
 				endSexSB = new StringBuilder(UtilText.parse(participant, endSexSB.toString()));

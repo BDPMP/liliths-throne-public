@@ -59,7 +59,19 @@ import com.lilithsthrone.world.places.PlaceType;
  * @author Innoxia
  */
 public class Ralph extends NPC {
-	
+  
+  /*
+	private static List<AbstractItemType> itemsForSale = Util.newArrayListOfValues(
+			ItemType.FETISH_UNREFINED,
+			ItemType.ADDICTION_REMOVAL,
+			ItemType.MOO_MILKER_EMPTY,
+			ItemType.VIXENS_VIRILITY,
+			ItemType.PROMISCUITY_PILL,
+			ItemType.ABORTIVE_PILL,
+			ItemType.MOTHERS_MILK,
+			ItemType.PREGNANCY_TEST);
+  */
+  
 	public Ralph() {
 		this(false);
 	}
@@ -179,6 +191,7 @@ public class Ralph extends NPC {
 		this.setTesticleSize(TesticleSize.FOUR_HUGE);
 		this.setPenisCumStorage(65);
 		this.fillCumToMaxStorage();
+		this.setPenisSterile(false);
 		// Leave cum as normal value
 		
 		// Vagina:

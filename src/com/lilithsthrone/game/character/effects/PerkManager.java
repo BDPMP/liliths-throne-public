@@ -46,7 +46,11 @@ public enum PerkManager {
 		addPerkEntry(perkTree, PerkCategory.BOTH, 0, Perk.BARREN);
 		addPerkEntry(perkTree, PerkCategory.BOTH, 0, Perk.FETISH_SEEDER);
 		addPerkEntry(perkTree, PerkCategory.BOTH, 0, Perk.FETISH_BROODMOTHER);
+		addPerkEntry(perkTree, PerkCategory.BOTH, 0, Perk.NYMPHOMANIAC);
+
 		addPerkEntry(perkTree, PerkCategory.ARCANE, 0, Perk.CLOTHING_ENCHANTER);
+		addPerkEntry(perkTree, PerkCategory.ARCANE, 0, Perk.WEAPON_ENCHANTER);
+		addPerkEntry(perkTree, PerkCategory.ARCANE, 0, Perk.POTION_ENCHANTER);
 		
 		TreeEntry<PerkCategory, Perk> arcane1, arcane2, arcane3, arcane4, arcane5, arcane6;
 		TreeEntry<PerkCategory, Perk> physical1, physical2, physical3, physical4, physical5, physical6;
@@ -62,8 +66,7 @@ public enum PerkManager {
 		both1 = addPerkEntry(perkTree, PerkCategory.BOTH, 2, Perk.MALE_ATTRACTION, both3);
 
 		both4 = addPerkEntry(perkTree, PerkCategory.BOTH, 3, Perk.SEDUCTION_5, both2);
-		both5 = addPerkEntry(perkTree, PerkCategory.BOTH, 3, Perk.NYMPHOMANIAC, both4);
-		both6 = addPerkEntry(perkTree, PerkCategory.BOTH, 3, Perk.SEDUCTION_5_B, both5, both1);
+		both6 = addPerkEntry(perkTree, PerkCategory.BOTH, 3, Perk.SEDUCTION_5_B, both1);
 
 		
 		//Physical:
@@ -157,7 +160,11 @@ public enum PerkManager {
 		addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 0, Perk.BARREN);
 		addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 0, Perk.FETISH_SEEDER);
 		addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 0, Perk.FETISH_BROODMOTHER);
+		addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 0, Perk.NYMPHOMANIAC);
+
 		addPerkEntry(NPCPerkTree, PerkCategory.ARCANE, 0, Perk.CLOTHING_ENCHANTER);
+		addPerkEntry(NPCPerkTree, PerkCategory.ARCANE, 0, Perk.WEAPON_ENCHANTER);
+		addPerkEntry(NPCPerkTree, PerkCategory.ARCANE, 0, Perk.POTION_ENCHANTER);
 		
 		physical1 = addPerkEntry(NPCPerkTree, PerkCategory.PHYSICAL, 1, Perk.PHYSICAL_BASE);
 		arcane1 = addPerkEntry(NPCPerkTree, PerkCategory.ARCANE, 1, Perk.ARCANE_BASE_NPC);
@@ -169,8 +176,7 @@ public enum PerkManager {
 		both1 = addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 2, Perk.MALE_ATTRACTION, both3);
 
 		both4 = addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 3, Perk.SEDUCTION_5, both2);
-		both5 = addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 3, Perk.NYMPHOMANIAC, both4);
-		both6 = addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 3, Perk.SEDUCTION_5_B, both5, both1);
+		both6 = addPerkEntry(NPCPerkTree, PerkCategory.BOTH, 3, Perk.SEDUCTION_5_B, both1);
 
 		
 		//Physical:
@@ -447,7 +453,7 @@ public enum PerkManager {
 	
 	public static int getInitialPerkCount(GameCharacter character) { //TODO Calculate this from the initialisePerks() method - this current methodology is terrible.
 		if(character.isPlayer()) {
-			return 2;
+			return 5;
 		} else  if(character instanceof Elemental) {
 			return 7;
 		} else {
@@ -458,8 +464,13 @@ public enum PerkManager {
 	public static void initialisePerks(GameCharacter character) { //TODO Until getInitialPerkCount() is fixed, remember to reset the int values.
 		if(character.isPlayer()) {
 			character.addPerk(Perk.PHYSICAL_BASE);
-			character.addPerk(Perk.ARCANE_BASE);	
-			
+			character.addPerk(Perk.ARCANE_BASE);
+			character.addPerk(Perk.BARREN);
+			character.addPerk(Perk.FIRING_BLANKS);
+			character.addPerk(Perk.NYMPHOMANIAC);
+			character.removeTrait(Perk.BARREN);
+			character.removeTrait(Perk.FIRING_BLANKS);
+			character.removeTrait(Perk.NYMPHOMANIAC);
 		} else if(character instanceof Elemental) {
 			character.addPerk(Perk.ELEMENTAL_CORE);
 			character.addPerk(Perk.ELEMENTAL_CORRUPTION);

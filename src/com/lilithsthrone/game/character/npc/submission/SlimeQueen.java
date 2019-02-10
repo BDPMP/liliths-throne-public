@@ -211,12 +211,14 @@ public class SlimeQueen extends NPC {
 		this.setPenisCumStorage(CumProduction.FOUR_LARGE.getMedianValue());
 		this.fillCumToMaxStorage();
 		this.setCumFlavour(FluidFlavour.STRAWBERRY);
+		this.setPenisSterile(false);
 		
 		// Vagina:
 		this.setVaginaVirgin(false);
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.FOUR_MASSIVE);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.FIVE_ROOMY, true);
 		this.setVaginaWetness(Wetness.SEVEN_DROOLING);
 		this.setVaginaElasticity(OrificeElasticity.SEVEN_ELASTIC.getValue());

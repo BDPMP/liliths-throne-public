@@ -212,6 +212,7 @@ public class Roxy extends NPC {
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.FOUR_MASSIVE);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.FOUR_LOOSE, true);
 		this.setVaginaWetness(Wetness.FOUR_SLIMY);
 		this.setVaginaElasticity(OrificeElasticity.THREE_FLEXIBLE.getValue());

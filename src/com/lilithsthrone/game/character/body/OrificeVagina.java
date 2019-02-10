@@ -15,8 +15,8 @@ import com.lilithsthrone.game.dialogue.utils.UtilText;
 
 /**
  * @since 0.1.?
- * @version 0.2.4
- * @author Innoxia
+ * @version 0.3.0
+ * @author Innoxia, BDPMP
  */
 public class OrificeVagina implements OrificeInterface {
 	
@@ -28,6 +28,7 @@ public class OrificeVagina implements OrificeInterface {
 	protected boolean virgin;
 	protected Set<OrificeModifier> orificeModifiers;
 	protected boolean squirter;
+	protected boolean infertile;
 
 	public OrificeVagina(int wetness, float capacity, int elasticity, int plasticity, boolean virgin, Collection<OrificeModifier> orificeModifiers) {
 		this.wetness = wetness;
@@ -37,6 +38,7 @@ public class OrificeVagina implements OrificeInterface {
 		this.plasticity = plasticity;
 		this.virgin = virgin;
 		squirter = wetness > Wetness.THREE_WET.getValue();
+		infertile = false;
 		
 		this.orificeModifiers = new HashSet<>(orificeModifiers);
 	}
@@ -492,6 +494,38 @@ public class OrificeVagina implements OrificeInterface {
 			} else {
 				return UtilText.parse(owner,
 						"<p>[npc.Name] is no longer a [style.boldShrink(squirter)]!</p>");
+			}
+		}
+	}
+
+	public boolean isInfertile() {
+		return infertile;
+	}
+
+	public String setInfertile(GameCharacter owner, boolean infertile) {
+		if(owner == null) {
+			this.infertile = infertile;
+			return "";
+		}
+		if(this.infertile == infertile || !owner.hasVagina()) {
+			return "<p style='text-align:center;'>[style.colourDisabled(Nothing happens...)]</p>";
+		}
+		
+		this.infertile = infertile;
+		
+		if(infertile) {
+			if(owner.isPlayer()) {
+				return "<p>You are now [style.boldGrow(infertile)]!</p>";
+			} else {
+				return UtilText.parse(owner,
+						"<p>[npc.Name] is now [style.boldGrow(infertile)]!</p>");
+			}
+		} else {
+			if(owner.isPlayer()) {
+				return "<p>You are no longer [style.boldShrink(infertile)]!</p>";
+			} else {
+				return UtilText.parse(owner,
+						"<p>[npc.Name] is no longer [style.boldShrink(infertile)]!</p>");
 			}
 		}
 	}

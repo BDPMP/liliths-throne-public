@@ -188,6 +188,7 @@ public class HarpyNympho extends NPC {
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.ZERO_TINY);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.FOUR_LOOSE, true);
 		this.setVaginaWetness(Wetness.FOUR_SLIMY);
 		this.setVaginaElasticity(OrificeElasticity.FOUR_LIMBER.getValue());

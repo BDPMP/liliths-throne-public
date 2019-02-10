@@ -179,6 +179,7 @@ public class Alexa extends NPC {
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.ZERO_TINY);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.ZERO_IMPENETRABLE, true);
 		this.setVaginaWetness(Wetness.THREE_WET);
 		this.setVaginaElasticity(OrificeElasticity.ZERO_UNYIELDING.getValue());

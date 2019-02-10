@@ -264,6 +264,7 @@ public class Nyan extends NPC {
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.ONE_SMALL);
 		this.setVaginaSquirter(false);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.ONE_EXTREMELY_TIGHT, true);
 		this.setVaginaWetness(Wetness.THREE_WET);
 		this.setVaginaElasticity(OrificeElasticity.THREE_FLEXIBLE.getValue());

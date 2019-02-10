@@ -1005,8 +1005,13 @@ public enum Perk {
 			Colour.GENERIC_SEX,
 			Util.newHashMapOfValues(
 					new Value<Attribute, Integer>(Attribute.RESISTANCE_LUST, -25)),
-			Util.newArrayListOfValues("Doubles <span style='color:" + Colour.GENERIC_ARCANE.toWebHexString()+ ";'>arcane essence gain</span> from each orgasm")) {
+			Util.newArrayListOfValues("Doubles <span style='color:" + Colour.GENERIC_ARCANE.toWebHexString()+ ";'>arcane essence gain</span> from each orgasm. Increases resting lust.")) {
 
+		@Override
+		public boolean isAlwaysAvailable() {
+			return true;
+		}
+		
 		@Override
 		public String getDescription(GameCharacter owner) {
 			if (owner.isPlayer())
@@ -1037,6 +1042,54 @@ public enum Perk {
 				return "You have a natural affinity for weaving arcane enchantments into items of clothing, allowing you to expend only half of the usual arcane essences when enchanting clothing.";
 			} else {
 				return UtilText.parse(owner, "[npc.Name] has a natural affinity for weaving arcane enchantments into items of clothing, allowing [npc.herHim] to expend only half of the usual arcane essences when enchanting clothing.");
+			}
+		}
+	},
+	
+	WEAPON_ENCHANTER(20,
+			false,
+			"arcane weaponsmith",
+			PerkCategory.ARCANE,
+			"perks/arcaneWeaponsmith",
+			Colour.GENERIC_ARCANE,
+			Util.newHashMapOfValues(new Value<Attribute, Integer>(Attribute.MAJOR_ARCANE, 1)),
+			Util.newArrayListOfValues("<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Halves cost of all weapon enchantments</span>")) {
+
+		@Override
+		public boolean isAlwaysAvailable() {
+			return true;
+		}
+		
+		@Override
+		public String getDescription(GameCharacter owner) {
+			if (owner.isPlayer()) {
+				return "You have a natural affinity for working arcane enchantments into weapons, allowing you to expend only half of the usual arcane essences when enchanting weapons.";
+			} else {
+				return UtilText.parse(owner, "[npc.Name] has a natural affinity for working arcane enchantments into weapons, allowing [npc.herHim] to expend only half of the usual arcane essences when enchanting weapons.");
+			}
+		}
+	},
+	
+	POTION_ENCHANTER(20,
+			false,
+			"alchemist",
+			PerkCategory.ARCANE,
+			"perks/alchemist",
+			Colour.GENERIC_ARCANE,
+			Util.newHashMapOfValues(new Value<Attribute, Integer>(Attribute.MAJOR_ARCANE, 1)),
+			Util.newArrayListOfValues("<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Halves cost of all potion enchantments</span>")) {
+
+		@Override
+		public boolean isAlwaysAvailable() {
+			return true;
+		}
+		
+		@Override
+		public String getDescription(GameCharacter owner) {
+			if (owner.isPlayer()) {
+				return "You have a natural affinity for distilling arcane enchantments into potions, allowing you to expend only half of the usual arcane essences when enchanting potions.";
+			} else {
+				return UtilText.parse(owner, "[npc.Name] has a natural affinity for distilling arcane enchantments into potions, allowing [npc.herHim] to expend only half of the usual arcane essences when enchanting potions.");
 			}
 		}
 	},

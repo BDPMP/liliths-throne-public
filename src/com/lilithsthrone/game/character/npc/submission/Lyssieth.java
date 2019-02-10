@@ -253,6 +253,7 @@ public class Lyssieth extends NPC {
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.THREE_LARGE);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.FOUR_LOOSE, true);
 		this.setVaginaWetness(Wetness.FIVE_SLOPPY);
 		this.setVaginaElasticity(OrificeElasticity.FIVE_STRETCHY.getValue());
@@ -770,6 +771,7 @@ public class Lyssieth extends NPC {
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.ONE_SMALL);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.TWO_TIGHT, true);
 		this.setVaginaWetness(Wetness.FIVE_SLOPPY);
 		this.setVaginaElasticity(OrificeElasticity.FIVE_STRETCHY.getValue());

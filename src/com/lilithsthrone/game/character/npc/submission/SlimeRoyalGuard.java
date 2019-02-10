@@ -211,6 +211,7 @@ public class SlimeRoyalGuard extends NPC {
 		this.setPenisSize(11);
 		this.setPenisCumStorage(CumProduction.FOUR_LARGE.getMedianValue());
 		this.fillCumToMaxStorage();
+		this.setPenisSterile(false);
 		// Leave cum as normal value
 		
 		// Vagina:

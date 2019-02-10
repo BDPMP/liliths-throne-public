@@ -205,12 +205,14 @@ public class Lilaya extends NPC {
 		this.setTesticleSize(TesticleSize.TWO_AVERAGE);
 		this.setPenisCumStorage(65);
 		this.fillCumToMaxStorage();
+		this.setPenisSterile(false);
 		
 		// Vagina:
 		this.setVaginaVirgin(false);
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.THREE_LARGE);
 		this.setVaginaSquirter(false);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.TWO_TIGHT, true);
 		this.setVaginaWetness(Wetness.FOUR_SLIMY);
 		this.setVaginaElasticity(OrificeElasticity.SEVEN_ELASTIC.getValue());

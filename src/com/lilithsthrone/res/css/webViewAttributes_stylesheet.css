@@ -288,12 +288,12 @@ h6{
 	border-radius:5px;
 	-webkit-user-select: none;
 }
-.map-container:after {
+/*.map-container:after {
   content: "";
   display: block;
   padding-bottom: 100%;
 }
-
+*/
 .place-icon{
 	position:absolute;
 	float:left;

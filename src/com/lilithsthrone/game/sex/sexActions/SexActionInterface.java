@@ -1171,6 +1171,7 @@ public interface SexActionInterface {
 		
 		// Add opposite fetishes for partner:
 		List<Fetish> associatedFetishesPartner = new ArrayList<>(type.getOppositeFetishes(characterPerformingAction, characterTarget, this.getActionType().isPenetratingOption(), this.getActionType()==SexActionType.ORGASM));
+
 		
 		if(characterPerformingActionFetishes) {
 			return associatedFetishes;

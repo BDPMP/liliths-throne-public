@@ -201,6 +201,7 @@ public class FortressFemalesLeader extends NPC {
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.TWO_AVERAGE);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.SIX_STRETCHED_OPEN, true);
 		this.setVaginaWetness(Wetness.SEVEN_DROOLING);
 		this.setVaginaElasticity(OrificeElasticity.SEVEN_ELASTIC.getValue());

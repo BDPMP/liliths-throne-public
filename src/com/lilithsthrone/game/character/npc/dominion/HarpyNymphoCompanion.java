@@ -174,6 +174,7 @@ public class HarpyNymphoCompanion extends NPC {
 		this.setPenisCumStorage(40);
 		this.fillCumToMaxStorage();
 		this.setTesticleSize(TesticleSize.TWO_AVERAGE);
+		this.setPenisSterile(false);
 		// Leave cum as normal value
 		
 		// Vagina:

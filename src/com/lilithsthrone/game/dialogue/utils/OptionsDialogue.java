@@ -660,9 +660,15 @@ public class OptionsDialogue {
 								Main.getProperties().difficultyLevel = DifficultyLevel.HARD;
 								break;
 							case HARD:
+								Main.getProperties().difficultyLevel = DifficultyLevel.HARD_SCALING;
+								break;
+							case HARD_SCALING:
 								Main.getProperties().difficultyLevel = DifficultyLevel.NIGHTMARE;
 								break;
 							case NIGHTMARE:
+								Main.getProperties().difficultyLevel = DifficultyLevel.NIGHTMARE_SCALING;
+								break;
+							case NIGHTMARE_SCALING:
 								Main.getProperties().difficultyLevel = DifficultyLevel.HELL;
 								break;
 							case HELL:

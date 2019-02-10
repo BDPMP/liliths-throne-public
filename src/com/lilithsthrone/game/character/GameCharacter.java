@@ -184,7 +184,7 @@ public abstract class GameCharacter implements XMLSaving {
 	public static final String RESTING_LUST_CALCULATION = "Corruption/2";
 
 	public static final int LEVEL_CAP = 50;
-	public static final int MAX_TRAITS = 6;
+	public static final int MAX_TRAITS = 7;
 	
 	
 	// Core variables:
@@ -329,6 +329,7 @@ public abstract class GameCharacter implements XMLSaving {
 	private Set<FluidType> psychoactiveFluidsIngested;
 	private float corruptiveFluidVolume;
 	private Map<SexAreaOrifice, Float> corruptiveFluidVolumeMap;
+
 	
 	
 	// Misc.:
@@ -1200,6 +1201,7 @@ public abstract class GameCharacter implements XMLSaving {
 		boolean noCompanions = Arrays.asList(settings).contains(CharacterImportSetting.NO_COMPANIONS);
 		boolean noElemental = Arrays.asList(settings).contains(CharacterImportSetting.NO_ELEMENTAL);
 		boolean noSlavery = Arrays.asList(settings).contains(CharacterImportSetting.CLEAR_SLAVERY);
+		boolean noId = Arrays.asList(settings).contains(CharacterImportSetting.CLEAR_ID);
 		
 		// ************** Core information **************//
 		
@@ -1207,12 +1209,17 @@ public abstract class GameCharacter implements XMLSaving {
 		Element element = (Element) nodes.item(0);
 
 		String version = getValueFromElementWithTagName(element, "version", "");
-		String loadedCharacterId = getValueFromElementWithTagName(element, "id");
-		if (loadedCharacterId != null) {
-			character.setId(loadedCharacterId);
-			CharacterUtils.appendToImportLog(log, "<br/>Set id: " + character.getId());
+		
+		if (noId) {
+			character.setId("");
+		} else {
+			String loadedCharacterId = getValueFromElementWithTagName(element, "id");
+			if (loadedCharacterId != null) {
+				character.setId(loadedCharacterId);
+				CharacterUtils.appendToImportLog(log, "<br/>Set id: " + character.getId());
+			}
 		}
-
+		
 		// Name:
 		Element nameElement = (Element) element.getElementsByTagName("name").item(0);
 		String nameElementValue = nameElement.getAttribute("value");
@@ -12736,6 +12743,22 @@ public abstract class GameCharacter implements XMLSaving {
 	
 	// Combat:
 
+	public int getCorruptiveFluidsStored() {
+		return corruptiveFluidsStored;
+	}
+
+	public void updateCorruptiveFluidsStored() {
+		int newValue = 0;
+		
+		for (FluidStored fs : this.getAllFluidsStored()) {
+			if (fs.getFluid().getFluidModifiers().contains(FluidModifier.CORRUPTIVE)) {
+				newValue++;
+			}
+		}
+		
+		this.corruptiveFluidsStored = newValue;
+	}
+
 	public boolean isImmuneToDamageType(DamageType type) {
 		return false;
 	}
@@ -13096,7 +13119,8 @@ public abstract class GameCharacter implements XMLSaving {
 		if(hasStatusEffect(StatusEffect.WEATHER_STORM_VULNERABLE)) {
 			return 75;
 		}
-		return (int) Math.round(getAttributeValue(Attribute.MAJOR_CORRUPTION)/2);
+		return (int) Math.round(getAttributeValue(Attribute.MAJOR_CORRUPTION)/2
+				+ (hasTrait(Perk.NYMPHOMANIAC, true) ?25 :0));
 	}
 	
 	public String setLust(float lust) {
@@ -13249,6 +13273,10 @@ public abstract class GameCharacter implements XMLSaving {
 		if(partner instanceof Elemental) {
 			return PregnancyDescriptor.NO_CHANCE.getDescriptor(this, partner)
 					+"<p style='text-align:center;'>[style.italicsMinorBad(Elementals cannot impregnate anyone!)]<br/>[style.italicsDisabled(I will add support for impregnating/being impregnated by elementals soon!)]</p>";
+		}
+
+		if((isVaginaInfertile()&&getBodyMaterial()!=BodyMaterial.SLIME) || partner.isPenisSterile()) {
+			return PregnancyDescriptor.NO_CHANCE.getDescriptor(this, partner);
 		}
 		
 		if(isVisiblyPregnant()) {
@@ -19313,6 +19341,13 @@ public abstract class GameCharacter implements XMLSaving {
 	public void setPenisVirgin(boolean virgin) {
 		getCurrentPenis().setVirgin(virgin);
 	}
+	// Sterility:
+	public boolean isPenisSterile() {
+		return body.getPenis().isSterile();
+	}
+	public String setPenisSterile(boolean sterile) {
+		return body.getPenis().setSterile(this, sterile);
+	}
 	// Names:
 	public String getPenisName() {
 		return getCurrentPenis().getName(this);
@@ -20278,6 +20313,13 @@ public abstract class GameCharacter implements XMLSaving {
 	}
 	public String setVaginaSquirter(boolean squirter) {
 		return body.getVagina().getOrificeVagina().setSquirter(this, squirter);
+	}
+	// Infertile:
+	public boolean isVaginaInfertile() {
+		return body.getVagina().getOrificeVagina().isInfertile();
+	}
+	public String setVaginaInfertile(boolean infertile) {
+		return body.getVagina().getOrificeVagina().setInfertile(this, infertile);
 	}
 	// Modifiers:
 	public Set<OrificeModifier> getVaginaOrificeModifiers() {

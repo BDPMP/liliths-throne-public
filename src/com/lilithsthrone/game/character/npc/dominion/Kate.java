@@ -262,12 +262,14 @@ public class Kate extends NPC {
 		this.setTesticleSize(TesticleSize.THREE_LARGE);
 		this.setPenisCumStorage(150);
 		this.fillCumToMaxStorage();
+		this.setPenisSterile(false);
 		
 		// Vagina:
 		this.setVaginaVirgin(false);
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.TWO_AVERAGE);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.ONE_EXTREMELY_TIGHT, true);
 		this.setVaginaWetness(Wetness.SIX_SOPPING_WET);
 		this.setVaginaElasticity(OrificeElasticity.SEVEN_ELASTIC.getValue());

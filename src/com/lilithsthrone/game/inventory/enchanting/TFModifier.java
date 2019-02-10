@@ -973,6 +973,13 @@ public enum TFModifier {
 			Colour.BASE_AQUA,
 			Rarity.COMMON),
 	
+	TF_MOD_PENIS_STERILE("sterile",
+			"Applies an effect related to making some sterile",
+			"sterility",
+			"modifier_circle_removal",
+			Colour.GENERIC_ARCANE,
+			Rarity.COMMON),
+	
 	// vagina:
 	
 
@@ -981,6 +988,13 @@ public enum TFModifier {
 			"squirting",
 			"modifier_circle_squirter",
 			Colour.BASE_AQUA,
+			Rarity.COMMON),
+	
+	TF_MOD_VAGINA_INFERTILE("infertile",
+			"Applies an effect related to making someone infertile.",
+			"infertility",
+			"modifier_circle_removal",
+			Colour.GENERIC_ARCANE,
 			Rarity.COMMON),
 	
 	// fluid modifiers:
@@ -1186,6 +1200,9 @@ public enum TFModifier {
 	TF_MOD_FETISH_BIMBO(Fetish.FETISH_BIMBO),
 	TF_MOD_FETISH_KINK_GIVING(Fetish.FETISH_KINK_GIVING),
 	TF_MOD_FETISH_KINK_RECEIVING(Fetish.FETISH_KINK_RECEIVING),
+	
+	TF_MOD_FETISH_GENTLE(Fetish.FETISH_GENTLE),
+	TF_MOD_FETISH_EAGER(Fetish.FETISH_EAGER)
 	;
 
 	private static List<TFModifier> TFModStrengthList = new ArrayList<>();
@@ -1309,6 +1326,9 @@ public enum TFModifier {
 		TFBehaviouralFetishList.add(TF_MOD_FETISH_INCEST);
 		TFBehaviouralFetishList.add(TF_MOD_FETISH_KINK_GIVING);
 		TFBehaviouralFetishList.add(TF_MOD_FETISH_KINK_RECEIVING);
+		
+		TFBehaviouralFetishList.add(TF_MOD_FETISH_GENTLE);
+		TFBehaviouralFetishList.add(TF_MOD_FETISH_EAGER);
 
 		clothingPrimaryList.add(TFModifier.CLOTHING_MAJOR_ATTRIBUTE);
 		clothingPrimaryList.add(TFModifier.CLOTHING_ATTRIBUTE);

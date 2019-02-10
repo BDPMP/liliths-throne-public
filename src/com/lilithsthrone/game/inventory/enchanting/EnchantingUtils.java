@@ -8,7 +8,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import com.lilithsthrone.game.character.effects.Perk;
-import com.lilithsthrone.game.character.fetishes.Fetish;
 import com.lilithsthrone.game.character.markings.AbstractTattooType;
 import com.lilithsthrone.game.character.markings.Tattoo;
 import com.lilithsthrone.game.combat.SpellSchool;
@@ -176,10 +175,13 @@ public class EnchantingUtils {
 	}
 	
 	private static int applyDiscountsForPerksAndFetishes(AbstractCoreItem ingredient, int cost) {
-		if(Main.game.getPlayer().hasFetish(Fetish.FETISH_TRANSFORMATION_GIVING) && ingredient instanceof AbstractItem) {
+		if(Main.game.getPlayer().hasPerkAnywhereInTree(Perk.POTION_ENCHANTER) && ingredient instanceof AbstractItem) {
 			cost/=2;
 		}
 		if(Main.game.getPlayer().hasPerkAnywhereInTree(Perk.CLOTHING_ENCHANTER) && ingredient instanceof AbstractClothing) {
+			cost/=2;
+		}
+		if(Main.game.getPlayer().hasPerkAnywhereInTree(Perk.WEAPON_ENCHANTER) && ingredient instanceof AbstractWeapon) {
 			cost/=2;
 		}
 		return cost;

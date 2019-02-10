@@ -271,12 +271,14 @@ public class Vicky extends NPC {
 		this.setTesticleSize(TesticleSize.THREE_LARGE);
 		this.setPenisCumStorage(65);
 		this.fillCumToMaxStorage();
+		this.setPenisSterile(false);
 		
 		// Vagina:
 		this.setVaginaVirgin(false);
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.THREE_LARGE);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.FIVE_ROOMY, true);
 		this.setVaginaWetness(Wetness.THREE_WET);
 		this.setVaginaElasticity(OrificeElasticity.THREE_FLEXIBLE.getValue());

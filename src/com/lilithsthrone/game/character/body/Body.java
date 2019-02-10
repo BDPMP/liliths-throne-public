@@ -674,6 +674,7 @@ public class Body implements XMLSaving {
 			CharacterUtils.addAttribute(doc, bodyPenis, "girth", String.valueOf(this.penis.girth));
 			CharacterUtils.addAttribute(doc, bodyPenis, "pierced", String.valueOf(this.penis.pierced));
 			CharacterUtils.addAttribute(doc, bodyPenis, "virgin", String.valueOf(this.penis.virgin));
+			CharacterUtils.addAttribute(doc, bodyPenis, "sterile", String.valueOf(this.penis.sterile));
 			Element penisModifiers = doc.createElement("penisModifiers");
 			bodyPenis.appendChild(penisModifiers);
 			for(PenetrationModifier pm : PenetrationModifier.values()) {
@@ -741,6 +742,7 @@ public class Body implements XMLSaving {
 			CharacterUtils.addAttribute(doc, bodyVagina, "stretchedCapacity", String.valueOf(this.vagina.orificeVagina.stretchedCapacity));
 			CharacterUtils.addAttribute(doc, bodyVagina, "virgin", String.valueOf(this.vagina.orificeVagina.virgin));
 			CharacterUtils.addAttribute(doc, bodyVagina, "squirter", String.valueOf(this.vagina.orificeVagina.squirter));
+			CharacterUtils.addAttribute(doc, bodyVagina, "infertile", String.valueOf(this.vagina.orificeVagina.infertile));
 			Element vaginaModifiers = doc.createElement("vaginaModifiers");
 			bodyVagina.appendChild(vaginaModifiers);
 			for(OrificeModifier om : OrificeModifier.values()) {
@@ -1231,6 +1233,9 @@ public class Body implements XMLSaving {
 		
 		importedPenis.pierced = (Boolean.valueOf(penis.getAttribute("pierced")));
 		
+		importedPenis.sterile = (Boolean.valueOf(penis.getAttribute("sterile")));
+		
+		
 		if(!penis.getAttribute("virgin").isEmpty()) {
 			importedPenis.virgin = (Boolean.valueOf(penis.getAttribute("virgin")));
 		}
@@ -1239,6 +1244,7 @@ public class Body implements XMLSaving {
 				+ "<br/>type: "+importedPenis.getType()
 				+ "<br/>size: "+importedPenis.getRawSizeValue()
 				+ "<br/>pierced: "+importedPenis.isPierced()
+				+ "<br/>sterile: "+importedPenis.isSterile()
 				+ "<br/>Penis Modifiers: ");
 		
 		Collection<PenetrationModifier> penisModifiers = importedPenis.penisModifiers;
@@ -1391,6 +1397,11 @@ public class Body implements XMLSaving {
 		} catch(Exception ex) {
 		}
 		
+		try {
+			importedVagina.orificeVagina.infertile = (Boolean.valueOf(vagina.getAttribute("infertile")));
+		} catch(Exception ex) {
+		}
+		
 		CharacterUtils.appendToImportLog(log, "<br/><br/>Body: Vagina: "
 				+ "<br/>type: "+importedVagina.getType()
 				+ "<br/>clitSize: "+importedVagina.clitoris.getClitorisSize()
@@ -1401,7 +1412,8 @@ public class Body implements XMLSaving {
 				+ "<br/>plasticity: "+importedVagina.orificeVagina.getPlasticity()
 				+ "<br/>capacity: "+importedVagina.orificeVagina.getCapacity()
 				+ "<br/>stretchedCapacity: "+importedVagina.orificeVagina.getStretchedCapacity()
-				+ "<br/>virgin: "+importedVagina.orificeVagina.isVirgin());
+				+ "<br/>virgin: "+importedVagina.orificeVagina.isVirgin()
+				+ "<br/>infertile: "+importedVagina.orificeVagina.isInfertile());
 		
 		Element vaginaModifiers = (Element)vagina.getElementsByTagName("vaginaModifiers").item(0);
 		
@@ -5064,6 +5076,15 @@ public class Body implements XMLSaving {
 				descriptionSB.append(" You are a [style.colourArcane(squirter)], and [style.colourWetness(produce a considerable amount of female ejaculate)] each time you orgasm.");
 			} else {
 				descriptionSB.append(" [npc.She] is a [style.colourArcane(squirter)], and [style.colourWetness(produces a considerable amount of female ejaculate)] each time [npc.she] orgasms.");
+			}
+		}
+		
+		// Infertility
+		if(viewedVagina.getOrificeVagina().isSquirter()) {
+			if (isPlayer) {
+				descriptionSB.append(" Your vagina is completely [style.colourArcane(infertile)], and does not even have the risk of getting pregnant.");
+			} else {
+				descriptionSB.append(" [npc.Her] vagina is completely [style.colourArcane(infertile)], and does not even have the risk of getting pregnant.");
 			}
 		}
 		

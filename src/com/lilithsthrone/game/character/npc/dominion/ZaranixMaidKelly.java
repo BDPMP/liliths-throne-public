@@ -197,12 +197,14 @@ public class ZaranixMaidKelly extends NPC {
 		this.setTesticleSize(TesticleSize.TWO_AVERAGE);
 		this.setPenisCumStorage(100);
 		this.fillCumToMaxStorage();
+		this.setPenisSterile(false);
 		
 		// Vagina:
 		this.setVaginaVirgin(false);
 		this.setVaginaClitorisSize(ClitorisSize.ZERO_AVERAGE);
 		this.setVaginaLabiaSize(LabiaSize.TWO_AVERAGE);
 		this.setVaginaSquirter(true);
+		this.setVaginaInfertile(false);
 		this.setVaginaCapacity(Capacity.TWO_TIGHT, true);
 		this.setVaginaWetness(Wetness.FOUR_SLIMY);
 		this.setVaginaElasticity(OrificeElasticity.SEVEN_ELASTIC.getValue());

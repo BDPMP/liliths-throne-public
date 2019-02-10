@@ -85,10 +85,17 @@ public class Cultist extends NPC {
 			
 			// BODY RANDOMISATION:
 			this.addFetish(Fetish.FETISH_ORAL_RECEIVING);
-			this.addFetish(Fetish.FETISH_ORAL_GIVING);
 			this.addFetish(Fetish.FETISH_ANAL_GIVING);
 			this.addFetish(Fetish.FETISH_VAGINAL_GIVING);
 			this.addFetish(Fetish.FETISH_IMPREGNATION);
+			this.addFetish(Fetish.FETISH_CUM_STUD);
+			if (Math.random() > 0.75f) {
+				this.addFetish(Fetish.FETISH_PENIS_GIVING);
+			}
+			if (Math.random() > 0.5f) {
+				this.addFetish(Fetish.FETISH_ORAL_GIVING);
+			}
+ 
 			CharacterUtils.addFetishes(this);
 			if(this.getFetishDesire(Fetish.FETISH_NON_CON_DOM)==FetishDesire.ONE_DISLIKE || this.getFetishDesire(Fetish.FETISH_NON_CON_DOM)==FetishDesire.ZERO_HATE) {
 				this.setFetishDesire(Fetish.FETISH_NON_CON_DOM, FetishDesire.TWO_NEUTRAL);

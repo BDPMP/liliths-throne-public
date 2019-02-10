@@ -159,6 +159,7 @@ public class SupplierPartner extends NPC {
 		this.setTesticleSize(TesticleSize.TWO_AVERAGE);
 		this.setPenisCumStorage(65);
 		this.fillCumToMaxStorage();
+		this.setPenisSterile(false);
 		// Leave cum as normal value
 		
 		// Vagina:

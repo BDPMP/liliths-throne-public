@@ -196,6 +196,7 @@ public class SlimeGuardFire extends NPC {
 		this.setPenisGirth(PenisGirth.THREE_THICK);
 		this.setPenisSize(9);
 		this.setTesticleSize(TesticleSize.TWO_AVERAGE);
+		this.setPenisSterile(false);
 		// Leave cum as normal value
 		
 		// Vagina:

@@ -806,7 +806,7 @@ public enum Fetish {
 			Colour.GENERIC_ARCANE,
 			null,
 			Util.newArrayListOfValues(
-					"<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Halves cost of all potion making</span>"),
+					"<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Enjoy transforming others!</span>"),
 			null) {
 		
 		@Override
@@ -1335,6 +1335,73 @@ public enum Fetish {
 		}
 	},
 	
+	// Added fetishes:
+
+	FETISH_GENTLE(60,
+			"gentle giant",
+			"being gentle",
+			"fetish_gentle",
+			FetishExperience.BASE_EXPERIENCE_GAIN,
+			Colour.GENERIC_ARCANE,
+			null,
+			Util.newArrayListOfValues(
+					"<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Increases</span> <span style='color:"+ Colour.GENERIC_SEX.toWebHexString()+ ";'>arousal gain when you are gentle in sex</span>"),
+			null) {
+
+		@Override
+		public String getDescription(GameCharacter owner) {
+			if (owner.isPlayer()) {
+				return "You absolutely love to be gentle and careful with your partners.";
+				
+			} else {
+				return UtilText.parse(owner, "[npc.Name] has a fetish for being gentle in dominant encounters. [npc.herHim] can't help but be gentle whenever they're in a dominant position.");
+			}
+		}
+
+		@Override
+		public String getFetishDesireDescription(GameCharacter target, FetishDesire desire) {
+			return getGenericFetishDesireDescription(target, desire, "being gentle in dominant actions");
+		}
+		
+		@Override
+		public CorruptionLevel getAssociatedCorruptionLevel() {
+			return CorruptionLevel.ONE_VANILLA;
+		}
+	},
+
+	
+	FETISH_EAGER(60,
+			"eager slut",
+			"being eager",
+			"fetish_eager",
+			FetishExperience.BASE_EXPERIENCE_GAIN,
+			Colour.GENERIC_ARCANE,
+			null,
+			Util.newArrayListOfValues(
+					"<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Increases</span> <span style='color:"+ Colour.GENERIC_SEX.toWebHexString()+ ";'>arousal gain when you are eager in sex</span>"),
+			null) {
+
+		@Override
+		public String getDescription(GameCharacter owner) {
+			if (owner.isPlayer()) {
+				return "You love to show your partners how enthusiastic you are.";
+				
+			} else {
+				return UtilText.parse(owner, "[npc.Name] has a fetish for being eager in submissive encounters. Showing how much they want it turns [npc.herHim] on like nothing else.");
+			}
+		}
+
+		@Override
+		public String getFetishDesireDescription(GameCharacter target, FetishDesire desire) {
+			return getGenericFetishDesireDescription(target, desire, "being eager in submissive actions");
+		}
+		
+		@Override
+		public CorruptionLevel getAssociatedCorruptionLevel() {
+			return CorruptionLevel.THREE_DIRTY;
+		}
+	},
+	
 	// Derived fetishes:
 	
 	FETISH_SWITCH(60,
@@ -1471,7 +1538,44 @@ public enum Fetish {
 		public CorruptionLevel getAssociatedCorruptionLevel() {
 			return CorruptionLevel.TWO_HORNY;
 		}
-	};
+	},
+
+	// added
+	FETISH_EAGER_FUCK_TOY(60,
+			"eager fuck toy",
+			"eagerly accepting everything",
+			"fetish_eager_fuck_toy",
+			FetishExperience.BASE_EXPERIENCE_GAIN,
+			Colour.GENERIC_ARCANE,
+			null,
+			Util.newArrayListOfValues(
+					"<span style='color:"+ Colour.GENERIC_GOOD.toWebHexString()+ ";'>Increases</span> <span style='color:"+ Colour.GENERIC_SEX.toWebHexString()+ ";'>arousal gain when you are eager in sex</span>"),
+			Util.newArrayListOfValues(
+					Fetish.FETISH_EAGER,
+					Fetish.FETISH_NON_CON_SUB)) {
+
+		@Override
+		public String getDescription(GameCharacter owner) {
+			if (owner.isPlayer()) {
+				return "You absolutely love to respond to all sexual actions eagerly, no matter how you would normally feel about them.";
+				
+			} else {
+				return UtilText.parse(owner, "[npc.Name] has a fetish for being eager in submissive and even non-consenting encounters. Enthusiastically accepting anything and everything done to them turns [npc.herHim] on like nothing else.");
+			}
+		}
+
+		@Override
+		public String getFetishDesireDescription(GameCharacter target, FetishDesire desire) {
+			return getGenericFetishDesireDescription(target, desire, "being eager in submissive and non-consexual actions");
+		}
+		
+		@Override
+		public CorruptionLevel getAssociatedCorruptionLevel() {
+			return CorruptionLevel.FIVE_CORRUPT;
+		}
+	},
+
+	;
 	
 	private int renderingPriority;
 	protected String name;

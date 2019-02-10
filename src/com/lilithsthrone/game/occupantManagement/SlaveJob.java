@@ -125,7 +125,9 @@ public enum SlaveJob {
 			PlaceType.SLAVER_ALLEY_PUBLIC_STOCKS) {
 		@Override
 		public float getAffectionGain(GameCharacter slave) {
-			if(slave.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
+			if(slave.hasFetish(Fetish.FETISH_EAGER_FUCK_TOY)) {
+				return 2f;
+			} else if (slave.hasFetish(Fetish.FETISH_NON_CON_SUB)) {
 				return 1f;
 			} else {
 				return -5f;
@@ -148,7 +150,9 @@ public enum SlaveJob {
 		
 		@Override
 		public float getAffectionGain(GameCharacter slave) {
-			if(slave.hasFetish(Fetish.FETISH_CUM_ADDICT)) {
+			if(slave.hasFetish(Fetish.FETISH_EAGER_FUCK_TOY)) {
+				return 1.5f;
+			} else if(slave.hasFetish(Fetish.FETISH_CUM_ADDICT)) {
 				return 1f;
 			} else {
 				return -0.25f;
@@ -208,6 +212,8 @@ public enum SlaveJob {
 		public float getAffectionGain(GameCharacter slave) {
 			if(slave.hasFetish(Fetish.FETISH_LACTATION_SELF)) {
 				return 2f;
+			} else if(slave.hasFetish(Fetish.FETISH_EAGER_FUCK_TOY)) {
+				return 0.75f;
 			} else {
 				return -0.25f;
 			}
