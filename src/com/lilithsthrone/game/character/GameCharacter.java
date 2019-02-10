@@ -327,8 +327,8 @@ public abstract class GameCharacter implements XMLSaving {
 	private float alcoholLevel = 0f;
 	private List<Addiction> addictions;
 	private Set<FluidType> psychoactiveFluidsIngested;
-	private int corruptiveFluidVolume;
-	private Map<SexAreaOrifice, Integer> corruptiveFluidVolumeMap;
+	private float corruptiveFluidVolume;
+	private Map<SexAreaOrifice, Float> corruptiveFluidVolumeMap;
 	
 	
 	// Misc.:
@@ -12703,12 +12703,12 @@ public abstract class GameCharacter implements XMLSaving {
 		return false;
 	}
 
-	public int getCorruptiveFluidVolumeTotal() {
+	public float getCorruptiveFluidVolumeTotal() {
 		return corruptiveFluidVolume;
 	}
 
 	public void updateCorruptiveFluidVolumes() {
-		this.corruptiveFluidVolume = 0;
+		this.corruptiveFluidVolume = 0f;
 		
 		for (FluidStored fs : this.getAllFluidsStored()) {
 			if (fs.getFluid().getFluidModifiers().contains(FluidModifier.CORRUPTIVE)) {
@@ -12717,7 +12717,7 @@ public abstract class GameCharacter implements XMLSaving {
 		}
 
 		for (SexAreaOrifice area : SexAreaOrifice.values()) {
-			int runningTotal = 0;
+			float runningTotal = 0f;
 			
 			for (FluidStored fs : getFluidsStoredInOrifice(area)) {
 				runningTotal += (fs.getFluid().getFluidModifiers().contains(FluidModifier.CORRUPTIVE)?fs.getMillilitres():0);
@@ -12727,8 +12727,8 @@ public abstract class GameCharacter implements XMLSaving {
 		}
 	}
 	
-	public int getCorruptiveFluidVolumeInArea (SexAreaOrifice area) {
-		this.corruptiveFluidVolumeMap.putIfAbsent(area, 0);
+	public float getCorruptiveFluidVolumeInArea (SexAreaOrifice area) {
+		this.corruptiveFluidVolumeMap.putIfAbsent(area, 0f);
 		
 		return corruptiveFluidVolumeMap.get(area);
 	}

@@ -4724,7 +4724,7 @@ public enum StatusEffect {
 		@Override
 		public String applyEffect(GameCharacter target, int secondsPassed) {
 			float totalCorruptionToAdd = 0f;
-			Map<SexAreaOrifice, Integer> oldCorruptiveFluidsMap = new HashMap<>();
+			Map<SexAreaOrifice, Float> oldCorruptiveFluidsMap = new HashMap<>();
 			for(SexAreaOrifice area : SexAreaOrifice.values()) {
 				oldCorruptiveFluidsMap.put(area, target.getCorruptiveFluidVolumeInArea(area));
 			}
@@ -4733,8 +4733,8 @@ public enum StatusEffect {
 			
 			for(SexAreaOrifice area : SexAreaOrifice.values()) {
 				totalCorruptionToAdd += (oldCorruptiveFluidsMap.get(area) - target.getCorruptiveFluidVolumeInArea(area))
-						* area.getCumAbsorptionPerMinute()
-						/ area.getCharactersCumLossPerMinute(target)
+						* area.getCumAbsorptionPerSecond()
+						/ area.getCharactersCumLossPerSecond(target)
 						* 0.01f;
 			}
 			
