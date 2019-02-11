@@ -2060,7 +2060,12 @@
 	
 	<htmlContent tag="WATERING_HOLE_DOM_PARTNER_ACCEPT_RUM"><![CDATA[
 	<p>
+	#IF npc.isVigilant()
+	#THEN
+		You wait by [npc.namePos] side as [npc.she] orders you a glass of Rum, and after just a moment, the barmaid places the beverage down on the counter in front of you. Paying for your drink, [npc.name] turns towards you and grins. [npc.speech(Drink it down, [pc.babe]! And you'd better be grateful. This stuff ain't cheap!)]	
+	#ELSE
 		You wait by [npc.namePos] side as [npc.she] orders two glasses of Rum, and after just a moment, the barmaid places the beverages down on the counter in front of you. Paying for your drinks, [npc.name] turns towards you and grins. [npc.speech(Drink it down, [pc.babe]! And you'd better be grateful. This stuff ain't cheap!)]
+	#ENDIF
 	</p>
 	<p>
 		Doing as you're told, you quickly empty the glass of Rum, before smiling at [npc.name] as [npc.she] compliments you on the speed at which you gulped it down. Almost immediately, you start to feel the potent effects of the strong alcohol, and, leaning in against your partner, you let out a flirtatious laugh as you feel [npc.herHim] reach around to squeeze your [pc.ass+].

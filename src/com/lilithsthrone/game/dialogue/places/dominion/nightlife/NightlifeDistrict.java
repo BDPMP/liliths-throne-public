@@ -4397,7 +4397,9 @@ public static final DialogueNode WATERING_HOLE_IMPORT = new DialogueNode("The Wa
 									public void effects() {
 										Main.game.getTextStartStringBuilder().append(UtilText.parseFromXMLFile("places/dominion/nightlife/theWateringHole", "WATERING_HOLE_DOM_PARTNER_ACCEPT_RUM", getClubbersPresent()));
 										Main.game.getTextStartStringBuilder().append(ItemType.STR_INGREDIENT_BLACK_RATS_RUM.getEffects().get(0).applyEffect(Main.game.getPlayer(), Main.game.getPlayer(), 1));
-										Main.game.getTextStartStringBuilder().append(ItemType.STR_INGREDIENT_BLACK_RATS_RUM.getEffects().get(0).applyEffect(getPartner(), getPartner(), 1));
+										if (!getPartner().isVigilant()) {
+											Main.game.getTextStartStringBuilder().append(ItemType.STR_INGREDIENT_BLACK_RATS_RUM.getEffects().get(0).applyEffect(getPartner(), getPartner(), 1));
+										}
 										Main.game.getTextEndStringBuilder().append(getPartner().incrementAffection(Main.game.getPlayer(), 15));
 									}
 								};
