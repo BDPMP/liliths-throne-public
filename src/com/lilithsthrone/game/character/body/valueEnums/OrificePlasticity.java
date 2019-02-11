@@ -111,7 +111,7 @@ public enum OrificePlasticity {
 	}
 
 	public float getRecoveryModifier() {
-		return recoveryModifier;
+		return -recoveryModifier;
 	}
 	
 	public float getCapacityIncreaseModifier() {
