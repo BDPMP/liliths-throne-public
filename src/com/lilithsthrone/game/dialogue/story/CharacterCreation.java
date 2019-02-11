@@ -15,6 +15,9 @@ import com.lilithsthrone.game.character.body.valueEnums.BreastShape;
 import com.lilithsthrone.game.character.body.valueEnums.Femininity;
 import com.lilithsthrone.game.character.body.valueEnums.LabiaSize;
 import com.lilithsthrone.game.character.body.valueEnums.PiercingType;
+import com.lilithsthrone.game.character.fetishes.Fetish;
+import com.lilithsthrone.game.character.fetishes.FetishDesire;
+import com.lilithsthrone.game.character.fetishes.FetishLevel;
 import com.lilithsthrone.game.character.gender.Gender;
 import com.lilithsthrone.game.character.markings.TattooCounterType;
 import com.lilithsthrone.game.character.markings.TattooType;
@@ -61,10 +64,6 @@ import com.lilithsthrone.utils.Colour;
 import com.lilithsthrone.utils.Util;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
-
-import com.lilithsthrone.game.character.fetishes.Fetish;
-import com.lilithsthrone.game.character.fetishes.FetishDesire;
-import com.lilithsthrone.game.character.fetishes.FetishLevel;
 
 /**
  * @since 0.1.0
@@ -614,11 +613,8 @@ public class CharacterCreation {
 		@Override
 		public Response getResponse(int responseTab, int index) {
 			if (index == 1) {
-        
-				ambiphilicFemalePrologueNPC = (Math.random() < 0.5)?true:false;
-				
-				return new Response("Continue", "Wait your turn, and hope that the event hasn't started yet.", CHOOSE_NAME);
-        @Override
+				return new Response("Continue", "Wait your turn, and hope that the event hasn't started yet.", CHOOSE_NAME) {
+					@Override
 					public int getSecondsPassed() {
 						return TIME_TO_NAME;
 					}
@@ -1374,10 +1370,11 @@ public class CharacterCreation {
 	}
 	
 	public static void moveNPCIntoPlayerTile() {
-		if(femalePrologueNPC()){
-			Main.game.getNpc(PrologueFemale.class).setLocation(Main.game.getPlayer().getWorldLocation(), Main.game.getPlayer().getLocation(), false);
-		} else {
+		if(Main.game.getPlayer().getSexualOrientation()==SexualOrientation.ANDROPHILIC || (Main.game.getPlayer().getSexualOrientation()==SexualOrientation.AMBIPHILIC && Main.game.getPlayer().hasVagina())) {
 			Main.game.getNpc(PrologueMale.class).setLocation(Main.game.getPlayer().getWorldLocation(), Main.game.getPlayer().getLocation(), false);
+			
+		} else {
+			Main.game.getNpc(PrologueFemale.class).setLocation(Main.game.getPlayer().getWorldLocation(), Main.game.getPlayer().getLocation(), false);
 		}
 	}
 	
@@ -1386,9 +1383,8 @@ public class CharacterCreation {
 		Main.game.getNpc(PrologueFemale.class).setLocation(WorldType.EMPTY, PlaceType.GENERIC_EMPTY_TILE, false);
 	}
 	
-	private static boolean ambiphilicFemalePrologueNPC;
 	public static boolean femalePrologueNPC() {
-		return Main.game.getPlayer().getSexualOrientation()==SexualOrientation.GYNEPHILIC || (Main.game.getPlayer().getSexualOrientation()==SexualOrientation.AMBIPHILIC && ambiphilicFemalePrologueNPC);
+		return Main.game.getPlayer().getSexualOrientation()==SexualOrientation.GYNEPHILIC || (Main.game.getPlayer().getSexualOrientation()==SexualOrientation.AMBIPHILIC && Main.game.getPlayer().hasPenis());
 	}
 	
 	public static final DialogueNode CHOOSE_BACKGROUND = new DialogueNode("In the Museum", "-", true) {
@@ -1716,7 +1712,7 @@ public class CharacterCreation {
 		@Override
 		public Response getResponse(int responseTab, int index) {
 			if (index == 1) {
-				return new Response("Continue", "Once you're happy with your sexual experience, proceed to the next part of the character creation.", CHOOSE_FETISHES) {
+				return new Response("Continue", "Once you're happy with your sexual experience, proceed to the final part of the character creation.", CHOOSE_FETISHES) {
 					@Override
 					public int getSecondsPassed() {
 						return TIME_TO_FINAL_CHECK;
@@ -1853,7 +1849,12 @@ public class CharacterCreation {
 			if (index == 1) {
 				return new Response("Continue", "Once you're happy with your fetishes, proceed to the next part of the character creation.", FINAL_CHECK);
 			} else if (index == 0) {
-				return new Response("Back", "Return to sexual experience selection", CHOOSE_SEX_EXPERIENCE);
+				return new Response("Back", "Return to sexual experience selection", CHOOSE_SEX_EXPERIENCE) {
+					@Override
+					public int getSecondsPassed() {
+						return -TIME_TO_FINAL_CHECK;
+					}
+				};
 			} else {
 				return null;
 			}
@@ -1945,11 +1946,7 @@ public class CharacterCreation {
 				};
 				
 			} else if (index == 0) {
-				return new Response("Back", "Return to background selection.", CHOOSE_SEX_EXPERIENCE){
-					@Override
-					public int getSecondsPassed() {
-						return -TIME_TO_FINAL_CHECK;
-					}
+				return new Response("Back", "Return to background selection.", CHOOSE_FETISHES){
 					@Override
 					public void effects() {
 						// Remove attribute gain sentences in the start game screen:
@@ -2114,6 +2111,7 @@ public class CharacterCreation {
 		}
 	};
 	
+
 	
 	private static String getFetishEntry(Fetish othersFetish, Fetish selfFetish) {
 		return "<div class='container-full-width' style='background:transparent; margin:2px 0; width:100%;'>"

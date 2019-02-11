@@ -1100,7 +1100,7 @@ public class NightlifeDistrict {
 public static final DialogueNode WATERING_HOLE_IMPORT = new DialogueNode("The Watering Hole", "", true) {
 		
 		@Override
-		public int getMinutesPassed(){
+		public int getSecondsPassed(){
 			return 0;
 		}
 

@@ -389,6 +389,14 @@ public class SexType implements XMLSaving {
 				case FETISH_FOOT_RECEIVING:
 					oppositeFetishes.add(Fetish.FETISH_FOOT_GIVING);
 					break;
+				case FETISH_EAGER:
+					break;
+				case FETISH_EAGER_FUCK_TOY:
+					break;
+				case FETISH_GENTLE:
+					break;
+				default:
+					break;
 			}
 		}
 		return oppositeFetishes;

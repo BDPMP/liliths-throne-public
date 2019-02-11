@@ -12743,22 +12743,6 @@ public abstract class GameCharacter implements XMLSaving {
 	
 	// Combat:
 
-	public int getCorruptiveFluidsStored() {
-		return corruptiveFluidsStored;
-	}
-
-	public void updateCorruptiveFluidsStored() {
-		int newValue = 0;
-		
-		for (FluidStored fs : this.getAllFluidsStored()) {
-			if (fs.getFluid().getFluidModifiers().contains(FluidModifier.CORRUPTIVE)) {
-				newValue++;
-			}
-		}
-		
-		this.corruptiveFluidsStored = newValue;
-	}
-
 	public boolean isImmuneToDamageType(DamageType type) {
 		return false;
 	}
