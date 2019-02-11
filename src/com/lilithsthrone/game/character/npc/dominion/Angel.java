@@ -225,10 +225,6 @@ public class Angel extends NPC {
 	}
 	
 	@Override
-	public void dailyReset() {
-	}
-	
-	@Override
 	public void changeFurryLevel(){
 	}
 	

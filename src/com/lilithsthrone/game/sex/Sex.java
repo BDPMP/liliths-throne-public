@@ -1780,6 +1780,7 @@ public class Sex {
 				availableSexActionsPartner.addAll(normalPriority);
 
 			} else if(!lowPriority.isEmpty()) {
+				System.out.println("low priority added");
 				availableSexActionsPartner.addAll(lowPriority);
 			}
 			
@@ -3123,7 +3124,7 @@ public class Sex {
 	
 	public static void setTargetedPartner(GameCharacter targeter, GameCharacter targetedCharacter) {
 		if(Sex.getSexPositionSlot(targetedCharacter)==SexSlotBipeds.MISC_WATCHING) {
-			System.err.println("Sex error: "+targeter.getName()+" attempted to target the spectator: "+targetedCharacter.getName());
+			System.err.println("Sex error: "+targeter.getName(true)+" attempted to target the spectator: "+targetedCharacter.getName(true));
 			return; // Cannot target spectators.
 		}
 		targetedCharacters.put(targeter, targetedCharacter);
@@ -3139,7 +3140,7 @@ public class Sex {
 			return; // Cannot target spectators.
 		}
 		if(!Sex.getDominantParticipants().keySet().contains(character) && !Sex.getSubmissiveParticipants().keySet().contains(character)) {
-			throw new IllegalArgumentException("This character ("+character.getName()+") is not in the sex scene!");
+			throw new IllegalArgumentException("This character ("+character.getName(true)+") is not in the sex scene!");
 		}
 		activePartner = character;
 	}
@@ -3643,11 +3644,11 @@ public class Sex {
 				?-1
 				:(sexManager.getDominants().containsKey(p1)
 					?sexManager.getDominants().containsKey(p2)
-						?p1.getName().compareTo(p2.getName())
+						?p1.getName(true).compareTo(p2.getName(true))
 						:-1
 					:sexManager.getDominants().containsKey(p2)
 						?1
-						:p1.getName().compareTo(p2.getName())));
+						:p1.getName(true).compareTo(p2.getName(true))));
 		
 		Sex.dominants = new LinkedHashMap<>();
 		for(GameCharacter character : tempCharacterList) {
@@ -3673,11 +3674,11 @@ public class Sex {
 				?-1
 				:(sexManager.getDominants().containsKey(p1)
 					?sexManager.getDominants().containsKey(p2)
-						?p1.getName().compareTo(p2.getName())
+						?p1.getName(true).compareTo(p2.getName(true))
 						:-1
 					:sexManager.getDominants().containsKey(p2)
 						?1
-						:p1.getName().compareTo(p2.getName())));
+						:p1.getName(true).compareTo(p2.getName(true))));
 		
 		Sex.submissives = new LinkedHashMap<>();
 		for(GameCharacter character : tempCharacterList) {
@@ -4008,7 +4009,7 @@ public class Sex {
 			return Sex.submissives.get(character);
 		}
 		
-		throw new IllegalArgumentException("The passed character: "+character.getName()+" in Sex.getSexPositionSlot(character) is not detected as a participant in this Sex scene!");
+		throw new IllegalArgumentException("The passed character: "+character.getName(true)+" in Sex.getSexPositionSlot(character) is not detected as a participant in this Sex scene!");
 	}
 	
 	public static void swapSexPositionSlots(GameCharacter character1, GameCharacter character2) {
