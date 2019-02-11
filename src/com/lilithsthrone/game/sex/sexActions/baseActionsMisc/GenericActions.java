@@ -8,6 +8,7 @@ import com.lilithsthrone.game.character.attributes.LustLevel;
 import com.lilithsthrone.game.character.body.CoverableArea;
 import com.lilithsthrone.game.character.body.types.PenisType;
 import com.lilithsthrone.game.character.body.valueEnums.CumProduction;
+import com.lilithsthrone.game.character.body.valueEnums.FluidModifier;
 import com.lilithsthrone.game.character.body.valueEnums.PenisGirth;
 import com.lilithsthrone.game.character.body.valueEnums.TesticleSize;
 import com.lilithsthrone.game.character.fetishes.Fetish;
@@ -129,6 +130,9 @@ public class GenericActions {
 			Sex.getActivePartner().setPenisType(PenisType.DEMON_COMMON);
 			Sex.getActivePartner().setPenisCumStorage(150);
 			Sex.getActivePartner().fillCumToMaxStorage();
+			if (!Sex.getActivePartner().hasCumModifier(FluidModifier.CORRUPTIVE)) {
+				Sex.getActivePartner().addCumModifier(FluidModifier.CORRUPTIVE);				
+			}
 			if(Sex.getActivePartner().hasVagina()) {
 				Sex.getActivePartner().setTesticleSize(TesticleSize.ZERO_VESTIGIAL);
 			} else {
