@@ -185,7 +185,7 @@ public class Arthur extends NPC {
 		this.setPenisVirgin(false);
 		this.setPenisSterile(false);
 		this.setPenisGirth(PenisGirth.TWO_AVERAGE);
-		this.setPenisSize(6);
+		this.setPenisSize(15);
 		this.setTesticleSize(TesticleSize.TWO_AVERAGE);
 		// Leave cum as normal value
 		

@@ -121,38 +121,74 @@
 	
 		
 	
+	
+	
 	Patch notes:
 	
 	Gameplay:
-		There is now a small chance for unidentified clothing to have a stronger sealing enchantment. (Chances for unidentified clothing are now: 50% it's a good item, 30% it's bad with a 5 essence removal cost, 12% bad with 25 cost, 6% bad with 100 cost, and 2% bad with 500 cost.)
-		When crotch-boobs are set to 'off' in the content settings, you will no longer see the crotch boob button in the self-TF menu, nor 'crotch-boob' or 'crotch-boob milk' TF modifiers in the enchantment menu when enchanting a food item.
-		Added 'remove' secondary modifier to crotch-boob transformation potions.
-		
+		You can no longer enslave demons found in dark alleyways. (This was meant to have been implemented alongside references in the lore to demons being almost never enslaved, but I didn't have time to add it until now.)
+	
+	Contributors:
+		Fixed issues with the game's rendering, both in the main menu, and in the inventory, which some people were experiencing. (PR#1077 by CognitiveMist)
+		Added separate imperial/metric options (in 'Options' -> 'Unit preferences') for lengths, fluids, and weights, as well as 12/24 hour and international date settings. Fixed some issues with the metric/imperial units code. (PR#1082 by DJ Addi)
+	
 	Other:
-		Standardised the positioning of the 'stretched from' and 'stretched to' values in the 'recovering orifices' status effect tooltip. (They were being reversed in sex, which was a little confusing.)
-		
+		Set 'fury'/'furies' as the half-demon name variant for harpies.
+		Submissive participants in sex now start off as being unable to change position unless you give them permission.
+		Added colour highlighting to orifice plasticity text in the character view screens.
+		Sex actions that start an ongoing action are now coloured in light or reddish pink to denote it being a 'submissive' action (i.e. using an orifice), or a 'dominant' action (i.e. using a penetration type).
+		Increased starting wing size for elementals to 'large'.
+		Added post-combat victory transform action to Submission tunnel slime encounters, as well as to bat cavern slime encounters.
+		Altered character creation's cum/milk production choices to use the incremental changing UI instead of a fixed one.
+		Fluids now drain out of orifices at a rate based on the total amount of fluid within that orifice, at a rate per second of: (1/20,000) * (total fluid)
+		Added indication of the rate of absorption of fluids in the tootips for creampied areas.
+		Siblings will now call each other by their names in speech, instead of 'bro'' and 'sis'.
+		Added crotch-nipple recolouring options to Kate's shop.
+		Crotch-boob tansformations will now set the shape to the associated race's default type. (i.e. Applying a 'bovine crotch boob' transformation to someone will now give them udders.)
+		Added unicorn, pegasus, and alicorn morphs as encounters, both in the nightclub, and in Dominion's alleyways. (In the alleyways they are rare to find, with alicorns being extremely rare.)
+		Added an 'All items' view to the debug menu (action 5), from which you can see all item's ids, as well as spawn them in by clicking on them.
+	
 	Bugs:
-		Fixed issue with the game's turn taking longer than usual when passing over midnight.
-		Fixed stretched orifices continuously expanding over time, instead of contracting.
-		Fixed the overview tab in the inventory not working.
-		Fixed issue where NPCs would never give birth.
-		Fixed the identify clothing action breaking inventory management.
-		Fixed incorrect fluid regeneration rate values (for milk and cum) being shown in your stats menu.
-		Fluids should now regenerate during sex (probably by a very small amount, considering it's only 10 seconds per sex action, unless you have boosted your regen).
-		Corrected some instances of 'kitsune' to 'youko', and changed the plural form from 'youkos' to 'youko'.
-		Fixed instances of youko's names not being displayed correctly (as they use their surname as a first name).
-		Fixed issue where random NPCs were spawning with jewellery for body slots they don't have pierced in their inventory.
-		You can now set your base desire for a fetish to 'love' even while you have that fetish.
-		Restored the 'black-with-black-stripes' colour for tiger-morphs (as a rare variation).
-		Fixed incorrect breast & crotch-boob type transformation descriptions.
-		Fixed being able to change a biped's crotch-boob type when you had that setting turned off.
-		Fixed bug where you sometimes couldn't teleport back to Lilaya's lab when she was pregnant as a full demon.
-		Fixed the 'Step outside' button not working when transforming Meraxis into a full demon.
-		Fixed NPCs using non-penis-related 'giving anal' options, even if they did not like the 'giving anal' fetish. (This was most noticeably resulting in NPCs suddenly fingering or tail-fucking your ass...)
-		Fixed Rose's sex preferences bugging out in her dominant scene (where she punished you in Lilaya's room).
-		Fixed issue where interacting with a friend in their apartment during an arcane storm would start spawning random NPCs on the tile, which you'd then start interacting with.
-		Lilaya should no longer lock out all of her options when starting a game with an imported demonic character. (Her dialogue will not react to you being a demon until after meeting Lyssieth.) 
-		Fixed a potential cause of clothing not being stocked in some shops. (Although I think this will still keep on happening - this bug is very hard to track down.)
+		Fixed the 'Limit++' button in enchantment menu not working.
+		Fixed issue where clothing would sometimes be duplicating when managing your inventory or enchanting items.
+		Fixed numerous grammatical and parsing errors in sex descriptions.
+		Fixed incorrect orgasm description in the mating press (bottom) sex position.
+		You can no longer manage inventories while about to orgasm or preparing for a partner's orgasm, as doing so was causing some issues with the AI.
+		Fixed issue with offspring's willingness to allow you to manage their inventory being reversed (they would allow you manage it at all affection levels other than the maximum one).
+		NPCs who appear to attack you on the streets of DOminion during an arcane storm will now correctly be removed from the tile if you escape from combat with them.
+		Fixed description of starting sex with a slave saying that they'd been ordered to crawl when they hadn't, and not crawling when they had.
+		Fixed slaves in stocks being able to perform 'self' actions in sex, such as fingering.
+		Fixed issue related to half-demon names where the game could bug out, resulting in UI elements breaking.
+		Slightly lowered values at which you can use certain actions when talking to Nyan so that they're correctly associated with the game's affection levels.
+		Fixed bug in sex AI where it was not possible for NPCs to generate a preference for receiving vaginal sex if they had other preferences that can compete with it. (This is what was causing Nyan to want to always receive anal sex.)
+		Nyan is now correctly limited to receiving one gift per day, as well as only having sex once per day (as she is busy running her shop).
+		The tracking of Nyan's dialogue limitations (i.e. one action per day) is now correctly preserved upon saving/loading.
+		Fixed the 'restrict/permit positioning' actions in sex not working.
+		Fixed orifice recovery times being a lot slower than intended. (The rate of recovery at all levels has been doubled.)
+		NPCs will now correctly end sex if they aren't enjoying it. (Provided they have the necessary level of control.)
+		Fixed inconsistent and incorrect capitalisation of 'mom' and 'dad' when used in your offspring's speech.
+		Fixed parsing errors related to clothing blocking crotch boobs, as well as clothing rubbing against body parts being identified as your highest layer of clothing, instead of lowest.
+		Fixed masculine characters' toes using feminine descriptors.
+		Fixed slavery overview's event log tracking all events as though they were occurring on day 1.
+		The spell 'siren's call' now correctly applies the initial physical component of its spell damage. (It was only applying damage from the resulting status effect before.)
+		Lust damage taken from masochist/sadist fetishes during combat is now displayed as a rounded decimal.
+		Sex scenes now correctly start with you in the pace that was chosen.
+		Rental Mommy interaction is now correctly disabled during an arcane storm.
+		Fixed issue upon loading a game where energy, aura, and lust would be altered from the values at which they were saved.
+		You can no longer have more milk or cum stored in your breasts/testicles than their maximum storage values.
+		All 'seals X body part' tagged clothing (such as the 'anal-only pastie') now correctly seals the related body part in order to stop fluids leaking out. The 'seals vagina' tag now also seals the vaginal urethra.
+		Fixed offspring created during Lilaya's or Meraxis's demon TF not being marked as demons in the phone's pregnancy stats screen. (This fix will unfortunately not retroactively apply to your save.)
+		Fixed issue with descriptions of crotch boobs being displayed in certain cases (such as when removing an NPC's clothing), even if you had that option turned off.
+		Fixed issue where setting a name for your slaves to call you by wasn't working.
+		Fixed issue where Lyssieth's name would sometimes not be displayed when the player was using it within speech.
+		Fixed the 'pet' character in Amber's walking scene being able to kiss you while mounting.
+		Fixed issues in the 'pet' sex in Amber's walking scene, the start of pregnancy roulette scenes, and several scenes in the imp fortress, where starting sex would cause the game to hang and eventually crash.
+		Fixed issue where characters would not be identified as unicorn-mophs or alicorn-morphs (and their taur variants) if the number of horns was the last transformation they underwent.
+		Imps in Submission's fortresses and associated tunnels can no longer be enslaved, as it was causing issues with the resulting dialogue. I will come back and add support for this later, but I didn't have time for anything other than this quick fix for this version.
+		Fixed issue where upon loading a saved game, some attributes might end up being randomised. (Most noticeable when setting an NPC's corruption to 0, and upon loading the game, they would have a random, non-0 corruption value.)
+		Fixed isssue with the threesome scenes in slave rooms only working if you had a companion with you. It now works if there are two slaves in the room.
+		The demon rulers of the imp fortresses will stop dropping keys after you've gained access to the siren's citadel. This should also result in their alternate dialogues being seen after beating them.
+		Fixed issue with NPCs who hated the masturbation fetish still choosing to perform self actions during sex. (Which was resulting in them quickly hating the sex.)
 	
 	
 	
@@ -160,17 +196,123 @@
 	
 	
 	
-	PR#931
 	
 	
+	
+	Also will not switch out of doggy to receive anal fucking when in doggy oral
+	need sex slot tags like "lying down", "submissive", "dominant", so position switching can take this into account
+		make it so NPCs will not choose sub positioning when dom, or lying down when in dirty area
+	
+	Rose chooses to get penetrated?
+	
+	really need dialogue indication of what NPCs want
+		Upon position change, or when generating preferences?
+	
+	need missionary oral position
+	
+	"You grin as your hot cum splatters onto her clothing, making a mess of her outfit.​"
+		needs to be improved to say at least one clothing name
+		
+	need new system for multiple NPC map icons (as multiple can be on same tile)
+	
+	
+	Finish orgasm denial scenes.
+	    - Add sex action(s).
+	    	Need variations for ongoing penetration or not
+	    	BDSM set effect - cannot perform any sex actions when a sub
+	    - Add variations for if chastity belt/cage is being worn.
+	
+	Meraxis TF reverts?
+	
+	tooltip descriptions go 'out of bounds' when characters have long race/colour names
+	
+	Fix status effect text wrap
+	
+	need to convert sex positions to new format
+	need oral(behind) in new positioning actions
+	
+	offspring slave variants
+	offspring talk variations
+	
+	Need incest checks in offspring and occupant dialogue
+		make it so offspring encounters are enabled with incest off, but all incest-related actions are hidden
+	
+	 
+	4. Add a centaur field exploration encounter.
+	    - Tidy up encounter code.
+	need a 'rampaging Lunette' status effect
+	    - Enable movement over field tiles.
+	    - Add dialogue framework.
+	    - Write dialogue.
+	    - Test.
+	    
+	5. Fix bugs and polish.
+	
+	
+	optimise endturn iterations over NPCs
+	
+	regarding taurs (no intentional groping or suckling of crotchboobs, and pregnancy scenes not reflecting that they are a taur
+	
+	anyone tested if you can find tauric children in Dominion? i tested with just a random centaur (breeding game) but had no encounter
+		makes sense for actual centaur to be out in fields where rest of centaurs are, but questioning non-horse
+		also, a bit sad that being taur and setting demon lover/slave to taur doesn't result in halfdemon taurs
+		 at least with the bare minimum testing i did
+	I think as of last time I asked: taur kids can't spawn yet. Currently only centaurs and variants can be born (even if you can't encounter yet),
+	 if you breed a cat-taur you'll just get regular cat-folk and so on. Also only NPCs that spawn tauric are slimes. Who also birth regular slimes.
+	
+	Maybe it's just me but every time you try to have sex with anyone on the bottom row of the harpy nests, the game bugs out.
+	 The game doesn't move into a sex scene and trying to leave forces your inventory on top of the map. You can still move around but you'll be walking blind
+	
+	It was the doggy-style position, I was on all fours and he was kneeling behind me... giving me a footjob.
+	
+	add rare subspecies spawn support to submission and other places
+	
+	taur force cum inside checks for non-taurs in their positions
+	
+	really odd continually seeing my companion changing what clothes they are wearing...
+		they keep adding random items
+	
+	Lipstick essentially it is purely cosmetic in general but if you have lipstick on your lips during sex you can choose to give a big long kiss to a certain body part leaving a lipstick kiss mark. It can be washed off, enchanted to grant bonuses to those who have it and provide a buff to exhibitionists (since it shows you have been having fun with someone). 
+	
+	If you enter the imp fortress and fight the two guard imps, and enslave one of them; you'll fight the remaining one again but the text code appears informing you of the other missing imp. 
+	
+	Nother bug. Most of the time, not always, offering/letting your companion take someone after a fight results in the initial scene not progressing, you can remove clothing, but this doesn't seem to change anything.
+	 Occasionally it'll trigger a second glitch that puts you in as a sub, and the scene works normally again.
+	
+	started a new game. In the introduction scenes, after editing my physical characteristics and picking through clothing, I can neither select an article of clothing, nor continue on to the next.
+
+	Bug(?). Everyone's testicles are internal. Tried using a enchantment to make my character's external only for them to automatically revert back to being internal.                                                                                                             
+    Update: Discovered that disabling "Futanari testicles" in content options renders testicles of all characters, futa or not, internal. 
+
+	add a different text for repeat victories against the three demons on the other fortresses
+
+	Also, giving your partner as a submissive, after they change positions, you become involved in the scene, though some options are still missing.
+
+	When beating someone and choosing non-con {rough} instead of entering the scene with rough stance you are in normal stance.
+	
+	Need to completely go over the alleyway demon attack dialogue, especially the companion variations - no cock is being grown, and is too generic.
+	
+	But with the jockstrap and jeans combo when the partner climaxed the description was as if they were going commando. as in instead of climaxing into the jockstrap it read as climaxing into the jeans. Yet the jockstrap had the dirty status.
+		Also it was back to normal once the jeans were pulled down.
+		
+	Add TF feeding to Karl and WOlfgang
+	
+	need to add generic sex NPCS to NPC list (for stocks slaves and in slave jobs)
+	
+	Both in self description and stat description when moving around. I have lactation enchantments on tattoos for them and they show the enchantment working on my crotch tits.
+		But the tool tip ref is not showing for them lactating.
 	
 	Separate the oral fetishes as such that kissing is separate from the other oral fetishes.
 	
-	Need to stop "lack a vagina, so nothing happens..." from clothing effects, along with all other no-effect ones
+	NPC wants anal and yet didn't start it?
 	
 	need to make a more unified NPC class
 	
+	import characters as friendly occupants
+	
 	refine clothing presets
+	
+	need 'convincing requests' perk
 	
 	insertable dildo needs to stretch
 	
@@ -184,8 +326,6 @@
 	
 	orifice rejuvination item
 	aphrodesiac item
-	
-	The option to TF a alley/sewer slime has been gone for a while
 	
 	fly to tile quick travel
 	
@@ -225,9 +365,6 @@
 	player demon half-subspecies not showing?
 	
 	can pull up t-shirts beneath over-torso clothing
-	
-	Send out thank you messages
-	Jam
 	
 	Breast Size setting
 	
@@ -355,12 +492,8 @@
 	
 	fix arcane stat descriptions and attribute maximums (no maximum, remove permanent gains from potions)
 	
-	
 	check slave shops overstocking
 	
-	Exit dominion
-		World map, with locations (as tiles) either hidden or explored.
-		Click to go to that area map
 	
 	Fields
 		Central farmland and town
@@ -501,8 +634,6 @@
 	>After getting raped
 	>Make potion to remove the othe one's effects
 	>"Heh, nice try, but do you really expect me to drink a random potion?"
-	
-	Buttplugs shouldn't count as preserving your modesty in terms of exhibitionism
 	
 	Need to be able to appendage interact with kneeling oral beside you
 	
@@ -1019,6 +1150,7 @@
 		Casual
 		Smart
 		Exhibitionist
+	Add outfit default displacements
 	
 	Check new cat-morph TF descriptions (especially face)
 	
@@ -2388,8 +2520,6 @@ The Arcane stat could have a multiplier on essence received alongside its other 
 	...I just got a status effect update telling me I'm not pregnant.
 	
 	Add Submission as a placeholder - need rats, slimes, bats, and imps
-	
-	With confirmations ON, trying to delete an exported character from the export character menu will bump you to the save/load menu instead.
 	
 	So I ran into a futa catgirl prostitute, decided to pay for her to domme me. She decided she wanted oral sex. Why not? On the same turn, I decided to perform cunnilingus and she decided I was going to suck her cock... and now I'm somehow doing both at once.
 	: When I chose to stop doing one, it was no longer possible to start back up, so I guess it's something that can only happen if both actions are initiated at the same time.

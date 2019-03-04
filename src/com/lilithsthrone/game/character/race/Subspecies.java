@@ -356,7 +356,7 @@ public enum Subspecies {
 		@Override
 		public void applySpeciesChanges(Body body) {
 			body.setHeight(Height.NEGATIVE_TWO_MIMIMUM.getMinimumValue() + Util.random.nextInt(Height.NEGATIVE_TWO_MIMIMUM.getMaximumValue() - Height.NEGATIVE_TWO_MIMIMUM.getMinimumValue()));
-			body.getPenis().setPenisSize(null, 3+Util.random.nextInt(3)); // 3-5 inches
+			body.getPenis().setPenisSize(null, 8+Util.random.nextInt(8)); // 3-7 inches
 			body.getWing().setSize(null,  WingSize.THREE_LARGE.getValue());
 		}
 		@Override
@@ -405,7 +405,7 @@ public enum Subspecies {
 		@Override
 		public void applySpeciesChanges(Body body) {
 			body.setHeight(Height.NEGATIVE_ONE_TINY.getMinimumValue() + Util.random.nextInt(Height.NEGATIVE_ONE_TINY.getMaximumValue() - Height.NEGATIVE_ONE_TINY.getMinimumValue()));
-			body.getPenis().setPenisSize(null, 3+Util.random.nextInt(4)); // 3-6 inches
+			body.getPenis().setPenisSize(null, 8+Util.random.nextInt(12)); // 3-8 inches
 			body.getWing().setSize(null,  WingSize.THREE_LARGE.getValue());
 		}
 		@Override
@@ -1377,7 +1377,9 @@ public enum Subspecies {
 			Colour.RACE_UNICORN,
 			SubspeciesPreference.ONE_LOW,
 			"An anthropomorphic, bipedal horse, who has a single magical horn growing from their forehead.",
-			Util.newHashMapOfValues()) {//TODO add somewhere
+			Util.newHashMapOfValues(
+					new Value<>(WorldType.DOMINION, SubspeciesSpawnRarity.ONE_VERY_RARE),
+					new Value<>(WorldType.NIGHTLIFE_CLUB, SubspeciesSpawnRarity.ONE_VERY_RARE))) {
 		@Override
 		public void applySpeciesChanges(Body body) {
 			body.getHorn().setType(null, HornType.HORSE_STRAIGHT);
@@ -1419,7 +1421,9 @@ public enum Subspecies {
 			Colour.RACE_PEGASUS,
 			SubspeciesPreference.ONE_LOW,
 			"An anthropomorphic, bipedal horse, who has a pair of feathered wings growing from their back.",
-			Util.newHashMapOfValues()) {//TODO add somewhere
+			Util.newHashMapOfValues(
+					new Value<>(WorldType.DOMINION, SubspeciesSpawnRarity.ONE_VERY_RARE),
+					new Value<>(WorldType.NIGHTLIFE_CLUB, SubspeciesSpawnRarity.ONE_VERY_RARE))) {
 		@Override
 		public void applySpeciesChanges(Body body) {
 			body.getHorn().setType(null, HornType.NONE);
@@ -1460,7 +1464,9 @@ public enum Subspecies {
 			Colour.RACE_ALICORN,
 			SubspeciesPreference.ONE_LOW,
 			"An anthropomorphic, bipedal horse, who has both a pair of feathered wings growing from their back, as well as a single magical horn growing from their forehead.",
-			Util.newHashMapOfValues()) {//TODO add somewhere
+			Util.newHashMapOfValues(
+					new Value<>(WorldType.DOMINION, SubspeciesSpawnRarity.ZERO_EXTREMELY_RARE),
+					new Value<>(WorldType.NIGHTLIFE_CLUB, SubspeciesSpawnRarity.ZERO_EXTREMELY_RARE))) {
 		@Override
 		public void applySpeciesChanges(Body body) {
 			body.getHorn().setType(null, HornType.HORSE_STRAIGHT);
@@ -2148,7 +2154,18 @@ public enum Subspecies {
 			"An anthropomorphic, bipedal bird. Typically only possessing non-human arms, legs, eyes, ears, and hair.",
 			Util.newHashMapOfValues(
 					new Value<>(WorldType.HARPY_NEST, SubspeciesSpawnRarity.FOUR_COMMON),
-					new Value<>(WorldType.NIGHTLIFE_CLUB, SubspeciesSpawnRarity.FOUR_COMMON))),
+					new Value<>(WorldType.NIGHTLIFE_CLUB, SubspeciesSpawnRarity.FOUR_COMMON))) {
+		@Override
+		protected String[] getHalfDemonName(GameCharacter character) {
+			return new String[] {
+					"fury",
+					"furies",
+					"fury",
+					"fury",
+					"furies",
+					"furies"};
+		}
+	},
 	
 	HARPY_RAVEN("statusEffects/race/raceHarpy",
 			"statusEffects/race/raceBackground",
@@ -2177,6 +2194,16 @@ public enum Subspecies {
 		public void applySpeciesChanges(Body body) {
 			body.getCoverings().put(BodyCoveringType.FEATHERS, new Covering(BodyCoveringType.FEATHERS, CoveringPattern.NONE, Colour.COVERING_BLACK, false, Colour.COVERING_BLACK, false));
 			body.getCoverings().put(BodyCoveringType.BODY_HAIR_HARPY, new Covering(BodyCoveringType.BODY_HAIR_HARPY, CoveringPattern.NONE, Colour.COVERING_BLACK, false, Colour.COVERING_BLACK, false));
+		}
+		@Override
+		protected String[] getHalfDemonName(GameCharacter character) {
+			return new String[] {
+					"fury",
+					"furies",
+					"fury",
+					"fury",
+					"furies",
+					"furies"};
 		}
 	},
 
@@ -2208,6 +2235,16 @@ public enum Subspecies {
 			body.getCoverings().put(BodyCoveringType.FEATHERS, new Covering(BodyCoveringType.FEATHERS, CoveringPattern.NONE, Colour.COVERING_BROWN_DARK, false, Colour.COVERING_BROWN_DARK, false));
 			body.getCoverings().put(BodyCoveringType.HAIR_HARPY, new Covering(BodyCoveringType.HAIR_HARPY, CoveringPattern.NONE, Colour.COVERING_WHITE, false, Colour.COVERING_WHITE, false));
 			body.getCoverings().put(BodyCoveringType.BODY_HAIR_HARPY, new Covering(BodyCoveringType.BODY_HAIR_HARPY, CoveringPattern.NONE, Colour.COVERING_BROWN_DARK, false, Colour.COVERING_BROWN_DARK, false));
+		}
+		@Override
+		protected String[] getHalfDemonName(GameCharacter character) {
+			return new String[] {
+					"fury",
+					"furies",
+					"fury",
+					"fury",
+					"furies",
+					"furies"};
 		}
 	},
 	
@@ -3180,8 +3217,8 @@ public enum Subspecies {
 	}
 	
 	/**
-	 * @param The character whose subspecies's name is to be returned. Can pass in null.
-	 * @return The singular name of this character's subspecies.
+	 * @param   The character whose subspecies's name is to be returned. Can pass in null.
+	 * @return  The singular name of this character's subspecies.
 	 */
 	public String getName(GameCharacter character) {
 		if(!isNonBiped() && character!=null) {
@@ -3204,8 +3241,8 @@ public enum Subspecies {
 	}
 
 	/**
-	 * @param The character whose subspecies's pluralised name is to be returned. Can pass in null.
-	 * @return The plural name of this character's subspecies.
+	 * @param   The character whose subspecies's pluralised name is to be returned. Can pass in null.
+	 * @return  The plural name of this character's subspecies.
 	 */
 	public String getNamePlural(GameCharacter character) {
 		if(!isNonBiped() && character!=null) {
@@ -3228,8 +3265,8 @@ public enum Subspecies {
 	}
 	
 	/**
-	 * @param The character whose male subspecies name is to be returned. Can pass in null.
-	 * @return The singular male name of this character's subspecies.
+	 * @param   The character whose male subspecies name is to be returned. Can pass in null.
+	 * @return  The singular male name of this character's subspecies.
 	 */
 	public String getSingularMaleName(GameCharacter character) {
 		if(!isNonBiped() && character!=null) {
@@ -3248,18 +3285,22 @@ public enum Subspecies {
 					return feralName+getTaurEnding();
 			}
 		}
-		
-		if(getRace() == Race.WOLF_MORPH && Main.game.isSillyModeEnabled()){
-			return "awoo-boy";
-			
-		} else{
-			return singularMaleName;
+
+		if(Main.game.isSillyModeEnabled() && character!=null) {
+			if(character.getSubspecies() == Subspecies.WOLF_MORPH && Main.game.isSillyModeEnabled()){
+				return "awoo-boi";
+			} else if(character.getSubspecies() == Subspecies.CAT_MORPH && Main.game.isSillyModeEnabled()){
+				return "catte-boi";
+			} else if(character.getSubspecies() == Subspecies.HARPY && Main.game.isSillyModeEnabled()){
+				return "birb";
+			}
 		}
+		return singularMaleName;
 	}
 
 	/**
-	 * @param The character whose female subspecies name is to be returned. Can pass in null.
-	 * @return The singular female name of this character's subspecies.
+	 * @param   The character whose female subspecies name is to be returned. Can pass in null.
+	 * @return  The singular female name of this character's subspecies.
 	 */
 	public String getSingularFemaleName(GameCharacter character) {
 		if(!isNonBiped() && character!=null) {
@@ -3279,17 +3320,22 @@ public enum Subspecies {
 			}
 		}
 		
-		if(getRace() == Race.WOLF_MORPH && Main.game.isSillyModeEnabled()){
-			return "awoo-girl";
-			
-		} else{
-			return singularFemaleName;
+		if(Main.game.isSillyModeEnabled() && character!=null) {
+			if(character.getSubspecies() == Subspecies.WOLF_MORPH){
+				return "awoo-girl";
+			} else if(character.getSubspecies() == Subspecies.CAT_MORPH && Main.game.isSillyModeEnabled()){
+				return "catte-girl";
+			} else if(character.getSubspecies() == Subspecies.HARPY && Main.game.isSillyModeEnabled()){
+				return "birb";
+			}
 		}
+		
+		return singularFemaleName;
 	}
 
 	/**
-	 * @param The character whose male subspecies's pluralised name is to be returned. Can pass in null.
-	 * @return The plural male name of this character's subspecies.
+	 * @param   The character whose male subspecies's pluralised name is to be returned. Can pass in null.
+	 * @return  The plural male name of this character's subspecies.
 	 */
 	public String getPluralMaleName(GameCharacter character) {
 		if(!isNonBiped() && character!=null) {
@@ -3312,8 +3358,8 @@ public enum Subspecies {
 	}
 
 	/**
-	 * @param The character whose female subspecies's pluralised name is to be returned. Can pass in null.
-	 * @return The plural female name of this character's subspecies.
+	 * @param   The character whose female subspecies's pluralised name is to be returned. Can pass in null.
+	 * @return  The plural female name of this character's subspecies.
 	 */
 	public String getPluralFemaleName(GameCharacter character) {
 		if(!isNonBiped() && character!=null) {
@@ -3490,13 +3536,24 @@ public enum Subspecies {
 		}
 		
 		if(names==null) {
-			names = new String[] {
-				"demonic-"+this.getName(character),
-				"demonic-"+this.getNamePlural(character),
-				"demonic-"+this.getSingularMaleName(character),
-				"demonic-"+this.getSingularFemaleName(character),
-				"demonic-"+this.getPluralMaleName(character),
-				"demonic-"+this.getPluralFemaleName(character)};
+			if(character==null) {
+				names = new String[] {
+						"demonic-"+name,
+						"demonic-"+namePlural,
+						"demonic-"+singularMaleName,
+						"demonic-"+singularFemaleName,
+						"demonic-"+pluralMaleName,
+						"demonic-"+pluralFemaleName};
+				
+			} else {
+				names = new String[] {
+						"demonic-"+this.getName(character),
+						"demonic-"+this.getNamePlural(character),
+						"demonic-"+this.getSingularMaleName(character),
+						"demonic-"+this.getSingularFemaleName(character),
+						"demonic-"+this.getPluralMaleName(character),
+						"demonic-"+this.getPluralFemaleName(character)};
+			}
 		}
 		
 		return names;

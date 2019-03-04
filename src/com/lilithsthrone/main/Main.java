@@ -53,7 +53,7 @@ import javafx.stage.Stage;
 
 /**
  * @since 0.1.0
- * @version 0.3
+ * @version 0.3.1
  * @author Innoxia
  */
 public class Main extends Application {
@@ -68,7 +68,7 @@ public class Main extends Application {
 	public static Stage primaryStage;
 	public static String author = "Innoxia";
 
-	public static final String VERSION_NUMBER = "0.3.0.7";
+	public static final String VERSION_NUMBER = "0.3.1.1";
 	public static final String VERSION_DESCRIPTION = "Alpha";
 	
 	/**
@@ -89,16 +89,9 @@ public class Main extends Application {
 		+ "</p>"
 			
 		+ "<p>"
-			+ "<i>0.3.0.7:</i> This was meant to be a small hotfix, released earlier this week, but I got a little carried away,"
-				+ " and ended up making improvements to the sex AI, adding an outfit system (after encountering muggers with ridiculous clothing several times in a row), as well as doing a lot of other minor fixes and improvements."
-		+ "</p>"
-				
-		+ "<p>"
-			+ "<i>0.3.0.7:</i> There were a few major issues in v0.3.0.6 which I wanted to fix, namely NPC pregnancies never finishing, identifying clothing using essences breaking the inventory menu, and the overview tab in the inventory not working."
-		+ "</p>"
-			
-		+ "<p>"
-			+ "The full, public release of v0.3.1 will be out roughly in next week's Friday-Sunday time period."
+			+ "I got as much done as I could for v0.3.1 over these past two weeks since v0.3.0.7's release, and while I managed to get the world map movement, offspring dialogue variations,"
+			+ " and NPC denial behaviour done (along with many bug fixes and other things), I didn't manage to get the centaur encounter done."
+			+ " That will be finished for the next release."
 		+ "</p>"
 			
 		+ "<br/>"
@@ -240,7 +233,7 @@ public class Main extends Application {
 		+ "<br/>"
 
 		+ "<list>"
-			+ "<h6>v0.3.0.5</h6>"
+			+ "<h6>v0.3.0.6</h6>"
 			+ "<li>Gameplay:</li>"
 			+ "<ul>You can now spend 3 arcane essences to identify clothing in your possession.</ul>"
 			+ "<ul>The cost for having a vendor identify your clothing has increased from 10 to 400.</ul>"
@@ -379,6 +372,189 @@ public class Main extends Application {
 			+"<ul>Lilaya should no longer lock out all of her options when starting a game with an imported demonic character. (Her dialogue will not react to you being a demon until after meeting Lyssieth.)</ul>"
 			+"<ul>Fixed a potential cause of clothing not being stocked in some shops. (Although I think this will still keep on happening - this bug is very hard to track down.)</ul>"
 		+ "</list>"
+
+		+ "<br/>"
+
+		+ "<list>"
+			+ "<h6>v0.3.1</h6>"
+			+"<li>Engine:</li>"
+			+"<ul>Added support for setting local variables in dialogue parsing.</ul>"
+			+"<ul>Added support for parsing conditional statements wrapped in curly brackets, instead of having to close each one with an #ELSE tag.</ul>"
+			+"<ul>Added support for #ELSEIF statements in conditional parsing.</ul>"
+			+"<ul>Added xml testing functionality in the debug menu's parser. (This is just for dialogue, not mods.)</ul>"
+			+"<ul>Added fullscreen toggle functionality (F11 is the default hotkey).</ul>"
+			
+			+"<li>Gameplay:</li>"
+			+"<ul>Added: Fast travel functionality to the phone's map screen. You can choose between 'Walk (safest)' and 'Walk (fastest)' as path-based travel, and 'Fly' and 'Teleport' as non-path-based travel.</ul>"
+			+"<ul>Added descriptions for the world map's Dominion, fields, river, forests, grassland, and Elis tiles, although you can't do anything to interact with them yet. (I'll add encounters and exploration for v0.3.4.)</ul>"
+			+"<ul>Removed the map from the default phone homepage, and added a dedicated map hotkey (default 'M') to bring up the map screen instead. If using an older properties file, you'll have to manually set your map hotkey in options - > keybinds.</ul>"
+			+"<ul>Added ability to invite harpy offspring back home.</ul>"
+			+"<ul>Added unique dialogue for your offspring when you invite them to come and live with you.</ul>"
+			+"<ul>Added some more group sex options to the occupant & slave sex action menus, and filled in all of the sex's starting scene descriptions for them.</ul>"
+			+"<ul>There is now a 2.5% chance for any Dominion mugger or prostitute to be a half-demon.</ul>"
+			
+			+"<li>Artwork:</li>"
+			+"<ul>Added Lilaya artwork from FriendlyAlienFriend. She has four skin-tone variations, and a clothed, underwear, and naked image for each of these.</ul>"
+			
+			+"<li>Contributors:</li>"
+			+"<ul>Localised all units in the game, and added toggles for 12/24 hour clock and imperial/metric measurements in the options menu. (PR#931 by DJ Addi)</ul>"
+			+"<ul>Added .gif support for character artwork. (PR#1032 by DJ Addi) (Innoxia's note: The maximum size allowed is 10MB, and on some systems there is an issue with gifs larger than ~1MB causing the game to freeze for a few seconds.)</ul>"
+			+"<ul>Added UtilText parsing for player career/background perks. (PR#104 by GynoidDoesGames)</ul>"
+			+"<ul>Added some new subspecies names to the silly mode content. (PR#1052 by Nnxx)</ul>"
+			+"<ul>Added option to unequip all clothes during character creation. (PR#1054 by Nnxx)</ul>"
+			+"<ul>Fixed some reference errors. (PR#1057 by EPSIL0N)</ul>"
+			+"<ul>Added penis and breast size display to the character body tooltip. (PR#1060 by ChillaChris) (Innoxia's note: Due to some edits I made, these tooltip descriptions go 'out of bounds' when characters have long race/colour names. I will fix this soon.)</ul>"
+			+"<ul>Fixed incorrect penis sizes by converting all the base sizes from imperial to metric. (PR#1063 by ChillaChris)</ul>"
+			+"<ul>Updated pattern colours to use the pattern-specific colours. (PR#1064 by CognitiveMist)</ul>"
+			+"<ul>Fix for potential division-by-zero error that breaks elements of the 0.3.1 GUI. (PR#1068 by arpie-steele)</ul>"
+			+"<ul>Fixed '(Error in conditional parsing!)' seen in Alexa's nest. (PR#1061 by arpie-steele)</ul>"
+			+"<ul>For first time run, enhanced tooltip on Resume button. (PR#1070 by arpie-steele)</ul>"
+			+"<ul>Fix ConcurrentModificationException while iterating over Properties.values. (PR#1071 by arpie-steele)</ul>"
+			+"<ul>Added demon lore books to Lilaya's library. Improved some map names to make it clearer which one is being viewed. (PR#1002 by rfpnj)</ul>"
+			
+			+"<li>Sex:</li>"
+			+"<ul>Fixed issue in sex where NPCs would sometimes not move onto full penetrative actions, and get stuck in foreplay actions (such as continuing to perform hotdogging when they wanted to penetrate the target's ass).</ul>"
+			+"<ul>If an NPC's affection towards their submissive sex partner is less than -30, and they do not dislike the sadist fetish, then they will prefer using the rough pace in sex (to represent hate-fucking).</ul>"
+			+"<ul>Fixed some minor positioning errors in the 'Mounting' taur sex position.</ul>"
+			+"<ul>Fixed issue where any sex scene with spectators in it would bug out and cause NPCs to never change position from the starting one.</ul>"
+			+"<ul>Fixed issue with sex AI wanting to use illogical positioning whenever spectators were present.</ul>"
+			+"<ul>Fixed incorrect character targeting for exposed descriptions during sex.</ul>"
+			+"<ul>The decision for an AI to willingly have their virginity taken during sex is now based on lust instead of arousal. (Once over 75 lust, they will be happy to lose their virginity, unless it's a 'pure virgin' fetishist's vaginal virginity.)</ul>"
+			+"<ul>'Pure virgin' post-sex experience gains are now instead applied to the 'Lusty maiden' fetish. (You need to have a vagina, satisfy all of the people in the sex scene, and not lose your vaginal virginity to gain the experience.)</ul>"
+			+"<ul>Reduced maximum amount of milk that could be suckled from breasts and crotch-boobs/udders in a single sex action to 100ml, and increased minimum to 5ml.</ul>"
+			+"<ul>You can now forbid/permit self-actions and clothing management for NPCs in all sex scenes in which you are the dom.</ul>"
+			+"<ul>Added forbid/permit positioning actions to the 'Misc.' sex actions category. This is only available if you are the dom and are in full control.</ul>"
+			+"<ul>Lilaya can now switch positions in her chair sex scene. (You can use the 'forbid positioning' action to stop her from switching if you want to.)</ul>"
+			+"<ul>The 'grow cock' action is now available for slimes as well as demons.</ul>"
+			+"<ul>NPCs will now use the 'Lustful suggestion' action if their partner has ingested psychoactive fluids and has less than 25 lust.</ul>"
+			+"<ul>Fixed issue where NPCs would sometimes not react to your impending orgasm.</ul>"
+			+"<ul>During sex, NPCs in the dominant role who also have a positive desire towards the denial fetish will now use the 'deny' action on submissive participants whose arousal is over 50.</ul>"
+			+"<ul>Dominant NPCs who have a positive desire towards the denial fetish will now deny submissive partners at the moment of their orgasm. NPCs who have the denial fetish will only choose not to deny their partners if they have another orgasm action they also like, while those who just like or love the fetish (without actually having it) will randomly choose whether to deny or not.</ul>"
+			+"<ul>Dominant NPCs willing to deny their partners will choose to end sex once they've both orgasmed and denied their partners' orgasms at least once.</ul>"
+			+"<ul>Expanded the generic 'deny' action description, as well as the 'deny' action used when reacting to an incoming orgasm.</ul>"
+			
+			+"<li>Other:</li>"
+			+"<ul>Reduced tile travel times in Dominion. (From 5 minutes per tile to 2 for street tiles, 1.5 for boulevard tiles, and 3 for back alley tiles.)</ul>"
+			+"<ul>Slightly altered the dangerous background colour patterning for map tiles, and altered some of the world map colours and added some icons.</ul>"
+			+"<ul>Added map tooltip descriptions for all tiles on every map.</ul>"
+			+"<ul>The slaves sold in the store 'White Lillies' in Slaver Alley are now virgins.</ul>"
+			+"<ul>The 'Suck cock' scene to gain entry to the nightclub now starts with you sucking Jules's cock, instead of awkwardly doing nothign for one turn and waiting for him to start.</ul>"
+			+"<ul>Made the light pink colouring of sex action text slightly darker/redder if you are the dominant partner.</ul>"
+			+"<ul>Slaves found in the stocks in slaver alley now have a chance every hour (certainty at midday, trailing off to 0% towards midnight) to have been used by someone, resulting in cum being found in their public-use orifices.</ul>"
+			+"<ul>Your slaves assigned to the stocks will now end up having cum on them, in areas dependent on which of their areas you set to be used.</ul>"
+			+"<ul>Fixed some issues with the AI in sex not choosing appropriate actions. (This will still occur in some scenarios, as I have to convert old sex position formats to a fixed version.)</ul>"
+			+"<ul>Occupants who are willing to let you manage their inventory will no longer have to be forced into drinking transformative potions in the resulting description of their consumption.</ul>"
+			+"<ul>Optimised save files a little, which should cut down large saves' file size by about 10%.</ul>"
+			+"<ul>Slightly altered the self-denial fetish's attribute modifiers.</ul>"
+			
+			+"<li>Bugs:</li>"
+			+"<ul>If you lack the body part on which a clothing transformation is trying to be applied, the game's dialogue will no longer be interrupted with a 'you lack a X, so nothing happens' message.</ul>"
+			+"<ul>Fixed bug where random NPCs could sometimes spawn in your slave's room when they were assigned to be a prostitute or to service the stocks.</ul>"
+			+"<ul>Fixed issue with taur travel time reduction over land not being applied.</ul>"
+			+"<ul>Dropped items will now correctly be cleared when you move off the tile in Zaranix's home, Angel's kiss, Lyssieth's palace, and the imp fortress courtyards.</ul>"
+			+"<ul>You can no longer stop sex after offering yourself to alley attackers.</ul>"
+			+"<ul>Grammatical and typo fixes.</ul>"
+			+"<ul>Fixed parsing errors.</ul>"
+			+"<ul>Fixed issue when paying a prostitute for sex, they would start off resisting.</ul>"
+			+"<ul>Fixed issue where friendly occupants would be ok with starting a threesome if you brought along someone who was attracted to you, even if they were not.</ul>"
+			+"<ul>You can no longer get your slaves to work as dairy cows/bulls while stationed in the cells at Slavery Administration.</ul>"
+			+"<ul>Fixed issue with stored fluids (i.e. cum in condoms or inside of people) changing their 'bestial' (i.e. centaur cum) and 'virility' values as the original owner's corresponding values were changed. (So now once a fluid is expelled, it should retain all relevant qualities properly.)</ul>"
+			+"<ul>Fixed issue with Alexa's slaves not being cleared properly each day.</ul>"
+			+"<ul>Fixed some incorrect sex position slot descriptions.</ul>"
+			+"<ul>Fixed issue with some items having incorrect determiners (e.g 'A Ambiphilic hypno-watch').</ul>"
+			+"<ul>The hypno-watch now correctly retains its colouring upon loading a game.</ul>"
+			+"<ul>Fixed incorrect starting description for the oral sex position.</ul>"
+			+"<ul>Fixed issue where you would end up fighting Meraxis one-on-one after beating her demon lieutenants.</ul>"
+			+"<ul>Fixed background error being thrown when turning slimes into half-demons (using the debug Innoxia's Gift potion), and then back into flesh.</ul>"
+			+"<ul>'Lusty maiden' fetish experience no longer takes into account whether spectators are satisfied or not, and also is not applied if you lack a vagina, your vagina is not virginal, or you lose your virginity during the sex. </ul>"
+			+"<ul>NPCs will no longer take spectators into account when deciding if they've satisfied everyone (and thus wanting to stop sex).</ul>"
+			+"<ul>The 'kiss breasts' sex action is now correctly named 'kiss chest' if the target has a flat chest.</ul>"
+			+"<ul>Fixed the 'Transform' action not showing up in post-combat victory scenes for slimes in Dominion.</ul>"
+			+"<ul>Removed ability to change position without requesting it when offering your body to avoid a fight.</ul>"
+			+"<ul>Your companions will no longer change their clothing in order to cover themselves up, provided they're happy enough to let you manage their inventory.</ul>"
+			+"<ul>Fixed the 'orgasm denial' fetish saying that it unlocked the deny action in sex, when that action is in fact always available to everyone.</ul>"
+			+"<ul>Fixed some incorrect descriptors for lactation.</ul>"
+			+"<ul>Fixed some incorrect penis sizes and unit references.</ul>"
+		+ "</list>"
+
+		+ "<br/>"
+
+		+ "<list>"
+			+ "<h6>v0.3.1.01</h6>"
+			+"<li>Bugs:</li>"
+			+"<ul>Fixed a bug where you wouldn't be able to orgasm in sex.</ul>"
+			+"<ul>Fixed a bug that was causing the 'News' action in Lilith's Plaza, as well as a few other pieces of dialogue, to break.</ul>"
+		+ "</list>"
+		
+		+ "<br/>"
+
+		+ "<list>"
+			+ "<h6>v0.3.1.1</h6>"
+			+"<li>Gameplay:</li>"
+			+"<ul>You can no longer enslave demons found in dark alleyways. (This was meant to have been implemented alongside references in the lore to demons being almost never enslaved, but I didn't have time to add it until now.)</ul>"
+			
+			+"<li>Contributors:</li>"
+			+"<ul>Fixed issues with the game's rendering, both in the main menu, and in the inventory, which some people were experiencing. (PR#1077 by CognitiveMist)</ul>"
+			+"<ul>Added separate imperial/metric options (in 'Options' -> 'Unit preferences') for lengths, fluids, and weights, as well as 12/24 hour and international date settings. Fixed some issues with the metric/imperial units code. (PR#1082 by DJ Addi)</ul>"
+			
+			+"<li>Other:</li>"
+			+"<ul>Set 'fury'/'furies' as the half-demon name variant for harpies.</ul>"
+			+"<ul>Submissive participants in sex now start off as being unable to change position unless you give them permission.</ul>"
+			+"<ul>Added colour highlighting to orifice plasticity text in the character view screens.</ul>"
+			+"<ul>Sex actions that start an ongoing action are now coloured in light or reddish pink to denote it being a 'submissive' action (i.e. using an orifice), or a 'dominant' action (i.e. using a penetration type).</ul>"
+			+"<ul>Increased starting wing size for elementals to 'large'.</ul>"
+			+"<ul>Added post-combat victory transform action to Submission tunnel slime encounters, as well as to bat cavern slime encounters.</ul>"
+			+"<ul>Altered character creation's cum/milk production choices to use the incremental changing UI instead of a fixed one.</ul>"
+			+"<ul>Fluids now drain out of orifices at a rate based on the total amount of fluid within that orifice, at a rate per second of: (1/20,000) * (total fluid)</ul>"
+			+"<ul>Added indication of the rate of absorption of fluids in the tootips for creampied areas.</ul>"
+			+"<ul>Siblings will now call each other by their names in speech, instead of 'bro'' and 'sis'.</ul>"
+			+"<ul>Added crotch-nipple recolouring options to Kate's shop.</ul>"
+			+"<ul>Crotch-boob tansformations will now set the shape to the associated race's default type. (i.e. Applying a 'bovine crotch boob' transformation to someone will now give them udders.)</ul>"
+			+"<ul>Added unicorn, pegasus, and alicorn morphs as encounters, both in the nightclub, and in Dominion's alleyways. (In the alleyways they are rare to find, with alicorns being extremely rare.)</ul>"
+			+"<ul>Added an 'All items' view to the debug menu (action 5), from which you can see all item's ids, as well as spawn them in by clicking on them.</ul>"
+			
+			+"<li>Bugs:</li>"
+			+"<ul>Fixed the 'Limit++' button in enchantment menu not working.</ul>"
+			+"<ul>Fixed issue where clothing would sometimes be duplicating when managing your inventory or enchanting items.</ul>"
+			+"<ul>Fixed numerous grammatical and parsing errors in sex descriptions.</ul>"
+			+"<ul>Fixed incorrect orgasm description in the mating press (bottom) sex position.</ul>"
+			+"<ul>You can no longer manage inventories while about to orgasm or preparing for a partner's orgasm, as doing so was causing some issues with the AI.</ul>"
+			+"<ul>Fixed issue with offspring's willingness to allow you to manage their inventory being reversed (they would allow you manage it at all affection levels other than the maximum one).</ul>"
+			+"<ul>NPCs who appear to attack you on the streets of DOminion during an arcane storm will now correctly be removed from the tile if you escape from combat with them.</ul>"
+			+"<ul>Fixed description of starting sex with a slave saying that they'd been ordered to crawl when they hadn't, and not crawling when they had.</ul>"
+			+"<ul>Fixed slaves in stocks being able to perform 'self' actions in sex, such as fingering.</ul>"
+			+"<ul>Fixed issue related to half-demon names where the game could bug out, resulting in UI elements breaking.</ul>"
+			+"<ul>Slightly lowered values at which you can use certain actions when talking to Nyan so that they're correctly associated with the game's affection levels.</ul>"
+			+"<ul>Fixed bug in sex AI where it was not possible for NPCs to generate a preference for receiving vaginal sex if they had other preferences that can compete with it. (This is what was causing Nyan to want to always receive anal sex.)</ul>"
+			+"<ul>Nyan is now correctly limited to receiving one gift per day, as well as only having sex once per day (as she is busy running her shop).</ul>"
+			+"<ul>The tracking of Nyan's dialogue limitations (i.e. one action per day) is now correctly preserved upon saving/loading.</ul>"
+			+"<ul>Fixed the 'restrict/permit positioning' actions in sex not working.</ul>"
+			+"<ul>Fixed orifice recovery times being a lot slower than intended. (The rate of recovery at all levels has been doubled.)</ul>"
+			+"<ul>NPCs will now correctly end sex if they aren't enjoying it. (Provided they have the necessary level of control.)</ul>"
+			+"<ul>Fixed inconsistent and incorrect capitalisation of 'mom' and 'dad' when used in your offspring's speech.</ul>"
+			+"<ul>Fixed parsing errors related to clothing blocking crotch boobs, as well as clothing rubbing against body parts being identified as your highest layer of clothing, instead of lowest.</ul>"
+			+"<ul>Fixed masculine characters' toes using feminine descriptors.</ul>"
+			+"<ul>Fixed slavery overview's event log tracking all events as though they were occurring on day 1.</ul>"
+			+"<ul>The spell 'siren's call' now correctly applies the initial physical component of its spell damage. (It was only applying damage from the resulting status effect before.)</ul>"
+			+"<ul>Lust damage taken from masochist/sadist fetishes during combat is now displayed as a rounded decimal.</ul>"
+			+"<ul>Sex scenes now correctly start with you in the pace that was chosen.</ul>"
+			+"<ul>Rental Mommy interaction is now correctly disabled during an arcane storm.</ul>"
+			+"<ul>Fixed issue upon loading a game where energy, aura, and lust would be altered from the values at which they were saved.</ul>"
+			+"<ul>You can no longer have more milk or cum stored in your breasts/testicles than their maximum storage values.</ul>"
+			+"<ul>All 'seals X body part' tagged clothing (such as the 'anal-only pastie') now correctly seals the related body part in order to stop fluids leaking out. The 'seals vagina' tag now also seals the vaginal urethra.</ul>"
+			+"<ul>Fixed offspring created during Lilaya's or Meraxis's demon TF not being marked as demons in the phone's pregnancy stats screen. (This fix will unfortunately not retroactively apply to your save.)</ul>"
+			+"<ul>Fixed issue with descriptions of crotch boobs being displayed in certain cases (such as when removing an NPC's clothing), even if you had that option turned off.</ul>"
+			+"<ul>Fixed issue where setting a name for your slaves to call you by wasn't working.</ul>"
+			+"<ul>Fixed issue where Lyssieth's name would sometimes not be displayed when the player was using it within speech.</ul>"
+			+"<ul>Fixed the 'pet' character in Amber's walking scene being able to kiss you while mounting.</ul>"
+			+"<ul>Fixed issues in the 'pet' sex in Amber's walking scene, the start of pregnancy roulette scenes, and several scenes in the imp fortress, where starting sex would cause the game to hang and eventually crash.</ul>"
+			+"<ul>Fixed issue where characters would not be identified as unicorn-mophs or alicorn-morphs (and their taur variants) if the number of horns was the last transformation they underwent.</ul>"
+			+"<ul>Imps in Submission's fortresses and associated tunnels can no longer be enslaved, as it was causing issues with the resulting dialogue. I will come back and add support for this later, but I didn't have time for anything other than this quick fix for this version.</ul>"
+			+"<ul>Fixed issue where upon loading a saved game, some attributes might end up being randomised. (Most noticeable when setting an NPC's corruption to 0, and upon loading the game, they would have a random, non-0 corruption value.)</ul>"
+			+"<ul>Fixed isssue with the threesome scenes in slave rooms only working if you had a companion with you. It now works if there are two slaves in the room.</ul>"
+			+"<ul>The demon rulers of the imp fortresses will stop dropping keys after you've gained access to the siren's citadel. This should also result in their alternate dialogues being seen after beating them.</ul>"
+			+"<ul>Fixed issue with NPCs who hated the masturbation fetish still choosing to perform self actions during sex. (Which was resulting in them quickly hating the sex.)</ul>"
+		+ "</list>"
 	;
 	
 	public static String disclaimer = "<h6 style='text-align: center; color:"+Colour.GENERIC_ARCANE.toWebHexString()+";'>You must read and agree to the following in order to play this game!</h6>"
@@ -419,228 +595,236 @@ public class Main extends Application {
 		credits.add(new CreditsSlot("Lexi <3", "", 0, 0, 0, 1));
 		credits.add(new CreditsSlot("Alvinsimon", "", 0, 0, 3, 0));
 		credits.add(new CreditsSlot("dragonouv2019", "", 0, 0, 3, 0));
-		credits.add(new CreditsSlot("48days", "", 0, 0, 2, 14));
-		credits.add(new CreditsSlot("Mylerra", "", 0, 0, 7, 0));
+		credits.add(new CreditsSlot("Aklev", "", 0, 0, 1, 0));
+		credits.add(new CreditsSlot("48days", "", 0, 0, 2, 15));
 		credits.add(new CreditsSlot("Spaghetti Code", "", 0, 0, 2, 3));
-		credits.add(new CreditsSlot("Anonymous_Platypus", "", 0, 0, 3, 0));
-		credits.add(new CreditsSlot("Apthydragon", "", 0, 0, 6, 0));
-		credits.add(new CreditsSlot("Archan9el S117", "", 0, 0, 0, 9));
-		credits.add(new CreditsSlot("SchALLieS", "", 0, 0, 4, 11));
+		credits.add(new CreditsSlot("Anonymous_Platypus", "", 0, 0, 4, 0));
+		credits.add(new CreditsSlot("Apthydragon", "", 0, 0, 7, 0));
+		credits.add(new CreditsSlot("Archan9el S117", "", 0, 0, 0, 10));
+		credits.add(new CreditsSlot("SchALLieS", "", 0, 0, 4, 12));
 		credits.add(new CreditsSlot("Argmoe", "", 0, 0, 14, 0));
-		credits.add(new CreditsSlot("HoneyNutQueerios", "", 0, 0, 13, 0));
+		credits.add(new CreditsSlot("HoneyNutQueerios", "", 0, 0, 14, 0));
 		credits.add(new CreditsSlot("Arkhan", "", 0, 0, 6, 0));
 		credits.add(new CreditsSlot("Ash", "", 0, 1, 0, 10));
 		credits.add(new CreditsSlot("Jack Cloudie", "", 0, 1, 10, 0));
 		credits.add(new CreditsSlot("b00marrows", "", 0, 1, 5, 0));
 		credits.add(new CreditsSlot("Deimios", "", 0, 0, 3, 7));
-		credits.add(new CreditsSlot("Baz GoldenClaw", "", 0, 0, 14, 0));
-		credits.add(new CreditsSlot("Mhaak", "", 0, 0, 0, 6));
-		credits.add(new CreditsSlot("FidelPinochetov", "", 0, 0, 0, 11));
+		credits.add(new CreditsSlot("Baz GoldenClaw", "", 0, 0, 15, 0));
+		credits.add(new CreditsSlot("Mhaak", "", 0, 0, 0, 7));
+		credits.add(new CreditsSlot("FidelPinochetov", "", 0, 0, 0, 12));
+		credits.add(new CreditsSlot("Jason Paterson", "", 0, 0, 0, 1));
 		credits.add(new CreditsSlot("Tieria", "", 0, 0, 1, 0));
 		credits.add(new CreditsSlot("Runehood66", "", 0, 0, 0, 5));
 		credits.add(new CreditsSlot("Krissy2017", "", 0, 0, 2, 6));
-		credits.add(new CreditsSlot("Blackcanine", "", 0, 0, 14, 0));
+		credits.add(new CreditsSlot("Blackcanine", "", 0, 0, 15, 0));
 		credits.add(new CreditsSlot("Blackheart", "", 0, 0, 1, 3));
-		credits.add(new CreditsSlot("Blacktouch", "", 0, 0, 2, 14));
-		credits.add(new CreditsSlot("BlakLite", "", 0, 0, 6, 0));
-		credits.add(new CreditsSlot("Blue999", "", 0, 0, 0, 16));
-		credits.add(new CreditsSlot("BlueWolf", "", 0, 0, 2, 0));
-		credits.add(new CreditsSlot("Captain_Sigmus", "", 0, 0, 4, 0));
-		credits.add(new CreditsSlot("Brandon Stach", "", 0, 0, 12, 0));
+		credits.add(new CreditsSlot("Blacktouch", "", 0, 0, 2, 15));
+		credits.add(new CreditsSlot("BlakLite", "", 0, 0, 7, 0));
+		credits.add(new CreditsSlot("Blue999", "", 0, 0, 0, 17));
+		credits.add(new CreditsSlot("BlueWolf", "", 0, 0, 3, 0));
+		credits.add(new CreditsSlot("Captain_Sigmus", "", 0, 0, 5, 0));
+		credits.add(new CreditsSlot("Brandon Stach", "", 0, 0, 13, 0));
 		credits.add(new CreditsSlot("BreakerB", "", 0, 0, 6, 0));
 		credits.add(new CreditsSlot("BRobort", "", 0, 0, 9, 0));
-		credits.add(new CreditsSlot("BloodsailXXII", "", 0, 0, 0, 16));
+		credits.add(new CreditsSlot("BloodsailXXII", "", 0, 0, 0, 17));
 		credits.add(new CreditsSlot("Burt", "", 0, 0, 6, 0));
-		credits.add(new CreditsSlot("Atroykus", "", 0, 0, 0, 3));
-		credits.add(new CreditsSlot("Calrak", "", 0, 0, 0, 15));
-		credits.add(new CreditsSlot("CancerMage", "", 0, 0, 9, 0));
+		credits.add(new CreditsSlot("Atroykus", "", 0, 0, 0, 4));
+		credits.add(new CreditsSlot("Calrak", "", 0, 0, 0, 16));
+		credits.add(new CreditsSlot("CancerMage", "", 0, 0, 10, 0));
 		credits.add(new CreditsSlot("Casper &quot;Cdaser&quot; D.", "", 0, 0, 10, 0));
 		credits.add(new CreditsSlot("CelestialNightmare", "", 0, 0, 0, 15));
 		credits.add(new CreditsSlot("Sxythe", "", 0, 0, 0, 2));
-		credits.add(new CreditsSlot("Lexi the slut", "", 0, 0, 0, 16));
-		credits.add(new CreditsSlot("Chattyneko", "", 0, 0, 7, 0));
+		credits.add(new CreditsSlot("Lexi the slut", "", 0, 0, 0, 17));
+		credits.add(new CreditsSlot("Chattyneko", "", 0, 0, 8, 0));
 		credits.add(new CreditsSlot("Vmpireassassin (Chloe)", "", 0, 0, 0, 5));
-		credits.add(new CreditsSlot("cinless", "", 0, 0, 0, 10));
+		credits.add(new CreditsSlot("cinless", "", 0, 0, 0, 11));
 		credits.add(new CreditsSlot("crashtestdummy", "", 0, 0, 9, 5));
-		credits.add(new CreditsSlot("Crimson", "", 0, 0, 0, 14));
-		credits.add(new CreditsSlot("CrowCorvus", "", 0, 0, 6, 0));
-		credits.add(new CreditsSlot("Cryostorm", "", 0, 0, 12, 0));
+		credits.add(new CreditsSlot("Crimson", "", 0, 0, 0, 15));
+		credits.add(new CreditsSlot("CrowCorvus", "", 0, 0, 7, 0));
+		credits.add(new CreditsSlot("Cryostorm", "", 0, 0, 13, 0));
 		credits.add(new CreditsSlot("Cursed Rena", "", 0, 0, 1, 12));
-		credits.add(new CreditsSlot("Cynical-Cy", "", 0, 0, 8, 0));
+		credits.add(new CreditsSlot("Cynical-Cy", "", 0, 0, 9, 0));
 		credits.add(new CreditsSlot("Dace617", "", 0, 0, 0, 4));
 		credits.add(new CreditsSlot("Saladofstones", "", 0, 0, 7, 0));
-		credits.add(new CreditsSlot("Dan", "", 0, 1, 0, 12));
-		credits.add(new CreditsSlot("Hikaru Lightbringer", "", 0, 0, 2, 0));
-		credits.add(new CreditsSlot("Daniel D Magnan", "", 0, 0, 7, 0));
-		credits.add(new CreditsSlot("Darthsawyer", "", 0, 0, 3, 0));
+		credits.add(new CreditsSlot("Dan", "", 0, 1, 0, 13));
+		credits.add(new CreditsSlot("Hikaru Lightbringer", "", 0, 0, 3, 0));
+		credits.add(new CreditsSlot("Griff", "", 0, 0, 1, 0));
+		credits.add(new CreditsSlot("Daniel D Magnan", "", 0, 0, 8, 0));
+		credits.add(new CreditsSlot("Darthsawyer", "", 0, 0, 4, 0));
 		credits.add(new CreditsSlot("Yllarius", "", 0, 0, 2, 0));
-		credits.add(new CreditsSlot("DeadEyesSee", "", 0, 0, 8, 0));
-		credits.add(new CreditsSlot("DeadMasterZero", "", 0, 0, 8, 3));
+		credits.add(new CreditsSlot("DeadEyesSee", "", 0, 0, 9, 0));
+		credits.add(new CreditsSlot("DeadMasterZero", "", 0, 0, 8, 4));
+		credits.add(new CreditsSlot("CruellerTwo24 ", "", 0, 0, 0, 3));
 		credits.add(new CreditsSlot("Demonicgamer666", "", 0, 0, 0, 8));
-		credits.add(new CreditsSlot("John Scarlet", "", 0, 0, 0, 1));
+		credits.add(new CreditsSlot("John Scarlet", "", 0, 0, 0, 3));
 		credits.add(new CreditsSlot("Desgax", "", 0, 0, 7, 0));
-		credits.add(new CreditsSlot("Destont", "", 0, 0, 13, 0));
+		credits.add(new CreditsSlot("Destont", "", 0, 0, 14, 0));
 		credits.add(new CreditsSlot("rinoskin", "", 0, 0, 0, 6));
 		credits.add(new CreditsSlot("Alatar", "", 0, 0, 0, 2));
-		credits.add(new CreditsSlot("Elmsdor", "", 0, 0, 0, 16));
+		credits.add(new CreditsSlot("Elmsdor", "", 0, 0, 0, 17));
 		credits.add(new CreditsSlot("Endless", "", 0, 0, 6, 2));
 		credits.add(new CreditsSlot("Gr33n B3ans", "", 0, 0, 0, 2));
-		credits.add(new CreditsSlot("Erin Kyan", "", 0, 0, 10, 0));
-		credits.add(new CreditsSlot("Avandemine", "", 0, 0, 1, 8));
+		credits.add(new CreditsSlot("Erin Kyan", "", 0, 0, 11, 0));
+		credits.add(new CreditsSlot("Avandemine", "", 0, 0, 1, 9));
 		credits.add(new CreditsSlot("F. Rowan", "", 0, 0, 7, 0));
 		credits.add(new CreditsSlot("Farseeker", "", 0, 0, 8, 0));
 		credits.add(new CreditsSlot("pupslut felix", "", 0, 0, 0, 12));
 		credits.add(new CreditsSlot("Fenrakk101", "", 0, 0, 11, 0));
-		credits.add(new CreditsSlot("Fiona", "", 0, 0, 0, 16));
+		credits.add(new CreditsSlot("Fiona", "", 0, 0, 0, 17));
 		credits.add(new CreditsSlot("ForeverFree2MeTaMax", "", 0, 0, 14, 0));
-		credits.add(new CreditsSlot("FossorTumulus", "", 0, 0, 8, 0));
-		credits.add(new CreditsSlot("Freekingamer", "", 0, 0, 0, 7));
+		credits.add(new CreditsSlot("FossorTumulus", "", 0, 0, 9, 0));
+		credits.add(new CreditsSlot("Freekingamer", "", 0, 0, 0, 8));
 		credits.add(new CreditsSlot("fun_bot", "", 0, 0, 0, 3));
-		credits.add(new CreditsSlot("Niki Parks", "", 0, 0, 16, 0));
-		credits.add(new CreditsSlot("Garkylal", "", 0, 0, 7, 0));
+		credits.add(new CreditsSlot("Niki Parks", "", 0, 0, 17, 0));
+		credits.add(new CreditsSlot("Garkylal", "", 0, 0, 8, 0));
 		credits.add(new CreditsSlot("Georgio154", "", 0, 0, 1, 6));
 		credits.add(new CreditsSlot("glocknar", "", 0, 0, 11, 0));
 		credits.add(new CreditsSlot("Goldmember", "", 0, 0, 0, 3));
 		credits.add(new CreditsSlot("Grakcnar", "", 0, 0, 9, 0));
-		credits.add(new CreditsSlot("WodashGSJ", "", 0, 0, 12, 0));
+		credits.add(new CreditsSlot("WodashGSJ", "", 0, 0, 13, 0));
 		credits.add(new CreditsSlot("Aceofspades", "", 0, 0, 2, 0));
-		credits.add(new CreditsSlot("Assiyalos", "", 0, 0, 6, 0));
-		credits.add(new CreditsSlot("Hedgehog", "", 0, 0, 0, 7));
-		credits.add(new CreditsSlot("Helyriel", "", 0, 0, 12, 0));
-		credits.add(new CreditsSlot("Evit", "", 0, 0, 2, 0));
-		credits.add(new CreditsSlot("Jatch", "", 0, 0, 8, 0));
+		credits.add(new CreditsSlot("Assiyalos", "", 0, 0, 7, 0));
+		credits.add(new CreditsSlot("Hedgehog", "", 0, 0, 0, 8));
+		credits.add(new CreditsSlot("Helyriel", "", 0, 0, 13, 0));
+		credits.add(new CreditsSlot("Evit", "", 0, 0, 3, 0));
+		credits.add(new CreditsSlot("Jatch", "", 0, 0, 9, 0));
+		credits.add(new CreditsSlot("no1skill", "", 0, 0, 0, 3));
 		credits.add(new CreditsSlot("Bocaj91", "", 0, 0, 0, 13));
-		credits.add(new CreditsSlot("Krejil", "", 0, 0, 12, 0));
-		credits.add(new CreditsSlot("Eushully", "", 0, 0, 0, 9));
-		credits.add(new CreditsSlot("suka", "", 0, 0, 16, 0));
-		credits.add(new CreditsSlot("EnigmaticYoshi", "", 0, 0, 16, 0));
-		credits.add(new CreditsSlot("Garth614", "", 0, 0, 0, 12));
+		credits.add(new CreditsSlot("Krejil", "", 0, 0, 13, 0));
+		credits.add(new CreditsSlot("Joeybear", "", 0, 0, 0, 3));
+		credits.add(new CreditsSlot("Eushully", "", 0, 0, 0, 10));
+		credits.add(new CreditsSlot("suka", "", 0, 0, 17, 0));
+		credits.add(new CreditsSlot("EnigmaticYoshi", "", 0, 0, 17, 0));
+		credits.add(new CreditsSlot("Garth614", "", 0, 0, 0, 13));
 		credits.add(new CreditsSlot("HerrKommissar11", "", 0, 0, 1, 4));
-		credits.add(new CreditsSlot("Kaerea", "", 0, 0, 4, 0));
+		credits.add(new CreditsSlot("Kaerea", "", 0, 0, 5, 0));
 		credits.add(new CreditsSlot("Kaleb the Wise", "", 0, 0, 0, 5));
-		credits.add(new CreditsSlot("Karlimero", "", 0, 0, 0, 5));
-		credits.add(new CreditsSlot("Tappi", "", 0, 0, 4, 0));
-		credits.add(new CreditsSlot("KazukiNero", "", 0, 0, 9, 0));
+		credits.add(new CreditsSlot("Karlimero", "", 0, 0, 0, 6));
+		credits.add(new CreditsSlot("Tappi", "", 0, 0, 5, 0));
+		credits.add(new CreditsSlot("KazukiNero", "", 0, 0, 10, 0));
 		credits.add(new CreditsSlot("Kelly999", "", 0, 1, 11, 0));
-		credits.add(new CreditsSlot("kenshin5491", "", 0, 0, 15, 0));
-		credits.add(new CreditsSlot("Kestrel", "", 0, 0, 16, 0));
-		credits.add(new CreditsSlot("BlueVulcan", "", 0, 0, 3, 0));
-		credits.add(new CreditsSlot("Kiroberos", "", 0, 0, 0, 14));
+		credits.add(new CreditsSlot("kenshin5491", "", 0, 0, 16, 0));
+		credits.add(new CreditsSlot("Kestrel", "", 0, 0, 17, 0));
+		credits.add(new CreditsSlot("BlueVulcan", "", 0, 0, 4, 0));
+		credits.add(new CreditsSlot("Kiroberos", "", 0, 0, 0, 15));
 		credits.add(new CreditsSlot("Kernog", "", 0, 0, 1, 0));
-		credits.add(new CreditsSlot("Knight-Lord Xander", "", 0, 0, 0, 16));
-		credits.add(new CreditsSlot("Chris Turpin", "", 0, 0, 14, 0));
-		credits.add(new CreditsSlot("Lee Thompson", "", 0, 0, 11, 0));
+		credits.add(new CreditsSlot("Knight-Lord Xander", "", 0, 0, 0, 17));
+		credits.add(new CreditsSlot("Chris Turpin", "", 0, 0, 15, 0));
+		credits.add(new CreditsSlot("Lee Thompson", "", 0, 0, 12, 0));
 		credits.add(new CreditsSlot("Leob", "", 0, 0, 10, 4));
 		credits.add(new CreditsSlot("Pallid", "", 0, 0, 0, 5));
 		credits.add(new CreditsSlot("ilderon", "", 0, 0, 5, 0));
-		credits.add(new CreditsSlot("Littlemankitten", "", 0, 0, 0, 9));
+		credits.add(new CreditsSlot("Littlemankitten", "", 0, 0, 0, 10));
 		credits.add(new CreditsSlot("Mr L", "", 0, 0, 4, 1));
-		credits.add(new CreditsSlot("loveless", "", 0, 0, 0, 16));
+		credits.add(new CreditsSlot("loveless", "", 0, 0, 0, 17));
 		credits.add(new CreditsSlot("Vaddex", "", 0, 0, 0, 5));
-		credits.add(new CreditsSlot("Kitsune Lyn", "", 0, 0, 0, 7));
-		credits.add(new CreditsSlot("Beldamon", "", 0, 0, 0, 7));
-		credits.add(new CreditsSlot("KingofKings", "", 0, 0, 0, 16));
-		credits.add(new CreditsSlot("waaaghkus", "", 0, 0, 16, 0));
-		credits.add(new CreditsSlot("matchsticks", "", 0, 0, 7, 0));
-		credits.add(new CreditsSlot("masterpuppet", "", 0, 0, 12, 0));
+		credits.add(new CreditsSlot("Kitsune Lyn", "", 0, 0, 0, 8));
+		credits.add(new CreditsSlot("Manwho", "", 0, 0, 0, 1));
+		credits.add(new CreditsSlot("Beldamon", "", 0, 0, 0, 8));
+		credits.add(new CreditsSlot("KingofKings", "", 0, 0, 0, 17));
+		credits.add(new CreditsSlot("matchsticks", "", 0, 0, 8, 0));
+		credits.add(new CreditsSlot("masterpuppet", "", 0, 0, 13, 0));
 		credits.add(new CreditsSlot("Nightmare", "", 0, 0, 0, 5));
-		credits.add(new CreditsSlot("AlphaOneBravo", "", 0, 0, 0, 16));
-		credits.add(new CreditsSlot("Max Nobody", "", 0, 0, 0, 16));
-		credits.add(new CreditsSlot("Mega", "", 0, 0, 8, 0));
-		credits.add(new CreditsSlot("Neximus", "", 0, 0, 7, 0));
+		credits.add(new CreditsSlot("AlphaOneBravo", "", 0, 0, 0, 17));
+		credits.add(new CreditsSlot("Max Nobody", "", 0, 0, 0, 17));
+		credits.add(new CreditsSlot("Mega", "", 0, 0, 9, 0));
+		credits.add(new CreditsSlot("Mylerra", "", 0, 0, 8, 0));
 		credits.add(new CreditsSlot("Mora", "", 0, 0, 4, 0));
 		credits.add(new CreditsSlot("Muhaku", "", 0, 0, 9, 0));
-		credits.add(new CreditsSlot("Kobu", "", 0, 0, 0, 11));
-		credits.add(new CreditsSlot("IreCobra", "", 0, 0, 7, 0));
-		credits.add(new CreditsSlot("NeonRaven94", "", 0, 0, 0, 6));
-		credits.add(new CreditsSlot("Neon Swaglord Chen", "", 0, 0, 2, 0));
-		credits.add(new CreditsSlot("Nick LaBlue", "", 0, 0, 15, 0));
+		credits.add(new CreditsSlot("Kobu", "", 0, 0, 0, 12));
+		credits.add(new CreditsSlot("IreCobra", "", 0, 0, 8, 0));
+		credits.add(new CreditsSlot("NeonRaven94", "", 0, 0, 0, 7));
+		credits.add(new CreditsSlot("Neon Swaglord Chen", "", 0, 0, 3, 0));
+		credits.add(new CreditsSlot("Neximus", "", 0, 0, 9, 0));
+		credits.add(new CreditsSlot("Nick LaBlue", "", 0, 0, 16, 0));
 		credits.add(new CreditsSlot("Kvernik", "", 0, 0, 6, 0));
 		credits.add(new CreditsSlot("Niko", "", 0, 0, 16, 0));
 		credits.add(new CreditsSlot("Nnxx", "", 0, 1, 3, 2));
 		credits.add(new CreditsSlot("NorwegianMonster", "", 0, 0, 0, 6));
-		credits.add(new CreditsSlot("Seo Leifthrasir", "", 0, 0, 0, 3));
-		credits.add(new CreditsSlot("Odd8Ball", "", 0, 0, 0, 15));
-		credits.add(new CreditsSlot("Party Commissar", "", 0, 0, 4, 10));
+		credits.add(new CreditsSlot("Seo Leifthrasir", "", 0, 0, 0, 4));
+		credits.add(new CreditsSlot("Odd8Ball", "", 0, 0, 0, 16));
+		credits.add(new CreditsSlot("Party Commissar", "", 0, 0, 4, 11));
 		credits.add(new CreditsSlot("Rohsie", "", 0, 0, 0, 10));
 		credits.add(new CreditsSlot("P.", "", 0, 0, 0, 4));
 		credits.add(new CreditsSlot("BLKCandy", "", 0, 0, 12, 0));
 		credits.add(new CreditsSlot("Pierre Mura", "", 0, 0, 0, 11));
 		credits.add(new CreditsSlot("Pokys", "", 0, 0, 9, 0));
-		credits.add(new CreditsSlot("PoyntFury", "", 0, 0, 0, 2));
-		credits.add(new CreditsSlot("QQQ", "", 0, 0, 0, 16));
-		credits.add(new CreditsSlot("awrfyu_", "", 0, 0, 0, 4));
+		credits.add(new CreditsSlot("PoyntFury", "", 0, 0, 0, 3));
+		credits.add(new CreditsSlot("QQQ", "", 0, 0, 0, 17));
+		credits.add(new CreditsSlot("awrfyu_", "", 0, 0, 0, 5));
 		credits.add(new CreditsSlot("Rakesh", "", 0, 0, 8, 0));
-		credits.add(new CreditsSlot("R.W", "", 0, 3, 8, 0));
-		credits.add(new CreditsSlot("The Void Prince", "", 0, 0, 10, 0));
-		credits.add(new CreditsSlot("Master's dumb bitch", "", 0, 0, 0, 16));
+		credits.add(new CreditsSlot("R.W", "", 0, 3, 9, 0));
+		credits.add(new CreditsSlot("The Void Prince", "", 0, 0, 11, 0));
+		credits.add(new CreditsSlot("Master's dumb bitch", "", 0, 0, 0, 17));
 		credits.add(new CreditsSlot("Reila Oda", "", 0, 0, 0, 9));
-		credits.add(new CreditsSlot("Roarik", "", 0, 0, 0, 7));
+		credits.add(new CreditsSlot("Roarik", "", 0, 0, 0, 8));
 		credits.add(new CreditsSlot("Dark_Lord", "", 0, 0, 2, 6));
-		credits.add(new CreditsSlot("redwulfen", "", 0, 0, 0, 15));
+		credits.add(new CreditsSlot("redwulfen", "", 0, 0, 0, 16));
 		credits.add(new CreditsSlot("Roger Reyne", "", 0, 0, 0, 3));
-		credits.add(new CreditsSlot("RogueRandom", "", 0, 0, 13, 0));
+		credits.add(new CreditsSlot("RogueRandom", "", 0, 0, 14, 0));
 		credits.add(new CreditsSlot("Horagen81", "", 0, 0, 0, 13));
 		credits.add(new CreditsSlot("RyubosJ", "", 0, 0, 6, 0));
 		credits.add(new CreditsSlot("Saladine the Legendary", "", 0, 0, 0, 15));
-		credits.add(new CreditsSlot("Sand9k", "", 0, 0, 0, 8));
-		credits.add(new CreditsSlot("Schande", "", 0, 0, 0, 8));
-		credits.add(new CreditsSlot("Blue Kobold", "", 0, 0, 9, 0));
+		credits.add(new CreditsSlot("Sand9k", "", 0, 0, 0, 9));
+		credits.add(new CreditsSlot("Schande", "", 0, 0, 0, 9));
+		credits.add(new CreditsSlot("Blue Kobold", "", 0, 0, 10, 0));
 		credits.add(new CreditsSlot("sebasjac", "", 0, 0, 0, 2));
-		credits.add(new CreditsSlot("S", "", 0, 0, 1, 15));
-		credits.add(new CreditsSlot("Shas'O Dal'yth Kauyon Kais Taku", "", 0, 0, 16, 0));
-		credits.add(new CreditsSlot("Crow Invictus", "", 0, 0, 15, 0));
-		credits.add(new CreditsSlot("Sheltem", "", 0, 0, 14, 0));
-		credits.add(new CreditsSlot("shrikes", "", 0, 0, 7, 0));
+		credits.add(new CreditsSlot("S", "", 0, 0, 1, 16));
+		credits.add(new CreditsSlot("Shas'O Dal'yth Kauyon Kais Taku", "", 0, 0, 17, 0));
+		credits.add(new CreditsSlot("Crow Invictus", "", 0, 0, 16, 0));
+		credits.add(new CreditsSlot("Sheltem", "", 0, 0, 15, 0));
+		credits.add(new CreditsSlot("shrikes", "", 0, 0, 8, 0));
 		credits.add(new CreditsSlot("Sig", "", 0, 0, 4, 0));
-		credits.add(new CreditsSlot("Silentark", "", 0, 0, 13, 0));
-		credits.add(new CreditsSlot("Sir beans", "", 0, 0, 7, 0));
+		credits.add(new CreditsSlot("Silentark", "", 0, 0, 14, 0));
+		credits.add(new CreditsSlot("Sir beans", "", 0, 0, 8, 0));
 		credits.add(new CreditsSlot("Sorter", "", 0, 0, 0, 9));
-		credits.add(new CreditsSlot("Spectacular", "", 0, 0, 8, 0));
-		credits.add(new CreditsSlot("Spookermen", "", 0, 0, 0, 16));
-		credits.add(new CreditsSlot("Starchiller", "", 0, 0, 0, 7));
-		credits.add(new CreditsSlot("Steph", "", 0, 0, 6, 0));
-		credits.add(new CreditsSlot("Strigon888", "", 0, 0, 0, 7));
+		credits.add(new CreditsSlot("Spectacular", "", 0, 0, 9, 0));
+		credits.add(new CreditsSlot("Spookermen", "", 0, 0, 0, 17));
+		credits.add(new CreditsSlot("Starchiller", "", 0, 0, 0, 8));
+		credits.add(new CreditsSlot("Steph", "", 0, 0, 7, 0));
+		credits.add(new CreditsSlot("Strigon888", "", 0, 0, 0, 8));
 		credits.add(new CreditsSlot("Suvarestin", "", 0, 0, 2, 0));
 		credits.add(new CreditsSlot("Swift Shot", "", 0, 0, 14, 0));
-		credits.add(new CreditsSlot("TalonMort", "", 0, 0, 14, 0));
-		credits.add(new CreditsSlot("Tanall", "", 0, 1, 14, 0));
+		credits.add(new CreditsSlot("TalonMort", "", 0, 0, 15, 0));
+		credits.add(new CreditsSlot("Tanall", "", 0, 1, 15, 0));
 		credits.add(new CreditsSlot("Tanner D.", "", 0, 0, 0, 6));
 		credits.add(new CreditsSlot("Terrance", "", 0, 0, 3, 0));
-		credits.add(new CreditsSlot("Testostetyrone", "", 0, 0, 12, 0));
-		credits.add(new CreditsSlot("The Brocenary", "", 0, 0, 0, 3));
+		credits.add(new CreditsSlot("Testostetyrone", "", 0, 0, 13, 0));
+		credits.add(new CreditsSlot("The Brocenary", "", 0, 0, 0, 4));
 		credits.add(new CreditsSlot("Jordan Aitken", "", 0, 0, 15, 0));
 		credits.add(new CreditsSlot("T. Garou", "", 0, 0, 0, 12));
 		credits.add(new CreditsSlot("xerton", "", 0, 0, 3, 0));
 		credits.add(new CreditsSlot("Timmybond24", "", 0, 0, 0, 4));
-		credits.add(new CreditsSlot("TKaempfer", "", 0, 0, 5, 0));
-		credits.add(new CreditsSlot("Tom Clancy's Pro Skater", "", 0, 0, 3, 0));
+		credits.add(new CreditsSlot("TKaempfer", "", 0, 0, 6, 0));
+		credits.add(new CreditsSlot("Tom Clancy's Pro Skater", "", 0, 0, 4, 0));
 		credits.add(new CreditsSlot("FreakyHydra", "", 0, 0, 0, 4));
 		credits.add(new CreditsSlot("Kahvi_Toope", "", 0, 0, 0, 6));
-		credits.add(new CreditsSlot("Torinir", "", 0, 0, 15, 0));
-		credits.add(new CreditsSlot("Torsten015", "", 0, 0, 0, 15));
+		credits.add(new CreditsSlot("Torinir", "", 0, 0, 16, 0));
+		credits.add(new CreditsSlot("Torsten015", "", 0, 0, 0, 16));
 		credits.add(new CreditsSlot("TreenVall", "", 0, 0, 3, 0));
 		credits.add(new CreditsSlot("triangleman", "", 0, 0, 16, 0));
-		credits.add(new CreditsSlot("Antriad", "", 0, 0, 1, 10));
-		credits.add(new CreditsSlot("Jess", "", 0, 0, 2, 0));
+		credits.add(new CreditsSlot("Antriad", "", 0, 0, 1, 11));
+		credits.add(new CreditsSlot("Jess", "", 0, 0, 3, 0));
 		credits.add(new CreditsSlot("Isidoros", "", 0, 0, 7, 0));
-		credits.add(new CreditsSlot("SolarEidolon", "", 0, 0, 5, 0));
-		credits.add(new CreditsSlot("Vaelin", "", 0, 0, 4, 11));
-		credits.add(new CreditsSlot("vasadariu", "", 0, 0, 12, 0));
+		credits.add(new CreditsSlot("SolarEidolon", "", 0, 0, 6, 0));
+		credits.add(new CreditsSlot("Vaelin", "", 0, 0, 4, 12));
+		credits.add(new CreditsSlot("vasadariu", "", 0, 0, 13, 0));
+		credits.add(new CreditsSlot("waaaghkus", "", 0, 0, 17, 0));
 		credits.add(new CreditsSlot("Venomy", "", 0, 0, 0, 5));
 		credits.add(new CreditsSlot("iloveyouMiaoNiNi", "", 0, 0, 0, 14));
 		credits.add(new CreditsSlot("Weegschaal", "", 0, 0, 0, 3));
-		credits.add(new CreditsSlot("Whatever", "", 0, 0, 14, 0));
-		credits.add(new CreditsSlot("Will Landrum", "", 0, 0, 0, 6));
+		credits.add(new CreditsSlot("Whatever", "", 0, 0, 15, 0));
+		credits.add(new CreditsSlot("Will Landrum", "", 0, 0, 0, 7));
 		credits.add(new CreditsSlot("William Brown", "", 0, 0, 5, 2));
-		credits.add(new CreditsSlot("Marys", "", 0, 0, 0, 7));
+		credits.add(new CreditsSlot("Marys", "", 0, 0, 0, 8));
 		credits.add(new CreditsSlot("CMPirate9867", "", 0, 0, 8, 0));
-		credits.add(new CreditsSlot("Wolfrave", "", 0, 0, 4, 0));
-		credits.add(new CreditsSlot("Wolfregis", "", 0, 0, 0, 16));
-		credits.add(new CreditsSlot("Yuki_Sukafu", "", 0, 0, 2, 0));
+		credits.add(new CreditsSlot("Wolfrave", "", 0, 0, 5, 0));
+		credits.add(new CreditsSlot("Wolfregis", "", 0, 0, 0, 17));
+		credits.add(new CreditsSlot("Yuki_Sukafu", "", 0, 0, 3, 0));
 		credits.add(new CreditsSlot("Nelson Adams", "", 0, 0, 12, 0));
-		credits.add(new CreditsSlot("Zakarin", "", 0, 0, 0, 11));
-		credits.add(new CreditsSlot("Zero_One", "", 0, 0, 1, 0));
+		credits.add(new CreditsSlot("Zakarin", "", 0, 0, 0, 12));
+		credits.add(new CreditsSlot("Zaya", "", 0, 0, 3, 0));
+		credits.add(new CreditsSlot("Zero_One", "", 0, 0, 2, 0));
 		
 		
 		

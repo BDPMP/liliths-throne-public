@@ -32,7 +32,7 @@ import com.lilithsthrone.game.sex.SexControl;
 import com.lilithsthrone.game.sex.SexPace;
 import com.lilithsthrone.game.sex.SexParticipantType;
 import com.lilithsthrone.game.sex.SexType;
-import com.lilithsthrone.game.sex.positions.SexSlotBipeds;
+import com.lilithsthrone.game.sex.positions.SexSlotGeneric;
 import com.lilithsthrone.game.sex.sexActions.baseActionsMisc.GenericActions;
 import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Colour;
@@ -264,7 +264,7 @@ public interface SexActionInterface {
 				&& (this.getActionType()!=SexActionType.STOP_ONGOING // Can only stop non-self ongoing penetrations if full control
 					|| this.getParticipantType()==SexParticipantType.SELF
 					|| Sex.getSexControl(Sex.getCharacterPerformingAction())==SexControl.FULL)
-				&& (Sex.getSexPositionSlot(Sex.getCharacterPerformingAction())!=SexSlotBipeds.MISC_WATCHING // Cannot switch positions as spectator
+				&& (Sex.getSexPositionSlot(Sex.getCharacterPerformingAction())!=SexSlotGeneric.MISC_WATCHING // Cannot switch positions as spectator
 					|| this.getActionType()!=SexActionType.POSITIONING); 
 	}
 	
@@ -348,7 +348,11 @@ public interface SexActionInterface {
 				&& isPhysicallyPossible()
 				&& !isBannedFromSexManager()
 				&& !Sex.getPosition().isActionBlocked(Sex.getCharacterPerformingAction(), Sex.getCharacterTargetedForSexAction(this), this)) {
-
+			
+			if(this.getParticipantType()==SexParticipantType.SELF && Sex.getSexControl(Sex.getCharacterPerformingAction()).getValue()<SexControl.SELF.getValue()) {
+				return null;
+			}
+			
 			if(this.getActionType()==SexActionType.POSITIONING && !Sex.isPositionChangingAllowed(Sex.getCharacterPerformingAction())) {
 				return null;
 			}
@@ -779,6 +783,17 @@ public interface SexActionInterface {
 				@Override
 				public boolean isSexPositioningHighlight() {
 					return getActionType()==SexActionType.POSITIONING || SexActionInterface.this.equals(GenericActions.PLAYER_STOP_SEX);
+				}
+				@Override
+				public Colour getHighlightColour() {
+					if(isSexPenetrationHighlight()) {
+						if(SexActionInterface.this.getPerformingCharacterAreas().stream().anyMatch((area) -> area.isPenetration())) {
+							return Colour.GENERIC_SEX_AS_DOM;
+						} else {
+							return Colour.GENERIC_SEX;
+						}
+					}
+					return super.getHighlightColour();
 				}
 				@Override
 				public SexPace getSexPace() {
