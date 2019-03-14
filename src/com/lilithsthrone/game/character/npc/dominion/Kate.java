@@ -291,7 +291,7 @@ public class Kate extends NPC {
 		this.equipClothingFromNowhere(AbstractClothingType.generateClothing(ClothingType.TORSO_CAMITOP_STRAPS, Colour.CLOTHING_PINK, false), true, this);
 		this.equipClothingFromNowhere(AbstractClothingType.generateClothing(ClothingType.TORSO_OVER_WOMENS_LEATHER_JACKET, Colour.CLOTHING_BLACK, false), true, this);
 		this.equipClothingFromNowhere(AbstractClothingType.generateClothing(ClothingType.SOCK_FISHNET_STOCKINGS, Colour.CLOTHING_BLACK, false), true, this);
-		this.equipClothingFromNowhere(AbstractClothingType.generateClothing(ClothingType.FOOT_HEELS, Colour.CLOTHING_BLACK, false), true, this);
+		this.equipClothingFromNowhere(AbstractClothingType.generateClothing("innoxia_foot_heels", Colour.CLOTHING_BLACK, false), true, this);
 
 		this.setPiercedEar(true);
 		this.setPiercedNavel(true);
@@ -391,7 +391,7 @@ public class Kate extends NPC {
 					+ "Quickly sorting your own clothes back into position, you watch as Kate does the same."
 					+ " Standing up, she wipes herself clean with a tissue she's produced from somewhere, before flattening down her mini skirt and turning to smile at you."
 					+ " She seems to have got her lust fully under control by now, and as she speaks, she sounds almost embarrassed of what just happened, "
-					+ UtilText.parseSpeech("Ehhh, thanks for helping me out there... You know, it's pretty hard for us demons sometimes... Anyway! What are you even doing in here?"
+					+ UtilText.parseSpeech("Mmm, thanks for helping me out there... You know, it's pretty hard for us demons sometimes... Anyway! What are you even doing in here?"
 							+ " Weren't you deterred by the boarded-up windows and stuff?",
 						Main.game.getNpc(Kate.class))
 					+ "</p>"
@@ -446,7 +446,7 @@ public class Kate extends NPC {
 					+ "Quickly sorting your own clothes back into position, you watch as Kate does the same."
 					+ " Standing up, she wipes herself clean with a tissue she's produced from somewhere, before flattening down her mini skirt and turning to smile at you."
 					+ " She seems to have got her lust fully under control by now, and as she speaks, she sounds almost embarrassed of what just happened, "
-					+ UtilText.parseSpeech("Ehhh, thanks for helping me out there... You know, it's pretty hard for us demons sometimes... Anyway! You need any more of my services?",
+					+ UtilText.parseSpeech("Mmm, thanks for helping me out there... You know, it's pretty hard for us demons sometimes... Anyway! You need any more of my services?",
 						Main.game.getNpc(Kate.class))
 					+ "</p>"
 					+ "<p>"
