@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.List;
 
 import com.lilithsthrone.game.Game;
-import com.lilithsthrone.game.Weather;
 import com.lilithsthrone.game.character.CharacterUtils;
 import com.lilithsthrone.game.character.GameCharacter;
 import com.lilithsthrone.game.character.attributes.AffectionLevel;

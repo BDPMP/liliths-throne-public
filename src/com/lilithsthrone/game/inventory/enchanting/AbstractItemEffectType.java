@@ -3585,9 +3585,9 @@ public abstract class AbstractItemEffectType {
 					case TF_MOD_PENIS_STERILE:
 						switch(potency) {
 							case MINOR_BOOST:
-								return new RacialEffectUtil("Makes penis sterile.", 0, "") { @Override public String applyEffect() { return target.setPenisSterile(true); } };
+								return new RacialEffectUtil("Makes penis sterile.") { @Override public String applyEffect() { return target.setPenisSterile(true); } };
 							case MINOR_DRAIN: default:
-								return new RacialEffectUtil("Makes penis sterile.", 0, "") { @Override public String applyEffect() { return target.setPenisSterile(false); } };
+								return new RacialEffectUtil("Makes penis sterile.") { @Override public String applyEffect() { return target.setPenisSterile(false); } };
 						}
 						
 					default:
@@ -3956,9 +3956,9 @@ public abstract class AbstractItemEffectType {
 					case TF_MOD_VAGINA_INFERTILE:
 						switch(potency) {
 							case MINOR_BOOST:
-								return new RacialEffectUtil("Makes vagina infertile.", 0, "") { @Override public String applyEffect() { return target.setVaginaInfertile(true); } };
+								return new RacialEffectUtil("Makes vagina infertile.") { @Override public String applyEffect() { return target.setVaginaInfertile(true); } };
 							case MINOR_DRAIN: default:
-								return new RacialEffectUtil("Makes vagina fertile.", 0, "") { @Override public String applyEffect() { return target.setVaginaInfertile(false); } };
+								return new RacialEffectUtil("Makes vagina fertile.") { @Override public String applyEffect() { return target.setVaginaInfertile(false); } };
 						}
 						
 					default:
@@ -4086,9 +4086,9 @@ public abstract class AbstractItemEffectType {
 						}
 					case TF_MOD_FLUID_CORRUPTIVE:
 						if(potency == TFPotency.MINOR_DRAIN) {
-							return new RacialEffectUtil("Removes corruptive effect from cum.", 0, "") { @Override public String applyEffect() { return target.removeCumModifier(FluidModifier.CORRUPTIVE); } };
+							return new RacialEffectUtil("Removes corruptive effect from cum.") { @Override public String applyEffect() { return target.removeCumModifier(FluidModifier.CORRUPTIVE); } };
 						} else {
-							return new RacialEffectUtil("Makes cum corruptive.", 0, "") { @Override public String applyEffect() { return target.addCumModifier(FluidModifier.CORRUPTIVE); } };
+							return new RacialEffectUtil("Makes cum corruptive.") { @Override public String applyEffect() { return target.addCumModifier(FluidModifier.CORRUPTIVE); } };
 						}
 						
 					default:
@@ -4184,9 +4184,9 @@ public abstract class AbstractItemEffectType {
 						}
 					case TF_MOD_FLUID_CORRUPTIVE:
 						if(potency == TFPotency.MINOR_DRAIN) {
-							return new RacialEffectUtil("Removes corruptive effect from milk.", 0, "") { @Override public String applyEffect() { return target.removeMilkModifier(FluidModifier.CORRUPTIVE); } };
+							return new RacialEffectUtil("Removes corruptive effect from milk.") { @Override public String applyEffect() { return target.removeMilkModifier(FluidModifier.CORRUPTIVE); } };
 						} else {
-							return new RacialEffectUtil("Makes milk corruptive.", 0, "") { @Override public String applyEffect() { return target.addMilkModifier(FluidModifier.CORRUPTIVE); } };
+							return new RacialEffectUtil("Makes milk corruptive.") { @Override public String applyEffect() { return target.addMilkModifier(FluidModifier.CORRUPTIVE); } };
 						}
 						
 					default:
@@ -4282,9 +4282,9 @@ public abstract class AbstractItemEffectType {
 						}
 					case TF_MOD_FLUID_CORRUPTIVE:
 						if(potency == TFPotency.MINOR_DRAIN) {
-							return new RacialEffectUtil("Removes corruptive effect from udder-milk.", 0, "") { @Override public String applyEffect() { return target.removeMilkCrotchModifier(FluidModifier.CORRUPTIVE); } };
+							return new RacialEffectUtil("Removes corruptive effect from udder-milk.") { @Override public String applyEffect() { return target.removeMilkCrotchModifier(FluidModifier.CORRUPTIVE); } };
 						} else {
-							return new RacialEffectUtil("Makes udder-milk corruptive.", 0, "") { @Override public String applyEffect() { return target.addMilkCrotchModifier(FluidModifier.CORRUPTIVE); } };
+							return new RacialEffectUtil("Makes udder-milk corruptive.") { @Override public String applyEffect() { return target.addMilkCrotchModifier(FluidModifier.CORRUPTIVE); } };
 						}
 						
 					default:
@@ -4380,9 +4380,9 @@ public abstract class AbstractItemEffectType {
 						}
 					case TF_MOD_FLUID_CORRUPTIVE:
 						if(potency == TFPotency.MINOR_DRAIN) {
-							return new RacialEffectUtil("Removes corruptive effect from girlcum.", 0, "") { @Override public String applyEffect() { return target.removeGirlcumModifier(FluidModifier.CORRUPTIVE); } };
+							return new RacialEffectUtil("Removes corruptive effect from girlcum.") { @Override public String applyEffect() { return target.removeGirlcumModifier(FluidModifier.CORRUPTIVE); } };
 						} else {
-							return new RacialEffectUtil("Makes girlcum corruptive.", 0, "") { @Override public String applyEffect() { return target.addGirlcumModifier(FluidModifier.CORRUPTIVE); } };
+							return new RacialEffectUtil("Makes girlcum corruptive.") { @Override public String applyEffect() { return target.addGirlcumModifier(FluidModifier.CORRUPTIVE); } };
 						}
 						
 					default:

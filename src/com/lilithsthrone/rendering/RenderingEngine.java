@@ -1034,7 +1034,7 @@ public enum RenderingEngine {
 		
 			uiAttributeSB.append(getInventoryEquippedPanel(Main.game.getPlayer()));
 
-		} else {
+		if(Main.game.getCurrentDialogueNode().getDialogueNodeType() != DialogueNodeType.INVENTORY && !Main.game.isInCombat() && !Main.game.isInSex()) {
 			uiAttributeSB.append("<div>" + renderedHTMLMap() + "</div>");
 		}
 		
