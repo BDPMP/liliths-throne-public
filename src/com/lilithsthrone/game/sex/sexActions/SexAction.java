@@ -259,7 +259,12 @@ public abstract class SexAction implements SexActionInterface {
 				}
 			}
 			
-			List<CoverableArea> cummedOnList = this.getAreasCummedOn(characterPerformingAction, characterTarget);
+			List<CoverableArea> cummedOnList = null;
+			try { // Wrap in try/catch block as some sex actions may make calls to ongoing actions that aren't ongoing yet
+				cummedOnList = this.getAreasCummedOn(characterPerformingAction, characterTarget);
+			} catch(Exception ex) {
+			}
+			
 			if(cummedOnList != null) {
 				characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_CUM_STUD);
 				characterFetishesForPartner.get(characterPerformingAction).add(Fetish.FETISH_CUM_ADDICT);
@@ -319,7 +324,10 @@ public abstract class SexAction implements SexActionInterface {
 				}
 			}
 			
-			cummedOnList = this.getAreasCummedOn(characterTarget, characterPerformingAction);
+			try { // Wrap in try/catch block as some sex actions may make calls to ongoing actions that aren't ongoing yet
+				cummedOnList = this.getAreasCummedOn(characterTarget, characterPerformingAction);
+			} catch(Exception ex) {
+			}
 			if(cummedOnList != null) {
 				characterFetishes.get(characterPerformingAction).add(Fetish.FETISH_CUM_ADDICT);
 				characterFetishesForPartner.get(characterPerformingAction).add(Fetish.FETISH_CUM_STUD);

@@ -933,10 +933,10 @@ public class OptionsDialogue {
 	public static final DialogueNode OPTIONS_PRONOUNS = new DialogueNode("Options", "Options", true) {
 
 		@Override
-		public String getHeaderContent() {
-			UtilText.nodeContentSB.setLength(0);
+		public String getContent() {
+			StringBuilder sb = new StringBuilder();
 			
-			UtilText.nodeContentSB.append("<p>"
+			sb.append("<p>"
 						+ "<h5 style='text-align:center;'>Global gender names:</h5>"
 						+ "<table align='center'>"
 							+ "<tr>"
@@ -947,10 +947,10 @@ public class OptionsDialogue {
 							+ "</tr>");
 			
 			for(GenderNames gn : GenderNames.values()) {
-				UtilText.nodeContentSB.append(getGenderNameTableRow(gn));
+				sb.append(getGenderNameTableRow(gn));
 			}
 							
-			UtilText.nodeContentSB.append("</table>"
+			sb.append("</table>"
 					+ "</p>"
 					
 					+ "<p>"
@@ -978,19 +978,14 @@ public class OptionsDialogue {
 							+ " If clothing is neutral, treated as <b style='color:"+Colour.MASCULINE.toWebHexString()+";'>masculine</b>.<br/>"
 					+ "<b style='color:"+Colour.MASCULINE.toWebHexString()+";'>Masculine:</b> Treated as <b style='color:"+Colour.MASCULINE.toWebHexString()+";'>masculine</b>.<br/>"
 					+ "</p>");
-							
-			return UtilText.nodeContentSB.toString();	
+			
+			return sb.toString();	
 		}
 		
 		@Override
-		public String getContent(){
-			return "";
-		}
-
-		@Override
 		public Response getResponse(int responseTab, int index) {
 			if (index == 1) {
-				return new ResponseEffectsOnly("Save", "Save all the pronouns that are currently displayed."){
+				return new ResponseEffectsOnly("Save", "Save all the pronouns that are currently displayed.") {
 					@Override
 					public void effects() {
 						for(GenderNames gn : GenderNames.values()) {
@@ -1882,8 +1877,15 @@ public class OptionsDialogue {
 							"ANAL",
 							Colour.BASE_ORANGE,
 							"Anal Content",
-							"When disabled, all non-unique NPCs will spawn in hating anal (which will make them never use anal actions in sex).",
+							"When disabled, removes all anal-related actions from being available during sex.",
 							Main.getProperties().hasValue(PropertyValue.analContent)));
+
+			UtilText.nodeContentSB.append(getContentPreferenceDiv(
+							"FOOT",
+							Colour.BASE_TAN,
+							"Foot Content",
+							"When disabled, removes all foot-related actions from being available during sex.",
+							Main.getProperties().hasValue(PropertyValue.footContent)));
 			
 			UtilText.nodeContentSB.append(getContentPreferenceDiv(
 							"FUTA_BALLS",
@@ -2250,7 +2252,7 @@ public class OptionsDialogue {
 			UtilText.nodeContentSB.append(
 					"<p>"
 						+ "Thank you for playing "+Main.GAME_NAME+", I hope you enjoy it just as much as I do making it!"
-						+ " Thank you so much to all of the supporters on Patreon! Thanks to you, I'm able to spend more time working on "+Main.GAME_NAME+", and I promise that I'll make this game the very best that I can!"
+						+ " Thank you so much to all of you who offer financial support! Thanks to you, I'm able to spend more time working on "+Main.GAME_NAME+", and I promise that I'll make this game the very best that I can!"
 					+ "</p>"
 					+"<p style='text-align:center;'>"
 						+ Main.GAME_NAME+" has been created by:<br/>"
@@ -2280,7 +2282,7 @@ public class OptionsDialogue {
 						+ "<b>Sensei</b>,<br/>"
 						+ "<b style='color:#fa0063;'>loveless</b>, <b style='color:#c790b2;'>Blue999</b>, and <b style='color:#ec9538;'>DesuDemona</b><br/>"
 						+ "<b style='color:#21bec4;'>Github & wiki contributors</b><br/>"
-						+ "<b style='color:#e06e5f;'>Everyone who's supported me on Patreon</b>,<br/>"
+						+ "<b style='color:#e06e5f;'>Everyone who's financially supported me</b>,<br/>"
 						+ "<b>Bug reporters</b>,<br/>"
 						+ "and<br/>"
 						+ "<b>Everyone for playing Lilith's Throne!</b>"

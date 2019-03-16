@@ -1,6 +1,6 @@
 package com.lilithsthrone.game.dialogue.npcDialogue.dominion;
 
-import java.util.ArrayList;
+import java.util.Collections;
 
 import com.lilithsthrone.game.character.GameCharacter;
 import com.lilithsthrone.game.character.attributes.AffectionLevel;
@@ -929,7 +929,12 @@ public class HarpyAttackerDialogue {
 		public Response getResponse(int responseTab, int index) {
 			if(getHarpy().hasFlag(NPCFlagValue.genericNPCBetrayedByPlayer)) {
 				if (index == 1) {
-					return new Response("Continue", "Carry on your way.", Main.game.getDefaultDialogueNoEncounter());
+					return new Response("Continue", "Carry on your way.", Main.game.getDefaultDialogueNoEncounter()) {
+						@Override
+						public void effects() {
+							Main.game.banishNPC(getHarpy());
+						}
+					};
 				}
 				return null;
 			}
@@ -937,32 +942,27 @@ public class HarpyAttackerDialogue {
 			if(getHarpy().hasTransformationFetish()
 					&& potion != null
 					&& getHarpy().isWillingToRape(Main.game.getPlayer())) {
-				
-//				System.out.println("Potion Check 2"); 
-//				System.out.println(potion); 
-//				System.out.println(potion.getValue()); 
+				Fetish applicableFetish = potion.getValue().getItemType() == ItemType.FETISH_REFINED
+						?Fetish.FETISH_KINK_RECEIVING
+						:Fetish.FETISH_TRANSFORMATION_RECEIVING;
+				CorruptionLevel applicableCorruptionLevel = potion.getValue().getItemType() == ItemType.FETISH_REFINED
+						?Fetish.FETISH_KINK_RECEIVING.getAssociatedCorruptionLevel()
+						:Fetish.FETISH_TRANSFORMATION_RECEIVING.getAssociatedCorruptionLevel();
 				
 				if (index == 1) {
-					if(Main.game.getPlayer().hasFetish(Fetish.FETISH_TRANSFORMATION_RECEIVING)) {
+					if(!Collections.disjoint(Main.game.getPlayer().getFetishes(), Util.newArrayListOfValues(applicableFetish))) {
 						return new Response("Spit",
-								"Due to your <b style='color:"+Colour.FETISH.toWebHexString()+";'>"+Fetish.FETISH_TRANSFORMATION_RECEIVING.getName(Main.game.getPlayer())
-									+"</b> fetish, you love being transformed so much that you can't bring yourself to spit out the transformative liquid!",
+								"Due to your <b style='color:"+Colour.FETISH.toWebHexString()+";'>"+applicableFetish.getName(Main.game.getPlayer())
+									+"</b> fetish, you love "+applicableFetish.getShortDescriptor()+" so much that you can't bring yourself to spit out the transformative liquid!",
 								null);
 					} else {
 						return new Response("Spit", "Spit out the potion.", AFTER_COMBAT_TRANSFORMATION_REFUSED);
 					}
 					
 				} else if (index == 2) {
-					ArrayList<Fetish> applicableFetishes = Util.newArrayListOfValues(Fetish.FETISH_TRANSFORMATION_RECEIVING);
-					CorruptionLevel applicableCorruptionLevel = Fetish.FETISH_TRANSFORMATION_RECEIVING.getAssociatedCorruptionLevel();
-					
-					if(potion.getValue().getItemType() == ItemType.FETISH_REFINED) {
-						applicableFetishes = Util.newArrayListOfValues(Fetish.FETISH_KINK_RECEIVING);
-						applicableCorruptionLevel = Fetish.FETISH_KINK_RECEIVING.getAssociatedCorruptionLevel();
-					}
 					
 					return new Response("Swallow", "Do as you're told and swallow the strange potion.", AFTER_COMBAT_TRANSFORMATION,
-							applicableFetishes,
+							Util.newArrayListOfValues(applicableFetish),
 							applicableCorruptionLevel,
 							null,
 							null,
@@ -1261,7 +1261,13 @@ public class HarpyAttackerDialogue {
 		@Override
 		public Response getResponse(int responseTab, int index) {
 			if (index == 1) {
-				return new Response("Continue", "Carry on your way.", AFTER_SEX_VICTORY){
+				return new Response("Continue", "Carry on your way.", AFTER_SEX_DEFEAT) {
+					@Override
+					public void effects() {
+						if(getHarpy().hasFlag(NPCFlagValue.genericNPCBetrayedByPlayer)) {
+							Main.game.banishNPC(getHarpy());
+						}
+					}
 					@Override
 					public DialogueNode getNextDialogue(){
 						return Main.game.getDefaultDialogueNoEncounter();

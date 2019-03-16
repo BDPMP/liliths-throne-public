@@ -1012,7 +1012,7 @@ public enum TFModifier {
 			"Applies an effect related to changing a fluid.",
 			"viscous",
 			"modifier_circle_fluid_modifier",
-			Colour.BASE_BLACK,
+			Colour.BASE_GREY,
 			Rarity.COMMON),
 	
 	TF_MOD_FLUID_STICKY("sticky",
@@ -1055,6 +1055,13 @@ public enum TFModifier {
 			"psychoactive",
 			"modifier_circle_fluid_modifier",
 			Colour.BASE_MAGENTA,
+			Rarity.COMMON),
+
+	TF_MOD_FLUID_MINERAL_OIL("mineral oil",
+			"Applies an effect related to changing a fluid.",
+			"mineral oil",
+			"modifier_circle_fluid_modifier",
+			Colour.BASE_BLACK,
 			Rarity.COMMON),
 	
 	TF_MOD_FLUID_CORRUPTIVE("corruptive",
