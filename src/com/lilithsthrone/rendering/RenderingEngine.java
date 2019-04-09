@@ -974,7 +974,7 @@ public enum RenderingEngine {
 			uiAttributeSB.append("</div>");
 			
 			
-		} else {
+		} else if(Main.game.getCurrentDialogueNode().getDialogueNodeType() == DialogueNodeType.INVENTORY) {
 			// Default place name box:
 			uiAttributeSB.append("<div class='full-width-container' style='background-color:#19191a; border-radius:5px; margin-bottom:8px;'>"
 									+ getDefaultAttributeColumnHeader()
@@ -992,11 +992,32 @@ public enum RenderingEngine {
 			}
 			
 			uiAttributeSB.append("</div>");
+		} else {
+			// Default place name box:
+						uiAttributeSB.append("<div class='full-width-container' style='background-color:#19191a; border-radius:5px; margin-bottom:8px;'>"
+												+ getDefaultAttributeColumnHeader()
+												+"</div>"
+										+ "<div class='full-width-container' style='height: calc(100% - 236vw); overflow-y: auto;'>");
+						
+						uiAttributeSB.append(getCharacterPanelDiv(!Main.game.getPlayer().getCompanions().isEmpty(), "PLAYER_", Main.game.getPlayer()));
+						
+						for(GameCharacter character : Main.game.getPlayer().getCompanions()) {
+							uiAttributeSB.append(getCharacterPanelDiv(true, "NPC_"+character.getId()+"_", character));
+							for(GameCharacter characterCompanion : character.getCompanions()) {
+								uiAttributeSB.append(getCharacterPanelDiv(true, "NPC_"+characterCompanion.getId()+"_", characterCompanion));
+								
+							}
+						}
+						
+						uiAttributeSB.append("</div>");
 		}
 
 		uiAttributeSB.append("</div>");
 
-
+		if(Main.game.getCurrentDialogueNode().getDialogueNodeType() != DialogueNodeType.INVENTORY && !Main.game.isInCombat() && !Main.game.isInSex()) {
+			uiAttributeSB.append("<div>" + renderedHTMLMap() + "</div>");
+		}
+		
 		uiAttributeSB.append(
 				"<div class='full-width-container' style='background-color:#19191a; border-radius:5px; margin-bottom:1px; padding:4px;'>"
 					+ "<div class='half-width-container' style='text-align:center; float:left; width:60%'>"
@@ -1034,9 +1055,7 @@ public enum RenderingEngine {
 		
 			uiAttributeSB.append(getInventoryEquippedPanel(Main.game.getPlayer()));
 
-		if(Main.game.getCurrentDialogueNode().getDialogueNodeType() != DialogueNodeType.INVENTORY && !Main.game.isInCombat() && !Main.game.isInSex()) {
-			uiAttributeSB.append("<div>" + renderedHTMLMap() + "</div>");
-		}
+		
 		
 		uiAttributeSB.append("</body>");
 
