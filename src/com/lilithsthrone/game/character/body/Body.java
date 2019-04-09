@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -53,6 +54,7 @@ import com.lilithsthrone.game.character.body.valueEnums.CoveringPattern;
 import com.lilithsthrone.game.character.body.valueEnums.EyeShape;
 import com.lilithsthrone.game.character.body.valueEnums.Femininity;
 import com.lilithsthrone.game.character.body.valueEnums.FluidModifier;
+import com.lilithsthrone.game.character.body.valueEnums.FluidRegeneration;
 import com.lilithsthrone.game.character.body.valueEnums.FluidTypeBase;
 import com.lilithsthrone.game.character.body.valueEnums.GenitalArrangement;
 import com.lilithsthrone.game.character.body.valueEnums.HairStyle;
@@ -120,7 +122,7 @@ public class Body implements XMLSaving {
 	
 	private GenitalArrangement genitalArrangement;
 
-	private Map<Race, Integer> raceWeightMap = new HashMap<>();
+	private Map<Race, Integer> raceWeightMap = new ConcurrentHashMap<>();
 	private Subspecies subspecies;
 	private RaceStage raceStage;
 	private boolean piercedStomach = false;
@@ -935,6 +937,9 @@ public class Body implements XMLSaving {
 		try {
 			importedBreast.milkStored = Float.valueOf(breasts.getAttribute("storedMilk"));
 			importedBreast.milkRegeneration = Integer.valueOf(breasts.getAttribute("milkRegeneration"));
+			if(Main.isVersionOlderThan(Game.loadingVersion, "0.3.1.9")) { // Change from percentage-based to set value:
+				importedBreast.milkRegeneration = FluidRegeneration.ONE_AVERAGE.getMedianRegenerationValuePerDay();
+			}
 		} catch(Exception ex) {
 		}
 		
@@ -1280,7 +1285,10 @@ public class Body implements XMLSaving {
 		try {
 			importedPenis.testicle.cumStored = Float.valueOf(testicles.getAttribute("storedCum"));
 			importedPenis.testicle.cumRegeneration = Integer.valueOf(testicles.getAttribute("cumRegeneration"));
-			importedPenis.testicle.cumExpulsion = Integer.valueOf(testicles.getAttribute("cumExpulsion"));
+			importedPenis.testicle.setCumExpulsion(null, Integer.valueOf(testicles.getAttribute("cumExpulsion")));
+			if(Main.isVersionOlderThan(Game.loadingVersion, "0.3.1.9")) { // Change from percentage-based to set value:
+				importedPenis.testicle.cumRegeneration = FluidRegeneration.THREE_RAPID.getMedianRegenerationValuePerDay();
+			}
 		} catch(Exception ex) {
 		}
 		
@@ -1551,6 +1559,9 @@ public class Body implements XMLSaving {
 			try {
 				importedCrotchBreast.milkStored = Float.valueOf(breasts.getAttribute("storedMilk"));
 				importedCrotchBreast.milkRegeneration = Integer.valueOf(breasts.getAttribute("milkRegeneration"));
+				if(Main.isVersionOlderThan(Game.loadingVersion, "0.3.2")) { // Change from percentage-based to set value:
+					importedCrotchBreast.milkRegeneration = FluidRegeneration.ONE_AVERAGE.getMedianRegenerationValuePerDay();
+				}
 			} catch(Exception ex) {
 			}
 
@@ -2196,7 +2207,7 @@ public class Body implements XMLSaving {
 		}
 		
 		// Ear:
-		sb.append(ear.getType().getBodyDescription(owner));
+		sb.append(" "+ear.getType().getBodyDescription(owner));
 		
 		sb.append("</p>"
 				+ "<p>");
@@ -3158,7 +3169,7 @@ public class Body implements XMLSaving {
 	/** To be called after every transformation. Returns the body's race. */
 	public void calculateRace(GameCharacter target) {
 		
-		// Every time race is calculates, it's because parts have changed, so reset the body parts list:
+		// Every time race is calculated, it's because parts have changed, so reset the body parts list:
 		handleAllBodyPartsList();
 		
 		if(target!=null) {
@@ -3254,15 +3265,15 @@ public class Body implements XMLSaving {
 		boolean demonPartFound = false;
 		
 		for(Entry<Race, Integer> e : raceWeightMap.entrySet()) {
-			if(e.getKey()!=null && e.getKey()!=Race.HUMAN && e.getValue()>max) {
+			if(e.getKey()!=null && e.getKey()==Race.DEMON) {
+				demonPartFound = true;
+				
+			} else if(e.getKey()!=null && e.getKey()!=Race.HUMAN && e.getValue()>max) {
 				race = e.getKey();
 				max = e.getValue();
 			}
-			if(e.getKey()!=null && e.getKey()==Race.DEMON) {
-				demonPartFound = true;
-			}
 		}
-		if(!ignoreOverride && (demonPartFound)) { // Just one demon part is enough to make any character a demon:
+		if(!ignoreOverride && demonPartFound) { // Just one demon part is enough to make any character a demon:
 			return Race.DEMON;
 		}
 		
@@ -3814,8 +3825,8 @@ public class Body implements XMLSaving {
 						case PINEAPPLE:
 							descriptionSB.append(" [npc.Her] [npc.milk] tastes of pineapple.");
 							break;
-						case SLIME:
-							descriptionSB.append(" [npc.Her] [npc.milk] is mostly tasteless, but very sweet.");
+						case BUBBLEGUM:
+							descriptionSB.append(" [npc.Her] [npc.milk] has the fruity taste of bubblegum.");
 							break;
 						case STRAWBERRY:
 							descriptionSB.append(" [npc.Her] [npc.milk] tastes of strawberries.");
@@ -3825,6 +3836,9 @@ public class Body implements XMLSaving {
 							break;
 						case VANILLA:
 							descriptionSB.append(" [npc.Her] [npc.milk] tastes of vanilla.");
+							break;
+						case CHERRY:
+							descriptionSB.append(" [npc.Her] [npc.milk] tastes of cherries.");
 							break;
 					}
 					
@@ -4070,8 +4084,8 @@ public class Body implements XMLSaving {
 						case PINEAPPLE:
 							descriptionSB.append(" [npc.Her] [npc.crotchMilk] tastes of pineapple.");
 							break;
-						case SLIME:
-							descriptionSB.append(" [npc.Her] [npc.crotchMilk] is mostly tasteless, but very sweet.");
+						case BUBBLEGUM:
+							descriptionSB.append(" [npc.Her] [npc.crotchMilk] has the fruity taste of bubblegum.");
 							break;
 						case STRAWBERRY:
 							descriptionSB.append(" [npc.Her] [npc.crotchMilk] tastes of strawberries.");
@@ -4081,6 +4095,9 @@ public class Body implements XMLSaving {
 							break;
 						case VANILLA:
 							descriptionSB.append(" [npc.Her] [npc.crotchMilk] tastes of vanilla.");
+							break;
+						case CHERRY:
+							descriptionSB.append(" [npc.Her] [npc.crotchMilk] tastes of cherries.");
 							break;
 					}
 					
@@ -4695,17 +4712,20 @@ public class Body implements XMLSaving {
 				case PINEAPPLE:
 					descriptionSB.append(" tastes of pineapple.");
 					break;
-				case SLIME:
-					descriptionSB.append(" is mostly tasteless, but very sweet.");
+				case BUBBLEGUM:
+					descriptionSB.append(" has the fruity taste of bubblegum.");
 					break;
 				case STRAWBERRY:
 					descriptionSB.append(" tastes of strawberries.");
 					break;
 				case BEER:
-					descriptionSB.append(", which tastes like beer.");
+					descriptionSB.append(" tastes like beer.");
 					break;
 				case VANILLA:
-					descriptionSB.append(", which tastes of vanilla.");
+					descriptionSB.append(" tastes of vanilla.");
+					break;
+				case CHERRY:
+					descriptionSB.append(" tastes of cherries.");
 					break;
 			}
 			
@@ -5078,6 +5098,47 @@ public class Body implements XMLSaving {
 					}
 				}
 			}
+		}
+		
+		descriptionSB.append(" [npc.Her] [npc.girlcum]");
+		
+		switch(viewedVagina.getGirlcum().getFlavour()) {
+			case CHOCOLATE:
+				descriptionSB.append(" tastes of chocolate.");
+				break;
+			case CUM:
+				descriptionSB.append(" tastes of salty cum.");
+				break;
+			case GIRL_CUM:
+				descriptionSB.append(", much to nobody's surprise, tastes like ordinary girlcum.");
+				break;
+			case HONEY:
+				descriptionSB.append(" tastes of honey.");
+				break;
+			case MILK:
+				descriptionSB.append(" tastes like milk.");
+				break;
+			case MINT:
+				descriptionSB.append(" tastes of mint.");
+				break;
+			case PINEAPPLE:
+				descriptionSB.append(" tastes of pineapple.");
+				break;
+			case BUBBLEGUM:
+				descriptionSB.append(" has the fruity taste of bubblegum.");
+				break;
+			case STRAWBERRY:
+				descriptionSB.append(" tastes of strawberries.");
+				break;
+			case BEER:
+				descriptionSB.append(" tastes like beer.");
+				break;
+			case VANILLA:
+				descriptionSB.append(" tastes of vanilla.");
+				break;
+			case CHERRY:
+				descriptionSB.append(" tastes of cherries.");
+				break;
 		}
 		
 		descriptionSB.append("<br/>");
