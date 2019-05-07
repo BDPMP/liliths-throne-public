@@ -51,7 +51,7 @@ public class CityHallDemographics {
 			if (index == 1) {
 				return new Response("Ring bell",
 						Main.game.getPlayer().hasCompanions()
-							?UtilText.parse(Main.game.getPlayer().getMainCompanion(), "Tell [npc.name] to wait outside, before ringing the little bell on [vanessa.namePos] desk and waitint for her to appear.")
+							?UtilText.parse(Main.game.getPlayer().getMainCompanion(), "Tell [npc.name] to wait outside, before ringing the little bell on [vanessa.namePos] desk and waiting for her to appear.")
 							:"Ring the little bell on [vanessa.namePos] desk and wait for her to appear.",
 						CITY_HALL_DEMOGRAPHICS_MAIN) {
 					@Override
@@ -396,7 +396,7 @@ public class CityHallDemographics {
 								UtilText.parseFromXMLFile("places/dominion/cityHall/demographics", "START_SEX_EATEN_OUT")){
 							@Override
 							public List<InitialSexActionInformation> getInitialSexActions() {
-								return Util.newArrayListOfValues(new InitialSexActionInformation(Main.game.getPlayer(), Main.game.getNpc(Vanessa.class), PenisVagina.PENIS_FUCKING_START, false, true));
+								return Util.newArrayListOfValues(new InitialSexActionInformation(Main.game.getNpc(Vanessa.class), Main.game.getPlayer(), TongueVagina.CUNNILINGUS_START, false, true));
 							}
 							@Override
 							public void effects() {

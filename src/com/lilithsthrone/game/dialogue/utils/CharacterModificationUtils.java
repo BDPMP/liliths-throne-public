@@ -842,7 +842,7 @@ public class CharacterModificationUtils {
 		return applyWrapper("Tail",
 				UtilText.parse(BodyChanging.getTarget(), "Change [npc.namePos] tail type."
 						+ "<br/><i>Some types of tail are prehensile (marked by an asterisk), and can be used as penetrative objects in sex scenes."
-						+ " (If the fail is furry, it is subject to the 'furry tail penetration' content option.)</i>"),
+						+ " (If the tail is furry, it is subject to the 'furry tail penetration' content option.)</i>"),
 				"TAIL_TYPE",
 				contentSB.toString(),
 				true);
@@ -2385,11 +2385,11 @@ public class CharacterModificationUtils {
 				UtilText.parse(BodyChanging.getTarget(), "Alter the rate at which milk is produced in <b>each</b> of [npc.namePos] [npc.crotchBoobs]. The more [npc.crotchBoobs] [npc.sheHasFull], the more milk [npc.she] produces per second."
 						+ "<br/><i>Once drained, [npc.namePos] [npc.crotchBoobs] fill with milk up to their maximum storage value at this rate.</i>"),
 				"MILK_CROTCH_REGENERATION",
-				Units.fluid(BodyChanging.getTarget().getBreastRawLactationRegenerationValue(), ValueType.PRECISE)+"/day"
+				Units.fluid(BodyChanging.getTarget().getBreastCrotchRawLactationRegenerationValue(), ValueType.PRECISE)+"/day"
 						+"<br/>("+Units.fluid(BodyChanging.getTarget().getCrotchLactationRegenerationPerSecond(false)*60, ValueType.PRECISE)+"/minute)"
 						+"<br/><i>"+Util.capitaliseSentence(BodyChanging.getTarget().getBreastCrotchLactationRegeneration().getName())+"</i>",
-				BodyChanging.getTarget().getBreastRawLactationRegenerationValue()<=0,
-				BodyChanging.getTarget().getBreastRawLactationRegenerationValue()>=FluidRegeneration.FOUR_VERY_RAPID.getMaximumRegenerationValuePerDay(),
+				BodyChanging.getTarget().getBreastCrotchRawLactationRegenerationValue()<=0,
+				BodyChanging.getTarget().getBreastCrotchRawLactationRegenerationValue()>=FluidRegeneration.FOUR_VERY_RAPID.getMaximumRegenerationValuePerDay(),
 				FLUID_REGEN_INCREMENT_SMALL,
 				FLUID_REGEN_INCREMENT_AVERAGE,
 				FLUID_REGEN_INCREMENT_LARGE);

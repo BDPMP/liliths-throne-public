@@ -412,7 +412,7 @@ public class Lyssieth extends NPC {
 			if(Sex.getNumberOfOrgasms(Main.game.getNpc(Lyssieth.class))==0) {
 				// Stage 1) Player is sucking Lyssieth's cock:
 				if(Sex.getContactingSexAreas(this, SexAreaPenetration.PENIS, Main.game.getPlayer()).contains(SexAreaOrifice.MOUTH)) {
-					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_STAGE_1_PC_GIVING_LYSSITH_BLOWJOB"));
+					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_STAGE_1_PC_GIVING_LYSSIETH_BLOWJOB"));
 					
 					return new SexActionOrgasmOverride(false, sb.toString()) {
 						@Override
@@ -433,7 +433,7 @@ public class Lyssieth extends NPC {
 	
 				// Stage 1) Lyssieth is sucking player's cock:
 				} else if(Sex.getContactingSexAreas(this, SexAreaOrifice.MOUTH, Main.game.getPlayer()).contains(SexAreaPenetration.PENIS)) {
-					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_STAGE_1_PC_GETTING_BLOWJOB_FROM_LYSSITH"));
+					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_STAGE_1_PC_GETTING_BLOWJOB_FROM_LYSSIETH"));
 					
 					return new SexActionOrgasmOverride(false, sb.toString()) {
 						@Override
@@ -451,7 +451,7 @@ public class Lyssieth extends NPC {
 	
 				// Stage 1) Lyssieth is eating the player out:
 				} else if(Sex.getContactingSexAreas(this, SexAreaPenetration.TONGUE, Main.game.getPlayer()).contains(SexAreaOrifice.VAGINA)) {
-					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_STAGE_1_PC_GETTING_CUNNILINGUS_FROM_LYSSITH"));
+					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_STAGE_1_PC_GETTING_CUNNILINGUS_FROM_LYSSIETH"));
 					
 					return new SexActionOrgasmOverride(false, sb.toString()) {
 						@Override
@@ -467,7 +467,7 @@ public class Lyssieth extends NPC {
 			} else if(Sex.getNumberOfOrgasms(Main.game.getNpc(Lyssieth.class))==1) {
 				// Stage 2) Lyssieth is fucking the player:
 				if(Sex.getContactingSexAreas(this, SexAreaPenetration.PENIS, Main.game.getPlayer()).contains(SexAreaOrifice.VAGINA)) {
-					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_STAGE_2_PC_PUSSY_FUCKED_BY_LYSSITH"));
+					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_STAGE_2_PC_PUSSY_FUCKED_BY_LYSSIETH"));
 					
 					return new SexActionOrgasmOverride(false, sb.toString()) {
 						@Override
@@ -482,7 +482,7 @@ public class Lyssieth extends NPC {
 
 				// Stage 2) Lyssieth is fucking the player's ass:
 				} else if(Sex.getContactingSexAreas(this, SexAreaPenetration.PENIS, Main.game.getPlayer()).contains(SexAreaOrifice.ANUS)) {
-					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_STAGE_2_PC_ASS_FUCKED_BY_LYSSITH"));
+					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_STAGE_2_PC_ASS_FUCKED_BY_LYSSIETH"));
 					
 					return new SexActionOrgasmOverride(false, sb.toString()) {
 						@Override
@@ -497,7 +497,7 @@ public class Lyssieth extends NPC {
 					
 				// Stage 2) The player is fucking Lyssieth:
 				} else if(Sex.getContactingSexAreas(this, SexAreaOrifice.VAGINA, Main.game.getPlayer()).contains(SexAreaPenetration.PENIS)) {
-					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_STAGE_2_PC_FUCKING_LYSSITH"));
+					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_STAGE_2_PC_FUCKING_LYSSIETH"));
 					
 					return new SexActionOrgasmOverride(false, sb.toString()) {
 						@Override
@@ -516,9 +516,9 @@ public class Lyssieth extends NPC {
 				// Stage 3) The player is fucking/breeding Lyssieth:
 				if(Sex.getContactingSexAreas(this, SexAreaOrifice.VAGINA, Main.game.getPlayer()).contains(SexAreaPenetration.PENIS)) {
 					if(Sex.getPosition()==SexPositionBipeds.MATING_PRESS) {
-						sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_FINAL_PC_BREEDING_LYSSITH"));
+						sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_FINAL_PC_BREEDING_LYSSIETH"));
 					} else {
-						sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_FINAL_PC_FUCKING_LYSSITH"));
+						sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_FINAL_PC_FUCKING_LYSSIETH"));
 					}
 					
 					return new SexActionOrgasmOverride(false, sb.toString()) {
@@ -537,7 +537,7 @@ public class Lyssieth extends NPC {
 
 				// Stage 3) Lyssieth is fucking the player:
 				} else if(Sex.getContactingSexAreas(this, SexAreaPenetration.PENIS, Main.game.getPlayer()).contains(SexAreaOrifice.VAGINA)) {
-					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_FINAL_PC_PUSSY_FUCKED_BY_LYSSITH"));
+					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_FINAL_PC_PUSSY_FUCKED_BY_LYSSIETH"));
 					
 					return new SexActionOrgasmOverride(false, sb.toString()) {
 						@Override
@@ -550,7 +550,7 @@ public class Lyssieth extends NPC {
 
 				// Stage 3) Lyssieth is fucking the player's ass:
 				} else if(Sex.getContactingSexAreas(this, SexAreaPenetration.PENIS, Main.game.getPlayer()).contains(SexAreaOrifice.ANUS)) {
-					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_FINAL_PC_ASS_FUCKED_BY_LYSSITH"));
+					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_FINAL_PC_ASS_FUCKED_BY_LYSSIETH"));
 					
 					return new SexActionOrgasmOverride(false, sb.toString()) {
 						@Override
@@ -563,7 +563,7 @@ public class Lyssieth extends NPC {
 					
 				// Stage 3) Lyssieth is sucking player's cock:
 				} else if(Sex.getContactingSexAreas(this, SexAreaOrifice.MOUTH, Main.game.getPlayer()).contains(SexAreaPenetration.PENIS)) {
-					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_FINAL_PC_GETTING_BLOWJOB_FROM_LYSSITH"));
+					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_FINAL_PC_GETTING_BLOWJOB_FROM_LYSSIETH"));
 					
 					return new SexActionOrgasmOverride(false, sb.toString()) {
 						@Override
@@ -576,7 +576,7 @@ public class Lyssieth extends NPC {
 	
 				// Stage 3) Lyssieth is eating the player out:
 				} else if(Sex.getContactingSexAreas(this, SexAreaPenetration.TONGUE, Main.game.getPlayer()).contains(SexAreaOrifice.VAGINA)) {
-					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_FINAL_PC_GETTING_CUNNILINGUS_FROM_LYSSITH"));
+					sb.append(UtilText.parseFromXMLFile("characters/submission/lyssieth", "DEMON_TF_FINAL_PC_GETTING_CUNNILINGUS_FROM_LYSSIETH"));
 					
 					return new SexActionOrgasmOverride(false, sb.toString()) {
 						@Override
@@ -652,7 +652,7 @@ public class Lyssieth extends NPC {
 	@Override
 	public SexType getForeplayPreference(GameCharacter target) {
 		if(Sex.getSexManager() instanceof SMLyssiethDemonTF) {
-			if(Sex.getNumberOfOrgasms(this)==0) { // Only need to override the start, as preferences are set in the class SALyssithSpecials after this.
+			if(Sex.getNumberOfOrgasms(this)==0) { // Only need to override the start, as preferences are set in the class SALyssiethSpecials after this.
 				if(Sex.getSexPositionSlot(this)==SexSlotBipeds.KNEELING_RECEIVING_ORAL) {
 					return new SexType(SexParticipantType.NORMAL, SexAreaPenetration.PENIS, SexAreaOrifice.MOUTH);
 				} else {

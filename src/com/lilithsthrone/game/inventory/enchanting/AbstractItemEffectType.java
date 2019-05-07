@@ -2063,6 +2063,13 @@ public abstract class AbstractItemEffectType {
 	private static int largeChangeBoost = 15;
 	private static int largeChangeMajorBoost = 50;
 
+	private static int hugeChangeMajorDrain = -500;
+	private static int hugeChangeDrain = -100;
+	private static int hugeChangeMinorDrain = -25;
+	private static int hugeChangeMinorBoost = 25;
+	private static int hugeChangeBoost = 100;
+	private static int hugeChangeMajorBoost = 500;
+	
 	private static int singleDrain = -1;
 	private static int singleBoost = 1;
 	
@@ -2496,17 +2503,17 @@ public abstract class AbstractItemEffectType {
 					case TF_MOD_REGENERATION:
 						switch(potency) {
 							case MAJOR_DRAIN:
-								return new RacialEffectUtil("Huge decrease in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastLactationRegeneration(smallChangeMajorDrain); } };
+								return new RacialEffectUtil("Huge decrease in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastLactationRegeneration(hugeChangeMajorDrain); } };
 							case DRAIN:
-								return new RacialEffectUtil("Decrease in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastLactationRegeneration(smallChangeDrain); } };
+								return new RacialEffectUtil("Decrease in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastLactationRegeneration(hugeChangeDrain); } };
 							case MINOR_DRAIN:
-								return new RacialEffectUtil("Small decrease in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastLactationRegeneration(smallChangeMinorDrain); } };
+								return new RacialEffectUtil("Small decrease in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastLactationRegeneration(hugeChangeMinorDrain); } };
 							case MINOR_BOOST: default:
-								return new RacialEffectUtil("Small increase in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastLactationRegeneration(smallChangeMinorBoost); } };
+								return new RacialEffectUtil("Small increase in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastLactationRegeneration(hugeChangeMinorBoost); } };
 							case BOOST:
-								return new RacialEffectUtil("Increase in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastLactationRegeneration(smallChangeBoost); } };
+								return new RacialEffectUtil("Increase in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastLactationRegeneration(hugeChangeBoost); } };
 							case MAJOR_BOOST:
-								return new RacialEffectUtil("Huge increase in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastLactationRegeneration(smallChangeMajorBoost); } };
+								return new RacialEffectUtil("Huge increase in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastLactationRegeneration(hugeChangeMajorBoost); } };
 						}
 						
 					case TF_MOD_ORIFICE_PUFFY:
@@ -2724,17 +2731,17 @@ public abstract class AbstractItemEffectType {
 					case TF_MOD_REGENERATION:
 						switch(potency) {
 							case MAJOR_DRAIN:
-								return new RacialEffectUtil("Huge decrease in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastCrotchLactationRegeneration(smallChangeMajorDrain); } };
+								return new RacialEffectUtil("Huge decrease in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastCrotchLactationRegeneration(hugeChangeMajorDrain); } };
 							case DRAIN:
-								return new RacialEffectUtil("Decrease in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastCrotchLactationRegeneration(smallChangeDrain); } };
+								return new RacialEffectUtil("Decrease in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastCrotchLactationRegeneration(hugeChangeDrain); } };
 							case MINOR_DRAIN:
-								return new RacialEffectUtil("Small decrease in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastCrotchLactationRegeneration(smallChangeMinorDrain); } };
+								return new RacialEffectUtil("Small decrease in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastCrotchLactationRegeneration(hugeChangeMinorDrain); } };
 							case MINOR_BOOST: default:
-								return new RacialEffectUtil("Small increase in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastCrotchLactationRegeneration(smallChangeMinorBoost); } };
+								return new RacialEffectUtil("Small increase in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastCrotchLactationRegeneration(hugeChangeMinorBoost); } };
 							case BOOST:
-								return new RacialEffectUtil("Increase in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastCrotchLactationRegeneration(smallChangeBoost); } };
+								return new RacialEffectUtil("Increase in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastCrotchLactationRegeneration(hugeChangeBoost); } };
 							case MAJOR_BOOST:
-								return new RacialEffectUtil("Huge increase in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastCrotchLactationRegeneration(smallChangeMajorBoost); } };
+								return new RacialEffectUtil("Huge increase in milk regeneration.") { @Override public String applyEffect() { return target.incrementBreastCrotchLactationRegeneration(hugeChangeMajorBoost); } };
 						}
 						
 					case TF_MOD_ORIFICE_PUFFY:
@@ -3485,17 +3492,17 @@ public abstract class AbstractItemEffectType {
 					case TF_MOD_REGENERATION:
 						switch(potency) {
 							case MAJOR_DRAIN:
-								return new RacialEffectUtil("Huge decrease in cum regeneration.") { @Override public String applyEffect() { return target.incrementPenisCumProductionRegeneration(smallChangeMajorDrain); } };
+								return new RacialEffectUtil("Huge decrease in cum regeneration.") { @Override public String applyEffect() { return target.incrementPenisCumProductionRegeneration(hugeChangeMajorDrain); } };
 							case DRAIN:
-								return new RacialEffectUtil("Decrease in cum regeneration.") { @Override public String applyEffect() { return target.incrementPenisCumProductionRegeneration(smallChangeDrain); } };
+								return new RacialEffectUtil("Decrease in cum regeneration.") { @Override public String applyEffect() { return target.incrementPenisCumProductionRegeneration(hugeChangeDrain); } };
 							case MINOR_DRAIN:
-								return new RacialEffectUtil("Small decrease in cum regeneration.") { @Override public String applyEffect() { return target.incrementPenisCumProductionRegeneration(smallChangeMinorDrain); } };
+								return new RacialEffectUtil("Small decrease in cum regeneration.") { @Override public String applyEffect() { return target.incrementPenisCumProductionRegeneration(hugeChangeMinorDrain); } };
 							case MINOR_BOOST: default:
-								return new RacialEffectUtil("Small increase in cum regeneration.") { @Override public String applyEffect() { return target.incrementPenisCumProductionRegeneration(smallChangeMinorBoost); } };
+								return new RacialEffectUtil("Small increase in cum regeneration.") { @Override public String applyEffect() { return target.incrementPenisCumProductionRegeneration(hugeChangeMinorBoost); } };
 							case BOOST:
-								return new RacialEffectUtil("Increase in cum regeneration.") { @Override public String applyEffect() { return target.incrementPenisCumProductionRegeneration(smallChangeBoost); } };
+								return new RacialEffectUtil("Increase in cum regeneration.") { @Override public String applyEffect() { return target.incrementPenisCumProductionRegeneration(hugeChangeBoost); } };
 							case MAJOR_BOOST:
-								return new RacialEffectUtil("Huge increase in cum regeneration.") { @Override public String applyEffect() { return target.incrementPenisCumProductionRegeneration(smallChangeMajorBoost); } };
+								return new RacialEffectUtil("Huge increase in cum regeneration.") { @Override public String applyEffect() { return target.incrementPenisCumProductionRegeneration(hugeChangeMajorBoost); } };
 						}
 					case TF_MOD_CUM_EXPULSION:
 						switch(potency) {
